@@ -7,44 +7,50 @@
 <?php ob_start();?>
 
 <div id="cardContainer">
-            <h1>All Courses</h1>
+            <h1>All Courses</h1> 
             
-                <?php
-                try {
-                    $db = new PDO('mysql:host=localhost;dbname=batch14_project;charset=utf8', 'root', '');
-
-                } catch(Exception $e) {
-
-                        die('Error : ' . $e->getMessage());
-                }
-
-                $response = $db->query("SELECT image, name, teacher, dayTime, nb_students FROM course_test ORDER BY id");
-
-                while($data = $response->fetch(PDO::FETCH_ASSOC)){
-                ?>
+            <div id="courseButtonTop">
+                <div>Add Course<i class="fas fa-plus"></i></div>
+            </div>
+            <?php require("./model/courseListModelTest.php") ?>
+                <?php foreach ($courses AS $course):?>
+                    
                     <div class="courseCard">
+
                         <div class="courseImage">
-                            <?php echo '<img src="' . $data['image'] . '">'?>
+                            <?php 
+                                if ($course['image'] != null) {
+                                    echo '<img src="' . $course['image'] . '">';
+                                } else {
+                                    echo '<img src=".\public\styles\images\courseDefault.jpg">';
+                                    
+                                }
+                            ?>
                         </div>
 
                         <div class="courseDetails">
                             <?php 
 
-                            echo $data['name'] . 
-                            '<br>' . $data['teacher'] . 
-                            '<br>' . $data['dayTime']
+                            echo $course['name'] . 
+                            '<br>' . $course['teacher'] . 
+                            '<br>' . $course['dayTime']
                             ?>
                         </div>
-                        
+
+                        <div id="courseRight">
                         <div class="courseStudents">
-                            <i class="fas fa-users"></i><?php echo $data['nb_students']?>
+                                <i class="fas fa-users"></i><?php echo $course['nbStudents']?>
+                            </div>
+                            <div class="courseBtn">
+                                <a href="#"><i class="fas fa-edit"></i></a>
+                                <a href="#"><i class="fas fa-trash" ></i></a>
+                            </div>
+
                         </div>
 
                     </div>
 
-                <?php
-                    }
-                    ?>
+            <?php endforeach;?>
 
 <?php $content = ob_get_clean();?>
 <?php require("template.php");?>

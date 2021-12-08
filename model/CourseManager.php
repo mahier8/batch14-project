@@ -4,4 +4,9 @@ class CourseManager extends Manager {
     {
         parent::__construct();
     }
+
+    public function getCourses() {
+
+    }
+
 }

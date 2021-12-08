@@ -4,10 +4,13 @@ include("./controller/controller.php");
 $action = (isset($_REQUEST['action'])) ? $_REQUEST['action'] : "";
 
 switch($action) {
-    case "landing" : landing();
+    case "landing" : 
+        landing();
         break;
-    case "courseList" : courseList();
+    case "courseList" : 
+        courseList();
         break;
-    default : landing();
+    default : 
+    landing();
         break;
 }

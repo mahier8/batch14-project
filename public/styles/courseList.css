@@ -13,6 +13,24 @@
     width: 400px;
 }
 
+#courseButtonTop {
+    display:flex;
+    justify-content: flex-end;
+    flex-direction:row;
+    width: 425px;
+    margin-bottom:5px;
+}
+
+#courseButtonTop div{
+    width:110px;
+    display:flex;
+    flex-direction:row;
+    }
+#courseButtonTop i {
+    padding:5px;
+    height:15px;
+}
+
 .courseImage {
     display:flex;
     align-items:center;
@@ -25,19 +43,40 @@
 }
 .courseDetails {
     width:200px;
-    padding: 5px;
-    padding-left:10px;
+
 }
+
+#courseRight {
+    margin-left:80px;
+    display:flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+}
+
+.courseBtn {
+    display:flex;
+    flex-direction: row;
+    padding-left:20px;
+}
+
+.elementDisplay {
+    display:flex;
+}
+
+.elementHidden {
+    display:none;
+}
+
+
 .courseStudents {
-    padding-left:110px;
-    justify-self:flex-end;
-    align-self: flex-end; 
     display:flex;
     font-size:1.3em;
+    align-self:flex-end;
 }
 
-.fas {
+.fas, .far{
     font-size:1.5em;
-    margin-right:8px;
-
+    margin-right:5px;
+    display:flex;
+    align-items:flex-end;
 }
