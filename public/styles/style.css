@@ -1,0 +1,40 @@
+@font-face{
+    font-family: 'Mulish';
+    src: url('./fonts/Mulish/static/Mulish-Light.ttf') format('truetype');
+    font-weight: 200;
+}
+
+@font-face{
+    font-family: 'Mulish Bold';
+    src: url('./fonts/Mulish/static/Mulish-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+}
+@font-face{
+    font-family: 'Open Sans';
+    src: url('./fonts/Open_Sans/static/OpenSans/OpenSans-Light.ttf') format('truetype');
+    font-weight: 300;
+}
+
+@font-face{
+    font-family: 'Open Sans Bold';
+    src: url('./fonts/Open_Sans/static/OpenSans/OpenSans-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+#mainContainer {
+    display : flex;
+    font-family: 'Open Sans', Arial,  sans-serif;
+}
+.menuTitle {
+    font-family: 'Mulish', Arial, sans-serif;
+}
+.menuTitleBold {
+    font-family: 'Mulish Bold', Arial, sans-serif;
+}
+
+.title{
+    font-family: 'Open Sans Bold', Arial, sans-serif;
+}
