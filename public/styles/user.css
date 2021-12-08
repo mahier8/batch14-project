@@ -1,0 +1,31 @@
+.contentHead{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+table{
+    border-collapse:collapse ;
+}
+
+th,td{
+    border: 1px solid black;
+    padding: 10px;
+}
+#mainContent{
+    margin: 30px 20px;
+}
+
+tr a{
+    text-decoration: none;
+}
+
+tbody tr:hover{
+    background: lightgray;
+}
+tr a{
+   
+    /* background-image: url("../imgs/images.jpg");  */
+    padding: 10px;
+}
+
