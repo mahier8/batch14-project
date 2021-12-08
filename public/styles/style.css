@@ -38,3 +38,14 @@ body {
 .title{
     font-family: 'Open Sans Bold', Arial, sans-serif;
 }
+
+#banner {
+    height: 15vh;
+    background-color: #0C51A1;
+}
+
+#footer {
+    height: 10vh;
+    justify-content: baseline;
+    background-color: #0D509E;
+}
