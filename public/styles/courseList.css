@@ -1,0 +1,43 @@
+#cardContainer {
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    width:100%;
+}
+
+.courseCard {
+    padding:10px;
+    display:flex;
+    flex-direction: row;
+    border: 1px black solid;
+    width: 400px;
+}
+
+.courseImage {
+    display:flex;
+    align-items:center;
+    margin-right:5px;
+}
+
+.courseImage img{
+    height:100px;
+    width:100px;
+}
+.courseDetails {
+    width:200px;
+    padding: 5px;
+    padding-left:10px;
+}
+.courseStudents {
+    padding-left:110px;
+    justify-self:flex-end;
+    align-self: flex-end; 
+    display:flex;
+    font-size:1.3em;
+}
+
+.fas {
+    font-size:1.5em;
+    margin-right:8px;
+
+}
