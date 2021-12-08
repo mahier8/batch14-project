@@ -38,3 +38,37 @@ body {
 .title{
     font-family: 'Open Sans Bold', Arial, sans-serif;
 }
+
+#sideBar {
+    /* width: 350px; */
+    width: 20%;
+    background-color: #25282A ;
+    color: white;
+    height: 100vh;
+}
+
+/* logged out */
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+#checkBox {
+    display: flex;
+}
+
+#profilePic {
+    border-radius: 50%;
+    width: 30%;
+}
+
+/* logged in */
+.loggedInItems {
+    border: 1px solid white;
+}
+
+.fa-adjust {
+    color: white;
+    font-size: 50px;
+}
