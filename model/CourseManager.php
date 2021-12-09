@@ -7,8 +7,7 @@ class CourseManager extends Manager {
     }
 
     public function getCourses() {
-        $db = dbConnect();
-        $response = $response = $db->query("SELECT image, name, teacher, dayTime, nbStudents FROM course ORDER BY id");
+        $response = $this->_connexion->query("SELECT id, image, name, teacher, dayTime, nbStudents FROM course ORDER BY id");
         $courses = $response->fetchAll(\PDO::FETCH_ASSOC);
         $response->closeCursor();
         return $courses;

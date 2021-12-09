@@ -25,7 +25,8 @@
     width:110px;
     display:flex;
     flex-direction:row;
-    }
+}
+
 #courseButtonTop i {
     padding:5px;
     height:15px;
@@ -42,12 +43,12 @@
     width:100px;
 }
 .courseDetails {
-    width:200px;
+    width:350px;
+    margin-left:10px;
 
 }
 
 #courseRight {
-    margin-left:80px;
     display:flex;
     flex-direction: column-reverse;
     justify-content: space-between;

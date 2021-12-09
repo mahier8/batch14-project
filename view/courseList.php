@@ -12,7 +12,7 @@
             <div id="courseButtonTop">
                 <div>Add Course<i class="fas fa-plus"></i></div>
             </div>
-            <?php require("./model/courseListModelTest.php") ?>
+            
                 <?php foreach ($courses AS $course):?>
                     
                     <div class="courseCard">
@@ -30,13 +30,12 @@
 
                         <div class="courseDetails">
                             <?php 
-
-                            echo $course['name'] . 
+                            echo '<a href="action=coursePage&courseid=' . $course['id']  . '">' . $course['name'] . '</a>' .
                             '<br>' . $course['teacher'] . 
                             '<br>' . $course['dayTime']
                             ?>
                         </div>
-
+<!-- <a href="http://"></a> -->
                         <div id="courseRight">
                         <div class="courseStudents">
                                 <i class="fas fa-users"></i><?php echo $course['nbStudents']?>
