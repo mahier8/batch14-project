@@ -6,7 +6,6 @@ function landing(){
 }
 
 function courseList(){
-    // require("./model/CourseManager.php");
-    // $courses = $this->getCourses();
+
     require("./view/courseList.php");
 }
