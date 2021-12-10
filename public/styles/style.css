@@ -85,13 +85,17 @@ body {
 } */
 
 /* logged in */
-.loggedInItems {
+#loggedInItems {
     border: 1px solid white;
 }
-
+#loggedInMenu >a {
+    text-decoration: none;
+    color: white;
+    
+}
 .fa-adjust {
     color: white;
-    font-size: 50px;
+    font-size: 30px;
 }
 /* nav bar, duck logo & company name  */
 nav {

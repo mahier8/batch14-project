@@ -1,6 +1,6 @@
 #cardContainer {
     padding:20px;
-    width:100%;
+    width:80%;
 }
 
 .courseCard {
@@ -74,7 +74,7 @@
     align-self:flex-end;
 }
 
-.fas, .far{
+.fa-plus, .fa-edit, .fa-trash{
     font-size:1.5em;
     margin-right:5px;
     display:flex;

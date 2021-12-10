@@ -1,0 +1,41 @@
+.contentHead{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+table{
+    border-collapse:collapse ;
+}
+
+th{
+  font-weight: bolder;
+}
+
+th , td{
+    border: 3px;
+    border-style: groove;
+    padding: 10px;
+    font-size: 19px;
+}
+#mainContent{
+    width:80%;
+    height: 100vh;
+    margin-top: 50px;
+}
+
+tr a{
+    text-decoration: none;
+    padding: 10px;
+}
+
+tbody tr:hover{
+    background: lightgray;
+}
+
+form.newuser button{
+    background: indigo;
+    color: ivory;
+    outline: none;
+    padding: 10px;
+}

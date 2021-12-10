@@ -14,6 +14,15 @@ try {
             break;
         case "logout" : logout();
             break; 
+        case "userView" : userView(); 
+            break;
+    
+        case "userDel"; 
+            if(isset($_GET['delete']) && $_GET['delete'] > 0){
+                userId($_GET['delete']);
+                require("./view/userView.php");
+            }
+            break;
         case "courseList" : 
             courseList();
             break;   

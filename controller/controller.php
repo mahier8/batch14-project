@@ -26,3 +26,15 @@ function courseList(){
     $courses = $courseManager->getCourses();
     require("./view/courseList.php");
 }
+function userView(){
+    $getUsers = new UserManager();
+    $users = $getUsers->getUser();
+    require("./view/userView.php");
+}
+
+function userId($getId){
+    $getId = new UserManager($getId);
+    $getId->delete();
+    header("location:index.php?action=userView");
+}
+

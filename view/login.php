@@ -23,9 +23,9 @@
             <div>username <?php echo $_SESSION['userName']; ?></div>
             <div><?php echo $_SESSION['userRoleDesc']; ?></div>
             <div id="loggedInMenu">
-                <div class="loggedInItems"><i class="fas fa-adjust"></i>My profile</div>
-                <div class="loggedInItems"><i class="fas fa-adjust"></i> My courses</div>
-                <div class="loggedInItems"><i class="fas fa-adjust"></i> Manage Users</div>
+                <a href="index.php?action=userProfile"><div class="loggedInItems"><i class="fas fa-adjust"></i>My profile</div></a>
+                <a href="index.php?action=courseList"><div class="loggedInItems"><i class="fas fa-adjust"></i>My courses</div></a>
+                <a href="index.php?action=userView"><div class="loggedInItems"><i class="fas fa-adjust"></i>Manage Users</div></a>
                 <div>
                     <form action="index.php" method=POST>
                         <input type="hidden" name="action" value="logout">
