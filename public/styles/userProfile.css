@@ -1,0 +1,17 @@
+#wrapper {
+    width: 100%;
+    margin: 50px;
+}
+
+h1 {
+    text-align: center;
+}
+
+#profilePic img{
+    width:200px;
+    height:200px;
+    border-radius: 50%;
+    border-color: black;
+    border: 1px solid;
+
+}
