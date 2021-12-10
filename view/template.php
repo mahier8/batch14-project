@@ -7,6 +7,7 @@
     <title>🐤 School Portal 🐤</title>
     <script src="https://kit.fontawesome.com/9cb80c9d72.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./public/styles/style.css">
+    <script src="https://kit.fontawesome.com/9cb80c9d72.js" crossorigin="anonymous"></script>
     <?= $style ?>
 </head>
 <body>

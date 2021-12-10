@@ -2,6 +2,13 @@
 require_once("./model/UserManager.php");
 require_once("./model/CourseManager.php");
 
+// define("TEST", "test constant"); // constant outside of a class
+// function listUserData(){
+//     $userManager = new UserManager();
+//     $user = $userManager->getUser();
+//     require("./view/userProfile.php");
+// }
+
 function landing(){
     require("./view/landing.php");
 }
@@ -28,7 +35,7 @@ function courseList(){
 }
 function userView(){
     $getUsers = new UserManager();
-    $users = $getUsers->getUser();
+    $users = $getUsers->getUsers();
     require("./view/userView.php");
 }
 
@@ -36,5 +43,11 @@ function userId($getId){
     $getId = new UserManager($getId);
     $getId->delete();
     header("location:index.php?action=userView");
+}
+
+function userProfile(){
+    $userManager = new UserManager();
+    $user = $userManager->getUser();
+    require("./view/userProfile.php");
 }
 

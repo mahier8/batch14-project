@@ -16,7 +16,8 @@ try {
             break; 
         case "userView" : userView(); 
             break;
-    
+        case "userProfile" : userProfile();
+            break;
         case "userDel"; 
             if(isset($_GET['delete']) && $_GET['delete'] > 0){
                 userId($_GET['delete']);
