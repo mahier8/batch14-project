@@ -1,7 +1,6 @@
 <?php
 class Manager {    
     protected $_connexion;
-    public $_article_id;
 
     const DBNAME = "school";
     const HOST = "localhost";

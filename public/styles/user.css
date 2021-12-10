@@ -8,9 +8,15 @@ table{
     border-collapse:collapse ;
 }
 
-th,td{
-    border: 1px solid black;
+tr th{
+  font-weight: bolder;
+}
+
+th ,td{
+    border: 3px;
+    border-style: groove;
     padding: 10px;
+    font-size: 19px;
 }
 #mainContent{
     margin: 30px 20px;
@@ -18,14 +24,16 @@ th,td{
 
 tr a{
     text-decoration: none;
+    padding: 10px;
 }
 
 tbody tr:hover{
     background: lightgray;
 }
-tr a{
-   
-    /* background-image: url("../imgs/images.jpg");  */
+
+form button{
+    background: indigo;
+    color: ivory;
+    outline: none;
     padding: 10px;
 }
-

@@ -1,19 +1,19 @@
 <?php ob_start();?>
 <link rel="stylesheet" href="./public/styles/user.css">
 <?php $style = ob_get_clean();?>
-<?php ob_start(); ?>
 
+<?php ob_start(); ?>
 <div id="mainContent">
    
 
     <div class="section">
         <div class="contentHead">
-                <form class="filter">
-                    <input type="input" name="filter" placeholder="filter">
+                <form action="Post" class="filter">
+                    <input type="text" name="filter" placeholder="filter" size="30px" >
                 </form>
 
-                <form class="">
-                    <button type="submit" name="addNewUser">Add New User</button>
+                <form  action=""   method="POST"    class="newuser">
+                    <button type="submit" name="addNewUser" ><i class="fas fa-user-plus"></i>Add New User</button>
                 </form>
         </div>
            
@@ -25,41 +25,36 @@
         <table>
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>FirstName</th>
-                    <th>LastName</th>
-                    <th>UserName</th>
+                    <th>User ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>User Name</th>
+                    <th>Password</th>
                     <th>Role</th>
-                    <th>PhoneNumber</th>
+                    <th>Phone Number</th>
                     <th colspan="2">Action</th>
                  
                 </tr>
             </thead>
             <tbody>
-              
-                <tr>
-                    <td>id</td>
-                    <td>james</td>
-                    <td>robble</td>
-                    <td>robus</td>
-                    <td>admin</td>
-                    <td>010234567</td>
-                    <td colspan="2"><a href="">Button1</a> <a href="">Button2</a> </td>
-                   
-                </tr>
-                <tr>
-                    <td>id</td>
-                    <td>james</td>
-                    <td>robble</td>
-                    <td>robus</td>
-                    <td>admin</td>
-                    <td>010234567</td>
-                    <td colspan="2"><a href=""><i class="fas fa-edit"></i>button1</a><a href="">Button2</a> </td>
-                   
-                </tr>
+                <?php foreach($users as $user):?>
+                    <tr>
+                        <td><?= htmlspecialchars($user['id']) ; ?></td>
+                        <td><?= htmlspecialchars($user['firstName']) ;?></td>
+                        <td><?= htmlspecialchars($user['lastName']); ?></td>
+                        <td><?= htmlspecialchars($user['userName']); ?></td>
+                        <td><?= htmlspecialchars($user['password']); ?></td>
+                        <td><?= htmlspecialchars($user['role']); ?></td>
+                        <td><?= htmlspecialchars($user['phoneNumber']); ?></td>
+                        <td><a href="index.php?action=userEdit&edit=<?= $user['id'];?>"><i class="fas fa-edit"></i>Edit</a></td>   
+                        <td><a href="index.php?action=userDel&delete=<?= $user['id'];?>"><i class="fas fa-trash-alt"></i>Delete</a> </td>
+                    
+                    </tr>
+
+                <?php endforeach;?>
             </tbody>
         </table>
-
+        
     </div>
 
 </div>

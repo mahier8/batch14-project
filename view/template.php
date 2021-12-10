@@ -19,5 +19,6 @@
 
         <!-- add the footer -->
     </div>
+    <script src="./public/js/main.js"></script>
 </body>
 </html>
