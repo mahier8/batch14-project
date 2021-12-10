@@ -21,28 +21,28 @@
     </form> -->
 
     <div id = "id">
-        User ID: <?= $user['id'];?>
+        User ID: <?= htmlspecialchars($user['id']);?>
     </div>
     <div id = "password">
-        Password: <?= $user['password'];?>
+        Password: <?= htmlspecialchars($user['password']);?>
     </div>
     <div id = "dob">
-        Date of Birth: <?= $user['dob'];?>
+        Date of Birth: <?= htmlspecialchars($user['dob']);?>
     </div>
     <div id = "email">
-        Email Address: <?= $user['email'];?>
+        Email Address: <?= htmlspecialchars($user['email']);?>
     </div>
     <div id = "address">
-        Address: <?= $user['address'];?>
+        Address: <?= htmlspecialchars($user['address']);?>
     </div>
     <div id = "phone">
-        Phone Number: <?= $user['phoneNumber'];?>
+        Phone Number: <?= htmlspecialchars($user['phoneNumber']);?>
     </div>
     <div id = "emergency">
-        Emergency Contact: <?= $user['emergency'];?>
+        Emergency Contact: <?= htmlspecialchars($user['emergency']);?>
     </div>
     <div id = "courses">
-        Courses: <?= $user['courses'];?>
+        Courses: <?= htmlspecialchars($user['courses']);?>
     </div>
 </div>
 <?php $content = ob_get_clean();?>
