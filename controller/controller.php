@@ -1,15 +1,22 @@
 <?php
+require_once("./model/UserManager.php");
 
 function landing(){
     require("./view/landing.php");
 }
 
-function login(){
-    // call the model to make sure we have the right user
-    // if succeed then header location to mycourses list
-    // else can display and error of login;
+function login($params){
+    $userManager = new UserManager();
+    $userConnected = $userManager->logInUser($params['username'], $params['password']);
+    if($userConnected){
+        header('Location: index.php?action=courseList');
+    } else {
+        header('Location: index.php');
+    }
 }
 
 function logout() {
-    // delete the session and redirect to landing page;
+    session_unset();
+    session_destroy();
+    header('Location: index.php');
 }

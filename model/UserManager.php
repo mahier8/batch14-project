@@ -1,13 +1,35 @@
 <?php
+session_start();
+require_once("Manager.php");
 class UserManager extends Manager {
     public function __construct()
     {
         parent::__construct();
     }
 
-    public function logInUser(){
-        //check the user
-        // if correct create the session
-        // return true if success for example
+    public function logInUser($userName, $pwd){
+
+        $req = $this->_connexion->prepare("SELECT id, userName, password, role FROM user WHERE userName=? ");
+        $req->bindParam(1,$userName, PDO::PARAM_STR);
+        $req->execute();
+        $user = $req->fetch(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+        
+        if ($user && password_verify($pwd, $user['password'])){
+            $_SESSION['userName'] = $user['userName']; 
+            $_SESSION['userId'] = $user['id'];
+            $_SESSION['userRole'] = $user['role'];
+            if ($_SESSION['userRole'] == 0) {
+                $_SESSION['userRoleDesc'] = "admin";
+            }elseif($_SESSION['userRole'] == 1) {
+                $_SESSION['userRoleDesc'] = "teacher";
+            }else {
+                $_SESSION['userRoleDesc'] = "student";
+            }
+            return $user;
+        } else {
+            return false;
+        }
     }
 }
+
