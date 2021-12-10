@@ -8,7 +8,6 @@ class Manager {
     const PWD = "";
 
     protected function __construct() {
-       $this->_connexion =  new PDO('mysql:host='.self::HOST.';dbname='.self::DBNAME.';charset=utf8', self::LOGIN, self::PWD);
+        $this->_connexion =  new PDO('mysql:host='.self::HOST.';dbname='.self::DBNAME.';charset=utf8', self::LOGIN, self::PWD);
     }
-    
 }

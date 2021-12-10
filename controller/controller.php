@@ -1,5 +1,6 @@
 <?php
 require_once("./model/UserManager.php");
+require_once("./model/CourseManager.php");
 
 function landing(){
     require("./view/landing.php");
@@ -19,4 +20,9 @@ function logout() {
     session_unset();
     session_destroy();
     header('Location: index.php');
+}
+function courseList(){
+    $courseManager = new CourseManager();
+    $courses = $courseManager->getCourses();
+    require("./view/courseList.php");
 }

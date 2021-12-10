@@ -28,6 +28,9 @@ body {
 }
 #mainContainer {
     display : flex;
+    padding-top: 25px;
+    padding-bottom: 63px;
+    height: 100%;
     /* font-family: 'Open Sans', Arial,  sans-serif; */
 }
 .menuTitle {
@@ -46,12 +49,13 @@ body {
     width: 20%;
     background-color: #25282A ;
     color: white;
-    height: 100vh;
-    margin-top: 60px;
+    margin-top: 45px;
     padding-top: 10px;
 
 }
-
+#sideBar  + div {
+    overflow: auto;
+}
 /* logged out */
 #loginForm {
     display: flex;
@@ -121,7 +125,7 @@ nav > div {
 
 /* footer info */
 footer {
-    position: absolute;
+    position: fixed;
     width: 100%;
     bottom: 0;
     display: flex;

@@ -1,0 +1,82 @@
+#cardContainer {
+    padding:20px;
+    width:100%;
+}
+
+.courseCard {
+    padding:10px;
+    display:flex;
+    flex-direction: row;
+    border: 1px black solid;
+    width: 400px;
+}
+
+#courseButtonTop {
+    display:flex;
+    justify-content: flex-end;
+    flex-direction:row;
+    width: 425px;
+    margin-bottom:5px;
+}
+
+#courseButtonTop div{
+    width:110px;
+    display:flex;
+    flex-direction:row;
+}
+
+#courseButtonTop i {
+    padding:5px;
+    height:15px;
+}
+
+.courseImage {
+    display:flex;
+    align-items:center;
+    margin-right:5px;
+}
+
+.courseImage img{
+    height:100px;
+    width:100px;
+}
+
+.courseDetails {
+    width:350px;
+    margin-left:10px;
+
+}
+
+#courseRight {
+    display:flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+}
+
+.courseBtn {
+    display:flex;
+    flex-direction: row;
+    padding-left:20px;
+}
+
+.elementDisplay {
+    display:flex;
+}
+
+.elementHidden {
+    display:none;
+}
+
+
+.courseStudents {
+    display:flex;
+    font-size:1.3em;
+    align-self:flex-end;
+}
+
+.fas, .far{
+    font-size:1.5em;
+    margin-right:5px;
+    display:flex;
+    align-items:flex-end;
+}
