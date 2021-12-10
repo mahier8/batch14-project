@@ -1,4 +1,4 @@
-#landingBackgroundImage {
+body {
     background-image: url("../images/studentsLaughing.jpg");
     background-position: center;
     background-repeat: no-repeat;
@@ -7,17 +7,10 @@
     width: 100%;
 }
 
-#banner{
-    display:none;
-}
-
-#landingBanner{
-    position: absolute;
-    background-color: #0C51A1; 
+nav {
     width: 20%;
-    height: 15vh;
 }
 
-#landingBanner img {
-    border-radius: 100%;
+footer {
+    display: none;
 }

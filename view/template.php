@@ -4,26 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Portal</title>
+    <title>🐤 School Portal 🐤</title>
     <script src="https://kit.fontawesome.com/9cb80c9d72.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./public/styles/style.css">
     <?= $style ?>
 </head>
 <body>
-    <!-- add the navbar, banner -->
-    <div id="banner">
-        <img id="duckLogo" src="../public/images/duckLogo.png" alt="duckLogo" title="hamburger, the portal logo">
-    </div>
+    <!-- navbar, the blue banner on every page with 100% width-->
+    <nav>
+        <div id="bannerBackground">
+            <img id="duckLogo" src="./public/images/duckLogo.jpg" alt="duckLogo" title="hamburger, the portal logo">
+            <div>Hamburger's Portal</div>
+        </div>
+    </nav>
 
     <div id="mainContainer">
         <!--  add the sidebar, mahier's login -->
-        
+
         <?= $content; ?>
     </div>
 
      <!-- add the footer, footer -->
-     <div id="footer">
+     <footer>
+        <div id="leftFooterDiv">Copyright © 2021 LeHamburger</div>
+        <div>IS Biz Tower 2 #1101, 23 Seonyu-ro 49-gil, Yeongdeungpo-gu, Seoul, South Korea</div>
+     </footer>
 
-     </div>
 </body>
 </html>
