@@ -35,7 +35,7 @@
                             '<br>' . $course['dayTime']
                             ?>
                         </div>
-<!-- <a href="http://"></a> -->
+
                         <div id="courseRight">
                         <div class="courseStudents">
                                 <i class="fas fa-users"></i><?php echo $course['nbStudents']?>
