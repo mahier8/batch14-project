@@ -1,0 +1,16 @@
+body {
+    background-image: url("../images/studentsLaughing.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+}
+
+nav {
+    width: 20%;
+}
+
+footer {
+    display: none;
+}
