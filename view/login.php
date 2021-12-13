@@ -27,15 +27,12 @@
             <div id="profileRole"><?php echo $_SESSION['userRoleDesc']; ?></div>
             <div id="loggedInMenu">
                 <div id="loggedInMenuLinks">
-                    <a href="index.php?action=userProfile">
-                        <div class="loggedInItems">
-                            <i class="fas fa-user-circle loginPageIcons">
-                            </i>
-                            My profile
-                        </div>
-                    </a>
+                    <!-- this is where  -->
+                    <a href="index.php?action=userProfile"><div class="loggedInItems"><i class="fas fa-user-circle loginPageIcons"></i>My profile</div></a>
                     <a href="index.php?action=courseList"><div class="loggedInItems"><i class="fas fa-book-open loginPageIcons"></i>My courses</div></a>
-                    <a href="index.php?action=userView"><div class="loggedInItems"><i class="fas fa-users-cog loginPageIcons"></i>Manage Users</div></a>
+                    <?php if($_SESSION['userRole'] == 0): ?> 
+                        <a href="index.php?action=userView"><div class="loggedInItems"><i class="fas fa-users-cog loginPageIcons"></i>Manage Users</div></a>
+                    <?php endif; ?>
                 </div>
                 
                 <div>

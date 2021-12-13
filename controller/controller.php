@@ -13,6 +13,9 @@ function landing(){
     require("./view/landing.php");
 }
 
+// below i have access to the usermanager when the user logs in, i can pass in the 
+// $params['userRole']
+
 function login($params){
     $userManager = new UserManager();
     $userConnected = $userManager->logInUser($params['username'], $params['password']);
