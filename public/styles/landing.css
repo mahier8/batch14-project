@@ -3,8 +3,9 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
     width: 100%;
+    height: 100vh;
+    overflow: hidden;
 }
 
 nav {
@@ -12,5 +13,21 @@ nav {
 }
 
 footer {
+    
     display: none;
+}
+
+#mainContainer {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+#loggedOut {
+    position :relative;
+}
+
+#infoSection {
+    position :absolute;
+    bottom :10%;
+    font-size: 0.8em;
 }
