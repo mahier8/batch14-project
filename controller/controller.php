@@ -51,3 +51,8 @@ function userProfile(){
     require("./view/userProfile.php");
 }
 
+function course($courseid){
+    $courseManager = new CourseManager();
+    $course = $courseManager->getCourse($courseid);
+    require("./view/course.php");
+}
