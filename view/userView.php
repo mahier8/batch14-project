@@ -12,7 +12,7 @@
                 <input type="search" name="filter" placeholder="filter by User Name" size="60px" id="filter" >
             </form>
 
-            <form  action="index.php" method="POST" class="newuser">
+            <form  action="index.php method="POST" class="newuser">
                 <input type="hidden" name="action" value='addUser'>
                 <button type="submit" name="addNewUser" ><i class="fas fa-user-plus"></i>Add New User</button>
             </form>
