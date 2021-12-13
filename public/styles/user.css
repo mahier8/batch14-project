@@ -2,10 +2,12 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
+    color: red;
 }
 
 table{
     border-collapse:collapse ;
+    
 }
 
 th{
@@ -39,3 +41,18 @@ form.newuser button{
     outline: none;
     padding: 10px;
 }
+
+#filter{
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+  
+}
+
+.contentBody{
+    margin-left: 20px;
+}
+/* 
+#no{
+    display:none;
+    color: red;
+} */

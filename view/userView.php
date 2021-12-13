@@ -5,10 +5,11 @@
 <?php ob_start(); ?>
 <div id="mainContent">
     <div class="section">
+      
         <div class="contentHead">
             <form method="POST" action="index.php" class="filter">
                 <input type="hidden" name="action" value='filterUsers'>
-                <input type="text" name="filter" placeholder="filter" size="30px" >
+                <input type="search" name="filter" placeholder="filter by User Name" size="60px" id="filter" >
             </form>
 
             <form  action="index.php" method="POST" class="newuser">
@@ -19,7 +20,7 @@
     </div>
 
     <div class="contentBody">
-        <table>
+        <table id="myTable">
             <thead>
                 <tr>
                     <th>User ID</th>
@@ -32,7 +33,7 @@
                  
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tableb">
                 <?php foreach($users as $user):?>
                     <tr>
                         <td><?= htmlspecialchars($user['id']) ; ?></td>

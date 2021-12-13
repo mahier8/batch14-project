@@ -2,9 +2,10 @@
 session_start();
 require_once("Manager.php");
 class UserManager extends Manager {
-    public function __construct($userid = 0) {
+    public function __construct($userid = 0, $value=0) {
         parent::__construct();
         $this->userid = $userid;
+        $this->value = "%".$value."%";
     }
     
     public function getUsers(){
@@ -53,8 +54,11 @@ class UserManager extends Manager {
         $req->bindParam("userId", $this->userid, PDO::PARAM_STR);
         $req->execute();
     }
+
+
+
+
 }
- 
 
 
     // public function getUser() {
