@@ -28,11 +28,13 @@ function logout() {
     session_destroy();
     header('Location: index.php');
 }
+
 function courseList(){
     $courseManager = new CourseManager();
     $courses = $courseManager->getCourses();
     require("./view/courseList.php");
 }
+
 function userView(){
     $getUsers = new UserManager();
     $users = $getUsers->getUsers();
@@ -45,9 +47,20 @@ function userId($getId){
     header("location:index.php?action=userView");
 }
 
-function userProfile(){
+function userProfile($userId){
     $userManager = new UserManager();
-    $user = $userManager->getUser();
+    $user = $userManager->getUser($userId);
     require("./view/userProfile.php");
 }
 
+function addEditCourse($params){
+    $courseManager = new CourseManager();
+    if(isset($params['edit'])) {
+        $course_id = $courseManager->updateCourse();
+    } else {
+        $course_id = $courseManager->addCourse();
+    }
+    
+    header("location:index.php?action=course&courseid=".$course_id);
+
+}

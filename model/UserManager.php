@@ -7,21 +7,7 @@ class UserManager extends Manager {
         $this->userid = $userid;
     }
     
-    public function getUsers(){
-        $get = $this->_connexion->query("SELECT id, firstName, lastName, userName, password, role, phoneNumber FROM user");
-        $getUsers= $get->fetchAll(PDO::FETCH_ASSOC);
-        $get->closeCursor();
-        return $getUsers;
-    }
-
-    public function getUser() {
-        $req = $this->_connexion->query('SELECT * FROM user WHERE id = 1');
-        // $req->bindParam(1, $this->_user_id, PDO::PARAM_INT);
-        // $req->execute();
-        $user = $req->fetch(PDO::FETCH_ASSOC);
-        $req->closeCursor();
-        return $user;
-    }
+   
 
     public function logInUser($userName, $pwd){
 
@@ -52,6 +38,22 @@ class UserManager extends Manager {
         $req = $this->_connexion->prepare("DELETE FROM user WHERE id = :userId");
         $req->bindParam("userId", $this->userid, PDO::PARAM_STR);
         $req->execute();
+    }
+
+    public function getUsers(){
+        $get = $this->_connexion->query("SELECT id, firstName, lastName, userName, password, role, phoneNumber FROM user");
+        $getUsers= $get->fetchAll(PDO::FETCH_ASSOC);
+        $get->closeCursor();
+        return $getUsers;
+    }
+
+    public function getUser($userId) {
+        $req = $this->_connexion->prepare('SELECT * FROM user WHERE id = :userId');
+        $req->bindParam(":userId", $userId, PDO::PARAM_INT);
+        $req->execute();
+        $user = $req->fetch(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+        return $user;
     }
 }
  

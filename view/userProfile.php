@@ -14,17 +14,8 @@
         echo '<img src="'. $user['imagePath'] . '">';
         ?>
     </div>
-    <!-- <form action="./view/upload.php" method="post" enctype="multipart/form-data">
-    Select image to upload:
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
-    </form> -->
-
-    <div id = "id">
-        User ID: <?= htmlspecialchars($user['id']);?>
-    </div>
-    <div id = "password">
-        Password: <?= htmlspecialchars($user['password']);?>
+    <div id = "userName">
+        User Name: <?= htmlspecialchars($user['userName']);?>
     </div>
     <div id = "dob">
         Date of Birth: <?= htmlspecialchars($user['dob']);?>

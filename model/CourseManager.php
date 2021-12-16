@@ -14,5 +14,9 @@ class CourseManager extends Manager {
         return $courses;
     }
 
+    public function addCourse(){
+
+    }
+
 
 }

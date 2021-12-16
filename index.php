@@ -16,7 +16,7 @@ try {
             break; 
         case "userView" : userView(); 
             break;
-        case "userProfile" : userProfile();
+        case "userProfile" : userProfile($_SESSION['userId']);
             break;
         case "userDel"; 
             if(isset($_GET['delete']) && $_GET['delete'] > 0){
@@ -24,9 +24,13 @@ try {
                 require("./view/userView.php");
             }
             break;
-        case "courseList" : 
-            courseList();
-            break;   
+        case "courseList" : courseList();
+            break;
+        case "addEditCourse" : addEditCourse($_POST);
+            break;
+        // case "editCourse" : editCourse();
+        //     break;
+        // case "deleteCourse" : deleteCourse();
         default : landing();
             break;
     }
