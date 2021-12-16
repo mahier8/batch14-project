@@ -54,6 +54,5 @@ $_SESSION['userRole'] = $_SESSION['userRoleDesc'];
 
             <?php endforeach;?>
 
-            <script src="./js/courseList.js"></script>
 <?php $content = ob_get_clean();?>
 <?php require("template.php");?>

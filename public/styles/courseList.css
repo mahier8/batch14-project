@@ -10,6 +10,7 @@
     flex-direction: row;
     border: 1px black solid;
     width: 53%;
+    justify-content: space-between;
 }
 
 .courseCard:hover{
@@ -35,6 +36,10 @@
     height:15px;
 }
 
+.courseDetails {
+    text-align: center;
+}
+
 .courseImage {
     display:flex;
     align-items:center;
@@ -44,12 +49,7 @@
 .courseImage img{
     height:100px;
     width:100px;
-}
-
-.courseDetails {
-    width:350px;
-    margin-left:10px;
-
+    border-radius: 50%;
 }
 
 #courseRight {
@@ -62,10 +62,6 @@
     display:flex;
     flex-direction: row;
     padding-left:20px;
-}
-
-.elementDisplay {
-    display:flex;
 }
 
 .elementHidden {
