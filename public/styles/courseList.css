@@ -1,32 +1,27 @@
-#cardContainer {
-    margin-top:3%;
-    width:80%;
-    margin-left:2%;
-}
-
-.courseCard {
-    padding:10px;
+#clContentContainer {
     display:flex;
-    flex-direction: row;
-    border: 1px black solid;
-    width: 53%;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
-.courseCard:hover{
-    background-color:rgb(235, 235, 235);
+#cardContainer {
+    width:85%;
+    padding-top:20px;
+    padding-left:10px;
+    
 }
 
+#courseTitle {
+    padding:5px;
+}
 #courseButtonTop {
     display:flex;
     justify-content: flex-end;
     flex-direction:row;
-    width: 56%;
     margin-bottom:5px;
+    width: 90%;
 }
 
 #courseButtonTop div{
-    width:110px;
     display:flex;
     flex-direction:row;
 }
@@ -35,21 +30,34 @@
     padding:5px;
     height:15px;
 }
+.courseCard {
+    padding:10px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px black solid;
+    width: 85%;
+}
 
-.courseDetails {
-    text-align: center;
+.courseCard:hover {
+    background-color: rgb(230, 230, 230);
 }
 
 .courseImage {
     display:flex;
     align-items:center;
-    margin-right:5px;
+    
 }
 
 .courseImage img{
     height:100px;
     width:100px;
-    border-radius: 50%;
+    border-radius:50%;
+}
+
+.courseDetails {
+    width:350px;
+    text-align:center;
 }
 
 #courseRight {
@@ -62,6 +70,10 @@
     display:flex;
     flex-direction: row;
     padding-left:20px;
+}
+
+.elementDisplay {
+    display:flex;
 }
 
 .elementHidden {
@@ -80,4 +92,11 @@
     margin-right:5px;
     display:flex;
     align-items:flex-end;
+}
+
+#announce {
+    margin-top:125px;
+    border: 1px black solid;
+    padding:10px;
+    width:200px;
 }
