@@ -51,3 +51,33 @@ function userProfile(){
     require("./view/userProfile.php");
 }
 
+function uploadImage(){
+    $userid = $_SESSION['userId'];
+    $maxSize = 1300000;
+    $valid_extensions = array('jpg', 'jpeg','png');
+    $imageTmpName = $_FILES['image']['tmp_name'];
+    $imageName = $_FILES['image']['name'];
+    $imageSize = $_FILES['image']['size'];
+    $imageError = $_FILES['image']['error'];
+    $image_sizes = getimagesize($_FILES['image']['tmp_name']);
+
+    if($imageError > 0) {
+        throw new Exception("Error during upload");
+    } 
+    if ($imageSize> $maxSize) {
+        throw new Exception( "the size of your file is too big");
+    }
+
+    $uploadExtension =  strtolower(substr(strrchr($imageName,"."), 1));
+    $relativePath = dirname(__DIR__, 1). "/private/profilePics/";
+    $dir  = $relativePath.$userid;
+    $imageName = "_profimg."  . $uploadExtension;
+    $imageAndId = $userid . "_profimg."  . $uploadExtension;
+    $imageLocation = $dir . $imageName;
+    move_uploaded_file($imageTmpName, $imageLocation);
+    
+
+    $uploadManager = new UserManager();
+    $userImage = $uploadManager->updateImage($userid, $imageAndId);
+    header('Location:index.php?action=userProfile');
+}

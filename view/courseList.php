@@ -1,4 +1,8 @@
-<?php  ob_start(); ?>
+<?php
+$_SESSION['userRole'] = $_SESSION['userRoleDesc'];
+
+
+ ob_start(); ?>
     <link rel="stylesheet" href="./public/styles/courseList.css">
 <?php $style= ob_get_clean();?>
 
@@ -50,5 +54,6 @@
 
             <?php endforeach;?>
 
+            <script src="./js/courseList.js"></script>
 <?php $content = ob_get_clean();?>
 <?php require("template.php");?>

@@ -53,18 +53,23 @@ class UserManager extends Manager {
         $req->bindParam("userId", $this->userid, PDO::PARAM_STR);
         $req->execute();
     }
+
+    public function updateImage($userid, $imagePath) {
+        echo "Image:" . $imagePath;
+        echo "User Id:" . $userid;
+        $req = $this->_connexion->prepare("UPDATE user SET imagePath = :imagePath WHERE id = :userId"); 
+        $req->bindParam("userId", $userid, PDO::PARAM_INT);
+        $req->bindParam("imagePath", $imagePath, PDO::PARAM_STR);
+        $req->execute();
+        $req->closeCursor();
+        
+    }
 }
- 
 
+// $response = $db->prepare('UPDATE video_games SET comments = "and Best game ever for me!" WHERE name= "Call of Duty"');
+// $response-> execute();
 
-    // public function getUser() {
-    //     $sql = 'SELECT * FROM user WHERE id = :id';
-    //     $req = $this->_connexion->prepare($sql);
-    //     // $req->bindParam(1, $this->_user_id, PDO::PARAM_INT);
-    //     // $req->execute();
-    //     $req->execute(['id' => $id]); 
-    //     $user = $req->fetch(PDO::FETCH_ASSOC);
-    //     $req->closeCursor();
-    //     return $user;
-    // }
+// Warning: Undefined variable $style in C:\xampp\htdocs\batch14-project\view\template.php on line 11
 
+// Sorry an exception occured
+// Message : SQLSTATE[HY093]: Invalid parameter number: parameter was not defined

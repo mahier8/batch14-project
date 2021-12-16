@@ -1,31 +1,33 @@
-
 <?php ob_start();?>
 <link rel="stylesheet" href="./public/styles/userProfile.css">
 <?php $style = ob_get_clean();?>
 
 
+
 <?php ob_start();?>
 <div id="wrapper">
-    <h1>
-        <?= $user['firstName'] . " " . $user['lastName'];?>
-    </h1>
+    <h1><?= $user['firstName'] . " " . $user['lastName'];?></h1>
     <div id="profilePic">
         <?php 
-        echo '<img src="'. $user['imagePath'] . '">';
+    
+        echo '<img src="./private/profilePics/'.($user['imagePath']) . '?<=rand(1,32000)?>">';
+
         ?>
     </div>
-    <!-- <form action="./view/upload.php" method="post" enctype="multipart/form-data">
-    Select image to upload:
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
-    </form> -->
 
-    <div id = "id">
-        User ID: <?= htmlspecialchars($user['id']);?>
-    </div>
-    <div id = "password">
-        Password: <?= htmlspecialchars($user['password']);?>
-    </div>
+<!-- Try this code:
+https://stackoverflow.com/questions/16526363/php-force-refresh-image -->
+
+
+    <form action="index.php" method="post" enctype="multipart/form-data">
+        Select image to upload:
+        <input type="file" name="image" id="fileToUpload">
+        <input type="hidden" name="action" value="uploadImg">
+        <input type="hidden" name="userId" value="<?=$_SESSION['userId'];?>">
+        <input type="submit" value="Upload Image" name="submit">
+    </form>
+
+
     <div id = "dob">
         Date of Birth: <?= htmlspecialchars($user['dob']);?>
     </div>
