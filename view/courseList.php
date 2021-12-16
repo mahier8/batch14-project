@@ -1,3 +1,6 @@
+
+
+
 <?php  ob_start(); ?>
     <link rel="stylesheet" href="./public/styles/courseList.css">
 <?php $style= ob_get_clean();?>
@@ -39,7 +42,15 @@
                         <div class="courseStudents">
                                 <i class="fas fa-users"></i><?php echo $course['nbStudents']?>
                             </div>
-                            <div class="courseBtn">
+                            <div
+                                <?php 
+                                if ($_SESSION['userRole'] == 0) {
+                                    echo 'class="courseBtn "';
+                                } else {
+                                    echo 'class="elementHidden';
+                                }
+                                ?>
+                            >
                                 <a href="#"><i class="fas fa-edit"></i></a>
                                 <a href="#"><i class="fas fa-trash" ></i></a>
                             </div>
