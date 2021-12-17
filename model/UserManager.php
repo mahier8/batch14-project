@@ -2,9 +2,10 @@
 session_start();
 require_once("Manager.php");
 class UserManager extends Manager {
-    public function __construct($userid = 0) {
+    public function __construct($userid = 0, $value=0) {
         parent::__construct();
         $this->userid = $userid;
+        $this->value = "%".$value."%";
     }
     
     public function getUsers(){
@@ -71,10 +72,4 @@ class UserManager extends Manager {
     }
 }
 
-// $response = $db->prepare('UPDATE video_games SET comments = "and Best game ever for me!" WHERE name= "Call of Duty"');
-// $response-> execute();
 
-// Warning: Undefined variable $style in C:\xampp\htdocs\batch14-project\view\template.php on line 11
-
-// Sorry an exception occured
-// Message : SQLSTATE[HY093]: Invalid parameter number: parameter was not defined

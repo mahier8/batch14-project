@@ -5,6 +5,7 @@ try {
     switch($action) {
         case "landing" : landing();
             break;
+            
         case "login" : 
             if(isset($_POST['username']) && isset($_POST['username'])){
                 login($_POST);
@@ -12,10 +13,14 @@ try {
                 echo "Please fill the form";
             }
             break;
+
         case "logout" : logout();
+        
             break; 
+
         case "userView" : userView(); 
             break;
+
         case "userProfile" : userProfile();
             break;
         case "uploadImg" :
@@ -23,15 +28,18 @@ try {
             uploadImage();
             
             break;
+
         case "userDel"; 
             if(isset($_GET['delete']) && $_GET['delete'] > 0){
                 userId($_GET['delete']);
                 require("./view/userView.php");
             }
             break;
+
         case "courseList" : 
             courseList();
-            break;   
+            break; 
+            
         default : landing();
             break;
     }
