@@ -14,6 +14,13 @@ class UserManager extends Manager {
         return $getUsers;
     }
 
+    // public function filterUser($username){
+    //     $req = $this->_connexion->prepare("SELECT id, firstName, lastName, userName, password, role, phoneNumber FROM user WHERE userName = :userName");
+    //     $getUsers= $req->fetchAll(PDO::FETCH_ASSOC);
+    //     $req->closeCursor();
+    //     return $getUsers;
+    // }
+
     public function getUser() {
         $req = $this->_connexion->query('SELECT * FROM user WHERE id = 1');
         // $req->bindParam(1, $this->_user_id, PDO::PARAM_INT);
@@ -55,8 +62,6 @@ class UserManager extends Manager {
     }
 
     public function updateImage($userid, $imagePath) {
-        echo "Image:" . $imagePath;
-        echo "User Id:" . $userid;
         $req = $this->_connexion->prepare("UPDATE user SET imagePath = :imagePath WHERE id = :userId"); 
         $req->bindParam("userId", $userid, PDO::PARAM_INT);
         $req->bindParam("imagePath", $imagePath, PDO::PARAM_STR);

@@ -4,23 +4,23 @@
 
 <?php ob_start(); ?>
 <div id="mainContent">
-    <div class="section">
-        <div class="contentHead">
-            <form method="POST" action="index.php" class="filter">
+    <div id="contentHead">
+            
+            <form method="POST" action="index.php">
                 <input type="hidden" name="action" value='filterUsers'>
-                <input type="text" name="filter" placeholder="filter" size="30px" >
+                <input type="text" name="filter" id="userSearch" placeholder="Search for a User" autocomplete=off>
+                <button class="blueStyle btn" type="submit" name="filterSubmit" ><i class="fas fa-filter"></i>Filter Users</button>
             </form>
 
-            <form  action="index.php" method="POST" class="newuser">
+            <form action="index.php" method="POST" >
                 <input type="hidden" name="action" value='addUser'>
-                <button type="submit" name="addNewUser" ><i class="fas fa-user-plus"></i>Add New User</button>
+                <button class="blueStyle btn" type="submit" name="addNewUser" ><i class="fas fa-user-plus"></i>Add New User</button>
             </form>
-        </div>
     </div>
 
-    <div class="contentBody">
+    <div>
         <table>
-            <thead>
+            <thead class="blueStyle"> 
                 <tr>
                     <th>User ID</th>
                     <th>First Name</th>
@@ -39,7 +39,15 @@
                         <td><?= htmlspecialchars($user['firstName']) ;?></td>
                         <td><?= htmlspecialchars($user['lastName']); ?></td>
                         <td><?= htmlspecialchars($user['userName']); ?></td>
-                        <td><?= htmlspecialchars($user['role']); ?></td>
+                        <td><?php 
+                        if (htmlspecialchars($user['role']) == 0) {
+                            echo 'admin';
+                        } elseif (htmlspecialchars($user['role']) == 1){
+                            echo 'teacher';
+                        } else {
+                            echo 'student';
+                        };
+                        ; ?></td>
                         <td><?= htmlspecialchars($user['phoneNumber']); ?></td>
                         <td><a href="index.php?action=userEdit&edit=<?= $user['id'];?>"><i class="fas fa-edit"></i>Edit</a></td>   
                         <td><a href="index.php?action=userDel&delete=<?= $user['id'];?>"><i class="fas fa-trash-alt"></i>Delete</a> </td>

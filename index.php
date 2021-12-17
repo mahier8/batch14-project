@@ -23,6 +23,10 @@ try {
             uploadImage();
             
             break;
+        // case "filterUsers" :
+        //     if
+        //         require("./view/userView.php");
+        //     }
         case "userDel"; 
             if(isset($_GET['delete']) && $_GET['delete'] > 0){
                 userId($_GET['delete']);

@@ -76,11 +76,6 @@
     display:flex;
 }
 
-.elementHidden {
-    display:none;
-}
-
-
 .courseStudents {
     display:flex;
     font-size:1.3em;
