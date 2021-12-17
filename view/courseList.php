@@ -1,5 +1,5 @@
 <?php
-$_SESSION['userRole'] = $_SESSION['userRoleDesc'];
+
 
 
  ob_start(); ?>

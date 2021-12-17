@@ -4,7 +4,9 @@ const tbobj = {
     tr    :document.querySelectorAll("tr"), 
 }
 var td, i, tr, textValue,notfound;
+
 tbobj.input.addEventListener("keyup", function(e){
+    
     var filter = e.target.value.toLowerCase(); 
     tr = tbobj.tr;
     for(i = 0; i < tr.length; i++){
