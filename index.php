@@ -38,8 +38,10 @@ try {
 
         case "courseList" : 
             courseList();
-            break; 
-            
+            break;   
+        case "course" :
+            course($_GET["courseid"]);
+            break;
         default : landing();
             break;
     }

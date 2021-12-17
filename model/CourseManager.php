@@ -14,5 +14,14 @@ class CourseManager extends Manager {
         return $courses;
     }
 
+    //changed the ? from kaba's code. need to make variables for each item i want shown.
+    public function getCourse($id) {
+        $response = $this->_connexion->prepare("SELECT id, image, name, teacher FROM course WHERE id=?");
+        $response->bindParam(1,$id, PDO::PARAM_INT);
+        $response->execute();
+        $course = $response->fetch(PDO::FETCH_ASSOC);
+        $response->closeCursor();
+        return $course;
+    }
 
 }

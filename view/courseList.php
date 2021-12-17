@@ -30,7 +30,7 @@
 
                         <div class="courseDetails">
                             <?php 
-                            echo '<a href="action=coursePage&courseid=' . $course['id']  . '">' . $course['name'] . '</a>' .
+                            echo '<a href="index.php?action=course&courseid=' . $course['id']  . '">' . $course['name'] . '</a>' .
                             '<br>' . $course['teacher'] . 
                             '<br>' . $course['dayTime']
                             ?>

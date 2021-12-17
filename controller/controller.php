@@ -83,4 +83,11 @@ function uploadImage(){
     $uploadManager = new UserManager();
     $userImage = $uploadManager->updateImage($userid, $imageAndId);
     header('Location:index.php?action=userProfile');
+
+}
+
+function course($courseid){
+    $courseManager = new CourseManager();
+    $course = $courseManager->getCourse($courseid);
+    require("./view/course.php");
 }
