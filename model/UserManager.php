@@ -15,13 +15,6 @@ class UserManager extends Manager {
         return $getUsers;
     }
 
-    // public function filterUser($username){
-    //     $req = $this->_connexion->prepare("SELECT id, firstName, lastName, userName, password, role, phoneNumber FROM user WHERE userName = :userName");
-    //     $getUsers= $req->fetchAll(PDO::FETCH_ASSOC);
-    //     $req->closeCursor();
-    //     return $getUsers;
-    // }
-
     public function getUser() {
         $req = $this->_connexion->query('SELECT * FROM user WHERE id = 1');
         // $req->bindParam(1, $this->_user_id, PDO::PARAM_INT);

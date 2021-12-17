@@ -23,7 +23,7 @@ try {
 
         case "userProfile" : userProfile();
             break;
-        case "uploadImg" :
+        case "uploadImage" :
             //print
             uploadImage();
             

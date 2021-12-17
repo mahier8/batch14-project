@@ -2,7 +2,6 @@
 <?php ob_start(); ?>
     <link rel="stylesheet" href="./public/styles/courseList.css">
     <?php $style= ob_get_clean();?>
-    <?php $_SESSION['userRole'] = $_SESSION['userRoleDesc']; ?>
 <?php ob_start();?>
 
 <div id="clContentContainer">

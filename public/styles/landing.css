@@ -13,13 +13,7 @@ nav {
 }
 
 footer {
-    
     display: none;
-}
-
-#mainContainer {
-    padding-top: 0px;
-    padding-bottom: 0px;
 }
 
 #loggedOut {

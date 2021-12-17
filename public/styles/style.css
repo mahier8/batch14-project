@@ -28,12 +28,10 @@ body {
 }
 #mainContainer {
     display : flex;
-    /* I have a problem below. 
-    I have too much below but need space above */
-    padding-top: 25px;
-    padding-bottom: 63px;
+    padding-top: 1%;
+    padding-bottom: 2%;
     height: 100%;
-    /* font-family: 'Open Sans', Arial,  sans-serif; */
+
 }
 .menuTitle {
     font-family: 'Mulish', Arial, sans-serif;

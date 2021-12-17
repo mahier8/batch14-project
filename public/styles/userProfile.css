@@ -1,17 +1,50 @@
-#wrapper {
-    width: 100%;
-    margin: 50px;
+#wrapper, #profileImg {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    padding-top:20px;
+    padding-bottom:20px;
+
 }
 
 h1 {
     text-align: center;
 }
 
-#profilePic img{
-    width:200px;
-    height:200px;
+#profileImg img{
+    width:30%;
     border-radius: 50%;
     border-color: black;
     border: 1px solid;
+  
+}
+#profileInfor{
+    width: 40%;
+    margin-left: 30%;
+    border-radius: 10px;
+    box-shadow: 4px 4px 2px 1px rgba(0, 0, 255, .2);
+}
 
+#profileInfor div{
+    background: lightgray;
+    margin-bottom: 7px;
+    font-weight: bolder;
+    
+}
+#inputDiv{
+    display: none;
+  
+}
+
+input[type='submit']{
+    background: blue;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+input[type='submit']:hover{
+    background: dodgerblue;
+
+    
 }
