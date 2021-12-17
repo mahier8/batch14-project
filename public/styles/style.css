@@ -28,6 +28,8 @@ body {
 }
 #mainContainer {
     display : flex;
+    /* I have a problem below. 
+    I have too much below but need space above */
     padding-top: 25px;
     padding-bottom: 63px;
     height: 100%;
@@ -44,19 +46,27 @@ body {
     font-family: 'Open Sans Bold', Arial, sans-serif;
 }
 
+/* ////////////////////////////////////////////////////////// */
+/* The SideBar  */
 #sideBar {
-    /* width: 350px; */
     width: 20%;
     background-color: #25282A ;
     color: white;
     margin-top: 45px;
     padding-top: 10px;
-
 }
-#sideBar  + div {
+
+#sideBar + div {
     overflow: auto;
 }
 /* logged out */
+#loggedOut {
+    height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 30px;
+}
+
 #loginForm {
     display: flex;
     flex-direction: column;
@@ -67,36 +77,110 @@ body {
     display: flex;
 }
 
+#checkBox #checkbox {
+    width: 15px;
+}
+
+#checkBox label {
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+#loginForm input {
+    height: 30px;
+    width: 150px;
+    border-radius: 8px;
+    border-style: none;
+    margin: 4px 0;
+}
+
+button {
+    background-color: #0C51A1;
+    color: ivory;
+    padding: 10px;
+    width: 160px;
+    border-radius: 8px;
+    border-style: none;
+}
+
+button:hover {
+    background-color: #2f70bb;
+    cursor: pointer;
+}
+
+#loginForm button {
+    width: 120px;
+    text-align: center;
+    margin: 8px 0;
+    margin-left: 15px;
+}
+
 #profilePic {
     border-radius: 50%;
     width: 30%;
 }
-#loggedOut {
-    height: 100vh;
-    align-items: stretch;
-}
 
 /* I need to stretch out everything */
-/* #infoSection {
-    height: 100%;
-    background-color: yellow;
-    display: flex;
-    align-items: flex-end;
-} */
+#infoSection {
+    /* This is where i am having a problem!!!!!!!!!!!!!!!! */
+    background-color: #25282A ;
+}
 
 /* logged in */
-#loggedInItems {
+.loggedInItems {
     border: 1px solid white;
+    border-left: none;
+    border-right: none;
+    padding: 10px;
 }
-#loggedInMenu >a {
+
+.loggedInItems:hover {
+    background-color: #32373a ;
+    color: white;
+}
+
+.loggedInItems i {
+    margin-right: 10px;
+}
+
+#profileName {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#profileRole {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+#loggedInMenu {
+    /* margin-left: 20px; */
+    height: 160px;
+}
+
+#loggedInMenuLinks {
+    margin-top: 50px;
+}
+
+#loggedInMenuLinks > a {
     text-decoration: none;
     color: white;
-    
 }
-.fa-adjust {
+
+.loginPageIcons {
     color: white;
     font-size: 30px;
 }
+
+#logoutForm button {
+    margin-top: 30px;
+    margin-left: 40px;
+}
+
+/* ////////////////////////////////////////////////////////////// */
+
 /* nav bar, duck logo & company name  */
 nav {
     position: absolute;

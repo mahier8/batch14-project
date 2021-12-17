@@ -23,6 +23,8 @@ class UserManager extends Manager {
         return $user;
     }
 
+    // this is where i have access to the user role in the database, further below I 
+    // assigned the the user role toa  description 
     public function logInUser($userName, $pwd){
 
         $req = $this->_connexion->prepare("SELECT id, userName, password, role FROM user WHERE userName=? ");
@@ -37,10 +39,13 @@ class UserManager extends Manager {
             $_SESSION['userRole'] = $user['role'];
             if ($_SESSION['userRole'] == 0) {
                 $_SESSION['userRoleDesc'] = "admin";
+                // i can take the user to the admin section
             }elseif($_SESSION['userRole'] == 1) {
                 $_SESSION['userRoleDesc'] = "teacher";
+                // i can take the user to the teacher section 
             }else {
                 $_SESSION['userRoleDesc'] = "student";
+                // i can take the user to the student section 
             }
             return $user;
         } else {
