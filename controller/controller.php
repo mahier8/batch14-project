@@ -83,7 +83,6 @@ function uploadImage(){
     $uploadManager = new UserManager();
     $userImage = $uploadManager->updateImage($userid, $imageAndId);
     header('Location:index.php?action=userProfile');
-
 }
 
 function course($courseid){

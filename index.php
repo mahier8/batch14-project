@@ -24,9 +24,7 @@ try {
         case "userProfile" : userProfile();
             break;
         case "uploadImage" :
-            //print
             uploadImage();
-            
             break;
 
         case "userDel"; 
