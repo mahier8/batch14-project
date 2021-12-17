@@ -233,3 +233,7 @@ footer > div {
 #leftFooterDiv {
     color: yellow;
 }
+
+.elementHidden {
+    display:none;
+}

@@ -39,7 +39,7 @@ function courseList(){
 function userView(){
     $getUsers = new UserManager();
     $users = $getUsers->getUsers();
-    require("./view/userView.php");
+    require("./view/userView.php");  
 }
 
 function userId($getId){
