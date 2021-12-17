@@ -5,8 +5,10 @@
                 <input type="hidden" name="action" value="login">
                 <h3>LOGIN</h3>
                 <input type="text" name="username" placeholder="username">
+            
                 <input type="password" name="password" placeholder="password">
-                <button type="submit">Login</button>
+               
+                <button type="submit" class="login">Login</button>
                 <div id="checkBox">
                     <input type="checkbox" name="checkbox" id="checkbox">
                     <label for="checkbox">Remember user name</label>
