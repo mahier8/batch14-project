@@ -16,12 +16,12 @@ footer {
     display: none;
 }
 
-#loggedOut {
-    position :relative;
+#infoSection {
+    font-size: 0.8em;
+    margin-top:86%;
+    width: 75%;
 }
 
-#infoSection {
-    position :absolute;
-    bottom :10%;
-    font-size: 0.8em;
+#infoSection p {
+    margin:0px;
 }

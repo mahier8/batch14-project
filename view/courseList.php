@@ -6,24 +6,11 @@
 <div id="clContentContainer">
 
     <div id="cardContainer">
-            <h1 id="courseTitle">All Courses</h1> 
+        <div class="blueStyle">
             
-            <div id="courseButtonTop">
-
-            <a href="#">
-                <div
-                    <?php 
-                        if ($_SESSION['userRoleDesc'] == 'admin') {
-                        echo 'class="courseBtn"';
-                        } else {
-                        echo 'class="elementHidden';
-                        }
-                        ?>
-                
-                
-                >Add Course<i class="fas fa-plus"></i></div></a>
-            </div>
-            
+            <h1 class="courseTitle">All Courses</h1> 
+        
+        </div>
                 <?php foreach ($courses AS $course):?>
                     
                     <div class="courseCard">
@@ -42,7 +29,7 @@
                         <div class="courseDetails">
                             <?php 
                             echo '<a href="index.php?action=course&courseid=' . $course['id']  . '">' . $course['name'] . '</a>' .
-                            '<br>' . $course['teacher'] . 
+                            '<br><br>' . $course['teacher'] . 
                             '<br>' . $course['dayTime']
                             ?>
                         </div>
@@ -53,15 +40,15 @@
                             </div>
                             <div
                                 <?php 
-                                if ($_SESSION['userRoleDesc'] == 'admin') {
-                                    echo 'class="courseBtn"';
+                                if ($_SESSION['userRoleDesc'] == 'Admin') {
+                                    echo 'class="greenReverse courseBtn"';
                                 } else {
                                     echo 'class="elementHidden';
                                 }
                                 ?>
                             >
-                                <a href="#"><i class="fas fa-edit"></i></a>
-                                <a href="#"><i class="fas fa-trash" ></i></a>
+                                <a href="#"><i class="fas fa-edit greenLink"></i></a>
+                                <a href="#"><i class="fas fa-trash greenLink"></i></a>
                             </div>
                         </div>
                     </div>
@@ -69,7 +56,26 @@
              <?php endforeach;?>
             
     </div>
-    <div id="announce">announcements</div>
+        <div id="courseButtonTop">
+
+            <a href="#">
+                <div
+                    <?php 
+                        if ($_SESSION['userRoleDesc'] == 'Admin') {
+                        echo 'class="greenStyle btn';
+                        } else {
+                        echo 'class="elementHidden';
+                        }
+                        ?>
+                >
+                
+                <i class="fas fa-plus greenStyle"></i>Add New Course
+                </div>
+            </a>
+        </div>
+        
+    </div>
+    <!-- <div id="announce">announcements</div> -->
 </div>
 
 

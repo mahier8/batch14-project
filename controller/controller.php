@@ -42,15 +42,16 @@ function userView(){
     require("./view/userView.php");  
 }
 
-function userId($getId){
-    $getId = new UserManager($getId);
-    $getId->delete();
+function userId($id){
+    $idManager = new UserManager($id);
+    $idManager->delete();
     header("location:index.php?action=userView");
 }
 
 function userProfile(){
-    $userManager = new UserManager();
-    $user = $userManager->getUser();
+
+    $profileUserManager = new UserManager();
+    $userProf = $profileUserManager->getUser($_SESSION['userId']);
     require("./view/userProfile.php");
 }
 

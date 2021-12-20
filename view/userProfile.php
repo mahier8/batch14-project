@@ -4,71 +4,45 @@
 
 <?php ob_start();?>
 <div id="wrapper">
-    <h1><?= $user['firstName'] . " " . $user['lastName'];?></h1>
+    <h1><?= ucfirst($userProf['firstName']) . " " . ucfirst($userProf['lastName']);?></h1>
     <div id="profileImg">
         <?php 
-        echo $user['imagePath'];
-        print_r($user);
-        // echo '<img src="./private/profilePics/'. $user['imagePath'] . '">' ?>
+        echo '<img src="./private/profilePics/'. $userProf['imagePath'] . '">' ?>
     </div>
     
 
-    <form action="index.php" method="post" enctype="multipart/form-data">
+    <form action="index.php" id="upload" method="post" enctype="multipart/form-data">
         Select image to upload:
-        <input type="file" name="image" id="fileToUpload">
+        <input type="file" class="btn" name="image" id="fileToUpload">
         <input type="hidden" name="action" value="uploadImage">
         <input type="hidden" name="userId" value="<?=$_SESSION['userId'];?>">
-        <input type="submit" value="Upload Image" name="submit">
+        <input type="submit" class="blueStyle btn" value="Upload Image" name="submit">
     </form>
 
     <div id="profileInfor">
-      
-        <div id = "id">
-            <?php if(!isset($_SESSION['userName'])): ?>
-            User ID: <?= htmlspecialchars($user['id']);?>
-        </div>
-        <div id = "password">
-            Password: <?= htmlspecialchars($user['password']);?>
-        </div>
-        <div id = "dob">
-            Date of Birth: <?= htmlspecialchars($user['dob']);?>
-        </div>
-        <div id = "email">
-            Email Address: <?= htmlspecialchars($user['email']);?>
-        </div>
-        <div id = "address">
-            Address: <?= htmlspecialchars($user['address']);?>
-        </div>
-        <div id = "phone">
-            Phone Number: <?= htmlspecialchars($user['phoneNumber']);?>
-        </div>
-        <div id = "emergency">
-            Emergency Contact: <?= htmlspecialchars($user['emergency']);?>
-        </div>
+
         <div id = "courses">
             Courses:
         </div>
-        <?php else:?>
             <div id = "dob">
-            Date of Birth: <?= htmlspecialchars($user['dob']);?>
+            Date of Birth: <?= htmlspecialchars($userProf['dob']);?>
         </div>
         <div id = "email">
-            Email Address: <?= htmlspecialchars($user['email']);?>
+            Email Address: <?= htmlspecialchars($userProf['email']);?>
         </div>
         <div id = "address">
-            Address: <?= htmlspecialchars($user['address']);?>
+            Address: <?= htmlspecialchars($userProf['address']);?>
         </div>
         <div id = "phone">
-            Phone Number: <?= htmlspecialchars($user['phoneNumber']);?>
+            Phone Number: <?= htmlspecialchars($userProf['phoneNumber']);?>
         </div>
         <div id = "emergency">
-            Emergency Contact: <?= htmlspecialchars($user['emergency']);?>
+            Emergency Contact: <?= htmlspecialchars($userProf['emergency']);?>
         </div>
         <div id = "courses">
             Courses:
         </div>
    
-    <?php endif; ?>
     <h3>Change Password</h3>
         <div id="inputDiv">
             <input type="password" name="oldpassword" placeholder="old Password">
@@ -81,7 +55,7 @@
             <br>
             <br>
         </div>
-        <input type="submit" value="Change Password" class="button">
+        <input type="submit" value="Change Password" class="blueStyle btn">
     </div>
 </div>
 

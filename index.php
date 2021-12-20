@@ -7,7 +7,7 @@ try {
             break;
             
         case "login" : 
-            if(isset($_POST['username']) && isset($_POST['username'])){
+            if(isset($_POST['username']) && isset($_POST['password'])){
                 login($_POST);
             }else{
                 echo "Please fill the form";
@@ -21,8 +21,10 @@ try {
         case "userView" : userView(); 
             break;
 
-        case "userProfile" : userProfile();
+        case "userProfile" : 
+            userProfile();
             break;
+            
         case "uploadImage" :
             uploadImage();
             break;
