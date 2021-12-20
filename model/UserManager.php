@@ -16,7 +16,7 @@ class UserManager extends Manager {
     }
 
     public function getUser() {
-        $req = $this->_connexion->query('SELECT * FROM user WHERE id = 1');
+        $req = $this->_connexion->query('SELECT FROM user WHERE id = userId');
         // $req->bindParam(1, $this->_user_id, PDO::PARAM_INT);
         // $req->execute();
         $user = $req->fetch(PDO::FETCH_ASSOC);
@@ -38,6 +38,7 @@ class UserManager extends Manager {
             $_SESSION['userName'] = $user['userName']; 
             $_SESSION['userId'] = $user['id'];
             $_SESSION['userRole'] = $user['role'];
+            $_SESSION['imagePath'] = $user['imagePath'];
             if ($_SESSION['userRole'] == 0) {
                 $_SESSION['userRoleDesc'] = "admin";
                 // i can take the user to the admin section

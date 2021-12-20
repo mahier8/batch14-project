@@ -81,7 +81,7 @@ function uploadImage(){
     
 
     $uploadManager = new UserManager();
-    $userImage = $uploadManager->updateImage($userid, $imageAndId);
+    $uploadManager->updateImage($userid, $imageAndId);
     header('Location:index.php?action=userProfile');
 }
 

@@ -2,21 +2,21 @@
 <link rel="stylesheet" href="./public/styles/userProfile.css">
 <?php $style = ob_get_clean();?>
 
-
-
 <?php ob_start();?>
 <div id="wrapper">
     <h1><?= $user['firstName'] . " " . $user['lastName'];?></h1>
     <div id="profileImg">
         <?php 
-        echo '<img src="./private/profilePics/'.($user['imagePath']) . '?<=rand(1,32000)?>">'; ?>
+        echo $user['imagePath'];
+        print_r($user);
+        // echo '<img src="./private/profilePics/'. $user['imagePath'] . '">' ?>
     </div>
-
+    
 
     <form action="index.php" method="post" enctype="multipart/form-data">
         Select image to upload:
         <input type="file" name="image" id="fileToUpload">
-        <input type="hidden" name="action" value="uploadImg">
+        <input type="hidden" name="action" value="uploadImage">
         <input type="hidden" name="userId" value="<?=$_SESSION['userId'];?>">
         <input type="submit" value="Upload Image" name="submit">
     </form>
@@ -85,6 +85,6 @@
     </div>
 </div>
 
-
+<script src="./public/js/userProfile.js"></script>
 <?php $content = ob_get_clean();?>
 <?php require("template.php");?>

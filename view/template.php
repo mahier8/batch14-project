@@ -28,7 +28,7 @@
         <div>IS Biz Tower 2 #1101, 23 Seonyu-ro 49-gil, Yeongdeungpo-gu, Seoul, South Korea</div>
     </footer>
 <script src="./public/js/main.js"></script>
-<script src="./public/js/userProfile.js"></script>
-<script src="./public/js/userView.js"></script>
+
+
 </body>
 </html>

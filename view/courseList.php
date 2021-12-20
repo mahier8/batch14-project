@@ -1,4 +1,3 @@
-
 <?php ob_start(); ?>
     <link rel="stylesheet" href="./public/styles/courseList.css">
     <?php $style= ob_get_clean();?>
@@ -10,7 +9,19 @@
             <h1 id="courseTitle">All Courses</h1> 
             
             <div id="courseButtonTop">
-            <a href="#"><div>Add Course<i class="fas fa-plus"></i></div></a>
+
+            <a href="#">
+                <div
+                    <?php 
+                        if ($_SESSION['userRoleDesc'] == 'admin') {
+                        echo 'class="courseBtn"';
+                        } else {
+                        echo 'class="elementHidden';
+                        }
+                        ?>
+                
+                
+                >Add Course<i class="fas fa-plus"></i></div></a>
             </div>
             
                 <?php foreach ($courses AS $course):?>
@@ -42,7 +53,7 @@
                             </div>
                             <div
                                 <?php 
-                                if ($_SESSION['userRole'] == 'admin') {
+                                if ($_SESSION['userRoleDesc'] == 'admin') {
                                     echo 'class="courseBtn"';
                                 } else {
                                     echo 'class="elementHidden';
