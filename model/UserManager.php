@@ -16,7 +16,7 @@ class UserManager extends Manager {
     }
 
     public function getUser() {
-        $req = $this->_connexion->query('SELECT FROM user WHERE id = userId');
+        $req = $this->_connexion->query('SELECT * FROM user WHERE id = 1');
         // $req->bindParam(1, $this->_user_id, PDO::PARAM_INT);
         // $req->execute();
         $user = $req->fetch(PDO::FETCH_ASSOC);
