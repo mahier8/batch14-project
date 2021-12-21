@@ -4,12 +4,25 @@
 <?php ob_start();?>
 
 <div id="clContentContainer">
-
+    <a href="#" id="addCourse">
+                <div
+                    <?php 
+                        if ($_SESSION['userRoleDesc'] == 'Admin') {
+                        echo 'class="greenStyle btn';
+                        } else {
+                        echo 'class="elementHidden';
+                        }
+                        ?>
+                >
+                
+                <i class="fas fa-plus greenStyle"></i>Add New Course
+                </div>
+            </a>
     <div id="cardContainer">
         <div class="blueStyle">
             
             <h1 class="courseTitle">All Courses</h1> 
-        
+
         </div>
                 <?php foreach ($courses AS $course):?>
                     
@@ -58,20 +71,7 @@
     </div>
         <div id="courseButtonTop">
 
-            <a href="#">
-                <div
-                    <?php 
-                        if ($_SESSION['userRoleDesc'] == 'Admin') {
-                        echo 'class="greenStyle btn';
-                        } else {
-                        echo 'class="elementHidden';
-                        }
-                        ?>
-                >
-                
-                <i class="fas fa-plus greenStyle"></i>Add New Course
-                </div>
-            </a>
+
         </div>
         
     </div>
