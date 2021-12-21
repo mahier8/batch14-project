@@ -25,7 +25,7 @@
     <?php else: ?>
         <div id="loggedIn">
             <div id="profileName">
-                <img id="profilePic" src="./public/images/duckLogo.jpg" alt="">
+            <?php echo '<img id="profilePic" src="./private/profilePics/'. $_SESSION['imagePath'] . '">' ?>
                 <p>Hello <?php echo $_SESSION['userName']; ?></p>
             </div>
             <div id="profileRole"><p><?php echo $_SESSION['userRoleDesc']; ?> Account</p></div>

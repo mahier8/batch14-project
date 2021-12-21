@@ -28,7 +28,7 @@ class UserManager extends Manager {
     // assigned the the user role toa  description 
     public function logInUser($userName, $pwd){
 
-        $req = $this->_connexion->prepare("SELECT id, userName, password, role FROM user WHERE userName=? ");
+        $req = $this->_connexion->prepare("SELECT id, userName, password, role, imagePath FROM user WHERE userName=? ");
         $req->bindParam(1, $userName, PDO::PARAM_STR); //1 = how many parameters? 1. ? = the parameter 
         $req->execute();
         $user = $req->fetch(PDO::FETCH_ASSOC);
