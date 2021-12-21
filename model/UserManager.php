@@ -53,18 +53,30 @@ class UserManager extends Manager {
         $req->bindParam("userId", $this->userid, PDO::PARAM_STR);
         $req->execute();
     }
+
+    // this is for the autocomplete step 5, later I will need to change the role to include student, 
+    // in the arguments to include the role of students. Maybe ill need to fetch as well
+    public function getUsersByRole ($keywords, $role = 1) {
+        $keywords = trim($keywords)."%"; //from the query, i remove any whitesapce, as well as the percentage sign 
+        $req = $this->_connexion->prepare(
+            // Marie queried this into the database, using like, in the case of firstName and lastName
+            "SELECT id, firstName, lastName 
+            FROM user 
+            WHERE role=?
+            AND  (firstName LIKE ?
+            OR lastName LIKE ?)
+            ORDER BY firstName");
+        $req->bindParam(1, $role, PDO::PARAM_INT);
+        $req->bindParam(2, $keywords, PDO::PARAM_STR); 
+        // there was a massive mistake here with the variable $keywords, we used the wrong one
+        $req->bindParam(3, $keywords, PDO::PARAM_STR);
+        $req->execute();
+        $teachers= $req->fetchAll(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+        // we return a json object after, passing in the teachers variable 
+        return json_encode($teachers); 
+    }
 }
- 
 
-
-    // public function getUser() {
-    //     $sql = 'SELECT * FROM user WHERE id = :id';
-    //     $req = $this->_connexion->prepare($sql);
-    //     // $req->bindParam(1, $this->_user_id, PDO::PARAM_INT);
-    //     // $req->execute();
-    //     $req->execute(['id' => $id]); 
-    //     $user = $req->fetch(PDO::FETCH_ASSOC);
-    //     $req->closeCursor();
-    //     return $user;
-    // }
+    
 

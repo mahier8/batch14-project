@@ -56,3 +56,10 @@ function course($courseid){
     $course = $courseManager->getCourse($courseid);
     require("./view/course.php");
 }
+
+// this is for the autocomplete step 4
+function autocompleteUsers($keywords) {
+    $userManager = new UserManager(); // we get the user mananger object 
+    echo $userManager->getUsersByRole($keywords); // we echo what we get from our read (SELECT)
+
+}

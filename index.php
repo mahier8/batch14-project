@@ -30,6 +30,10 @@ try {
         case "course" :
             course($_GET["courseid"]);
             break;
+            // this is for the autompletes step 3
+        case "autocompleteUsers" : // we add this case to our switch, with the function 
+            autocompleteUsers($_GET['keywords']);
+            break;
         default : landing();
             break;
     }

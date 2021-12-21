@@ -29,3 +29,77 @@ h1, h2{
     border-color: black;
     border: 1px solid;
 }
+
+/* displaying the lists */
+#displayLists {
+    margin-top: 50px;
+}
+
+/* displaying the teachers lists */
+#displayTeacherList {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 1px solid black;
+    padding: 15px;
+}
+
+#displayTeacherList form {
+    display: flex;
+    padding: 10px;
+}
+
+#displayForm {
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#autoseachInput {
+    height: 20px;
+    border-radius: 8px;
+}
+
+#autoseachInput:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.searchResults {
+    margin-left: 10px;
+    padding: 5px 0;
+}
+
+.searchResults:hover {
+    background-color: rgb(227, 231, 235);
+}
+
+/* maries code */
+/* #displayForm input {
+    box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.075),0 0 8px rgba(228, 127, 0, 0.6);
+    font-family: 'Abel', sans-serif;
+    padding:10px;
+    outline: none;
+    border: none;
+    width: 95%;
+    margin: auto;
+    border-radius: 9999rem;
+    background-color: blue;
+} */
+/*  */
+
+#displayTeacher {
+    display: flex;
+}
+
+/* displaying the student lists */
+#displayStudentList {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 1px solid black;
+    padding: 15px;
+}
+
+/* keyup directions */
+.result_focus {
+    background-color: rgb(227, 231, 235);
+}
