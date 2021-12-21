@@ -16,11 +16,7 @@ table{
     margin-left:1%;
 }
 
-#filterUsers {
-    size:30px;
-    padding:8px;
-    margin-right:3px;
-}
+ 
 
 th{
     border: 1px black solid;
@@ -48,6 +44,12 @@ tbody tr:hover{
 }
 
 #filter{
-    padding:10px;
-    width: 40%;
-}
+    width:32%;
+    font-size: 0.9em;
+    margin-top:2%;
+    padding: 5px;
+    margin-right:3px;
+    border-radius: 8px;
+    font-family: 'Mulish', Arial, sans-serif;
+    cursor: pointer;
+}   
