@@ -19,8 +19,10 @@ function landing(){
 function login($params){
     $userManager = new UserManager();
     $userConnected = $userManager->logInUser($params['username'], $params['password']);
+   
     if($userConnected){
         header('Location: index.php?action=courseList');
+       
     } else {
         header('Location: index.php');
     }
@@ -50,7 +52,6 @@ function userId($getId){
 
 function userProfile(){
     $userManager = new UserManager();
-    $user = $userManager->getUser();
     require("./view/userProfile.php");
 }
 

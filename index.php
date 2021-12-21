@@ -22,7 +22,9 @@ try {
             break;
 
         case "userProfile" : userProfile();
+            
             break;
+       
         case "uploadImage" :
             uploadImage();
             break;

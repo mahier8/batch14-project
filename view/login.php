@@ -1,5 +1,6 @@
 <div id="sideBar">
     <?php if(!isset($_SESSION['userId'])):?>
+       
         <div id="loggedOut">
             <form id="loginForm" action="index.php" method="POST">
                 <input type="hidden" name="action" value="login">

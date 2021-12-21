@@ -12,7 +12,7 @@
             <div id="courseButtonTop">
             <a href="#"><div>Add Course<i class="fas fa-plus"></i></div></a>
             </div>
-            
+            <?php echo $_SESSION['userId']; ?>
                 <?php foreach ($courses AS $course):?>
                     
                     <div class="courseCard">

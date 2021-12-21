@@ -1,17 +1,16 @@
+
 <?php ob_start();?>
 <link rel="stylesheet" href="./public/styles/userProfile.css">
-<?php $style = ob_get_clean();?>
+<?php $style = ob_get_clean();
+ ob_start();
 
-
-
-<?php ob_start();?>
+ ?>
 <div id="wrapper">
-    <h1><?= $user['firstName'] . " " . $user['lastName'];?></h1>
-    <div id="profileImg">
-        <?php 
-        echo '<img src="./private/profilePics/'.($user['imagePath']) . '?<=rand(1,32000)?>">'; ?>
-    </div>
 
+    <div id="profileImg">
+
+    <img src="./private/profilePics/<?php echo ($_SESSION['imagePath']) ; ?>">
+    </div>
 
     <form action="index.php" method="post" enctype="multipart/form-data">
         Select image to upload:
@@ -24,45 +23,29 @@
     <div id="profileInfor">
       
         <div id = "id">
-            <?php if(!isset($_SESSION['userName'])): ?>
-            User ID: <?= htmlspecialchars($user['id']);?>
-        </div>
-        <div id = "password">
-            Password: <?= htmlspecialchars($user['password']);?>
-        </div>
-        <div id = "dob">
-            Date of Birth: <?= htmlspecialchars($user['dob']);?>
-        </div>
-        <div id = "email">
-            Email Address: <?= htmlspecialchars($user['email']);?>
-        </div>
-        <div id = "address">
-            Address: <?= htmlspecialchars($user['address']);?>
-        </div>
-        <div id = "phone">
-            Phone Number: <?= htmlspecialchars($user['phoneNumber']);?>
-        </div>
-        <div id = "emergency">
-            Emergency Contact: <?= htmlspecialchars($user['emergency']);?>
-        </div>
-        <div id = "courses">
-            Courses:
-        </div>
+        
+        <?php if(!isset($_SESSION['userName'])):
+            header("Location:index.php");
+            
+        ?>
+            
+      
         <?php else:?>
-            <div id = "dob">
-            Date of Birth: <?= htmlspecialchars($user['dob']);?>
+        <div id = "dob">
+               
+        Date of Birth: <?= htmlspecialchars($_SESSION['dob']);?>
         </div>
         <div id = "email">
-            Email Address: <?= htmlspecialchars($user['email']);?>
+            Email Address: <?= htmlspecialchars($_SESSION['email']);?>
         </div>
         <div id = "address">
-            Address: <?= htmlspecialchars($user['address']);?>
+            Address: <?= htmlspecialchars($_SESSION['address']);?>
         </div>
         <div id = "phone">
-            Phone Number: <?= htmlspecialchars($user['phoneNumber']);?>
+            Phone Number: <?= htmlspecialchars($_SESSION['phoneNumber']);?>
         </div>
         <div id = "emergency">
-            Emergency Contact: <?= htmlspecialchars($user['emergency']);?>
+            Emergency Contact: <?= htmlspecialchars($_SESSION['emergency']);?>
         </div>
         <div id = "courses">
             Courses:

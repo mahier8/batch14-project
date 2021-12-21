@@ -2,10 +2,11 @@
 session_start();
 require_once("Manager.php");
 class UserManager extends Manager {
-    public function __construct($userid = 0, $value=0) {
+    public function __construct($userid = 0, $id = 0) {
         parent::__construct();
         $this->userid = $userid;
-        $this->value = "%".$value."%";
+        $this->id = $id;
+      
     }
     
     public function getUsers(){
@@ -14,21 +15,21 @@ class UserManager extends Manager {
         $get->closeCursor();
         return $getUsers;
     }
-
-    public function getUser() {
-        $req = $this->_connexion->query('SELECT * FROM user WHERE id = 1');
-        // $req->bindParam(1, $this->_user_id, PDO::PARAM_INT);
-        // $req->execute();
-        $user = $req->fetch(PDO::FETCH_ASSOC);
-        $req->closeCursor();
-        return $user;
-    }
-
+    // public function getUser($id) {
+    //     $req = $this->_connexion->prepare("SELECT dob, email, phoneNumber, emergency FROM user WHERE id = :id ");
+    //     $req->bindParam('id', $id, PDO::PARAM_INT);
+    //     $user = $req->fetchAll(PDO::FETCH_ASSOC);
+    //     $req->closeCursor();
+    //     $req->execute();
+    //     return $user;
+        
+    // }
+  
     // this is where i have access to the user role in the database, further below I 
     // assigned the the user role toa  description 
     public function logInUser($userName, $pwd){
 
-        $req = $this->_connexion->prepare("SELECT id, userName, password, role FROM user WHERE userName=? ");
+        $req = $this->_connexion->prepare("SELECT id, userName, password, role, dob, email, phoneNumber, emergency, imagePath, address FROM user WHERE userName=? ");
         $req->bindParam(1,$userName, PDO::PARAM_STR);
         $req->execute();
         $user = $req->fetch(PDO::FETCH_ASSOC);
@@ -38,6 +39,12 @@ class UserManager extends Manager {
             $_SESSION['userName'] = $user['userName']; 
             $_SESSION['userId'] = $user['id'];
             $_SESSION['userRole'] = $user['role'];
+            $_SESSION['dob'] = $user['dob'];
+            $_SESSION['email'] = $user['email'];
+            $_SESSION['phoneNumber'] = $user['phoneNumber'];
+            $_SESSION['emergency'] = $user['emergency'];
+            $_SESSION['address'] = $user['address'];
+            $_SESSION['imagePath'] = $user['imagePath'];
             if ($_SESSION['userRole'] == 0) {
                 $_SESSION['userRoleDesc'] = "admin";
                 // i can take the user to the admin section
@@ -53,6 +60,7 @@ class UserManager extends Manager {
             return false;
         }
     }
+
   
     public function delete(){
         $req = $this->_connexion->prepare("DELETE FROM user WHERE id = :userId");
