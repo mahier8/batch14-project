@@ -38,9 +38,20 @@ try {
 
         case "courseList" : 
             courseList();
-            break;   
+            break;
         case "course" :
             course($_GET["courseid"]);
+            break;
+        case "addEditCourseForm" : 
+            if(isset($_GET["courseid"])){
+                addEditCourseForm($_GET["courseid"]);
+            } else {
+                addEditCourseForm();
+            }
+            break;
+        case "addEditCourse" : addEditCourse($_POST);
+            break;
+        case "deleteCourse" : deleteCourse($_GET["courseid"]);
             break;
         default : landing();
             break;

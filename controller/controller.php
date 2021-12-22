@@ -2,13 +2,6 @@
 require_once("./model/UserManager.php");
 require_once("./model/CourseManager.php");
 
-// define("TEST", "test constant"); // constant outside of a class
-// function listUserData(){
-//     $userManager = new UserManager();
-//     $user = $userManager->getUser();
-//     require("./view/userProfile.php");
-// }
-
 function landing(){
     require("./view/landing.php");
 }
@@ -31,11 +24,13 @@ function logout() {
     session_destroy();
     header('Location: index.php');
 }
+
 function courseList(){
     $courseManager = new CourseManager();
     $courses = $courseManager->getCourses();
     require("./view/courseList.php");
 }
+
 function userView(){
     $getUsers = new UserManager();
     $users = $getUsers->getUsers();
@@ -49,10 +44,42 @@ function userId($id){
 }
 
 function userProfile(){
-
     $profileUserManager = new UserManager();
     $userProf = $profileUserManager->getUser($_SESSION['userId']);
     require("./view/userProfile.php");
+// function userProfile($userId){
+//     $userManager = new UserManager();
+//     $user = $userManager->getUser($userId);
+//     
+}
+function course($courseid){
+    $courseManager = new CourseManager();
+    $course = $courseManager->getCourse($courseid);
+    require("./view/course.php");
+}
+
+function addEditCourseForm($courseid=null){
+    if($courseid){
+        $courseManager = new CourseManager();
+        $course = $courseManager->getCourse($courseid);
+    }
+    // in order to load the information inside the following view
+    require("./view/addEditCourse.php");
+}
+function addEditCourse($params){
+    $courseManager = new CourseManager();
+    if(isset($params['edit'])) {
+        $course_id = $courseManager->updateCourse($params);
+    } else {
+        $course_id = $courseManager->addCourse($params);
+    }
+    header("location:index.php?action=course&courseid=".$course_id);
+}
+
+function deleteCourse($courseid){
+    $courseManager = new CourseManager();
+    $course = $courseManager->delCourse($courseid);
+    header("location:index.php?action=courseList");
 }
 
 function uploadImage(){
@@ -86,8 +113,4 @@ function uploadImage(){
     header('Location:index.php?action=userProfile');
 }
 
-function course($courseid){
-    $courseManager = new CourseManager();
-    $course = $courseManager->getCourse($courseid);
-    require("./view/course.php");
-}
+

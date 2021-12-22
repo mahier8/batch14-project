@@ -4,7 +4,7 @@
 <?php ob_start();?>
 
 <div id="clContentContainer">
-    <a href="#" id="addCourse">
+    <a href="index.php?action=addEditCourseForm" id="addCourse">
                 <div
                     <?php 
                         if ($_SESSION['userRoleDesc'] == 'Admin') {
@@ -28,16 +28,7 @@
                     
                     <div class="courseCard">
 
-                        <div class="courseImage">
-                            <?php 
-                                if ($course['image'] != null) {
-                                    echo '<img src="' . $course['image'] . '">';
-                                } else {
-                                    echo '<img src=".\public\styles\images\courseDefault.jpg">';
-                                    
-                                }
-                            ?>
-                        </div>
+                    <div class="courseImage"><?php echo '<img src="' . $course['image'] . '">' ?> </div>
 
                         <div class="courseDetails">
                             <?php 
@@ -60,8 +51,8 @@
                                 }
                                 ?>
                             >
-                                <a href="#"><i class="fas fa-edit greenLink"></i></a>
-                                <a href="#"><i class="fas fa-trash greenLink"></i></a>
+                            <a href="index.php?action=addEditCourseForm&courseid=<?=$course['id']?>"><i class="fas fa-edit greenLink"></i></a>
+                    <a href="index.php?action=deleteCourse&courseid=<?=$course['id']?>"><i class="fas fa-trash greenLink" ></i></a>
                             </div>
                         </div>
                     </div>

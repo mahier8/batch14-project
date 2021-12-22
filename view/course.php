@@ -7,12 +7,33 @@
 <div id="courseWrapper">
     <div id="displayCourse">
         <div>
-            <h1> 
-                <?= $course['name'];?>
+
+            
+            <h1>
+                <?php 
+                
+                if (isset($course['name'])){
+                    echo $course['name'];
+                }?>
             </h1>
             <h2>
-                <?= $course['teacher'];?>
+                <?php if (isset($course['teacher'])){
+                    echo $course['teacher'];
+                }?>
             </h2>
+            <!-- -->
+            <h3>
+                <?php if (isset($course['courseDesc'])){
+                    echo $course['courseDesc'];
+                }?>
+            </h3>
+            <h3>
+                <?php if (isset($course['startDate'])){
+                    echo $course['startDate'];
+                }?> <?php if (isset($course['endDate']) && $course['endDate'] != null){
+                    echo 'to' . $course['endDate'];
+                }?>
+            </h3>
         </div>
         <?= '<img id="coursePic" src="'. $course['image'] . '">';?>
     </div>
@@ -91,6 +112,13 @@
 
     </div>
 
+            
+        </div>
+        
+    </div>
+
+    <div id="displayPosts">
+    </div>
 
     <div id="displayStudentList">
     </div>
