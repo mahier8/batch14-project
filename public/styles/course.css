@@ -31,3 +31,53 @@ h1, h2{
     border-color: black;
     border: 1px solid;
 }
+
+#displayPosts {
+    margin-top:10px;
+    display:flex;
+    width: 99%; 
+}
+
+#postFormDiv {
+    margin-top:10px;
+    width:99%;
+    border: 1px solid black;
+}
+
+#postForm {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#postForm{
+    align-items:center;
+}
+
+.postContainer {
+    border: 1px solid black;
+}
+
+.postHeader {
+    display:flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+.postHeader h2{
+    margin:0;
+}
+
+.postTitle {
+    margin:5px;
+}
+
+.postContent {
+    display:flex;
+    flex-direction:column;
+    padding: 15px;
+}
+
+.postFiles {
+    list-style:square;
+}
