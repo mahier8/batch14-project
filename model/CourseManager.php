@@ -27,13 +27,15 @@ class CourseManager extends Manager {
     public function addCourse($params){
         $courseName = isset($params['courseName']) ? $params['courseName'] : NULL;
         $courseTeacher = isset($params['courseTeacher']) ? $params['courseTeacher'] : NULL;
+        $courseDayTime = isset($params['courseDayTime']) ? $params['courseDayTime'] : NULL;
         $courseDesc = isset ($params['courseDesc']) ? $params['courseDesc'] : NULL;
         $courseStartDate = isset($params['start']) ? $params['start'] : NULL;
         $courseEndDate = isset($params['end']) ? $params['end'] : NULL;
-        $response = $this->_connexion->prepare("INSERT INTO course (name, teacher, courseDesc, startDate, endDate) VALUES (:name, :teacher, :courseDesc, :startDate, :endDate)");
+        $response = $this->_connexion->prepare("INSERT INTO course (name, teacher, courseDesc, dayTime, startDate, endDate) VALUES (:name, :teacher, :courseDesc, :dayTime, :startDate, :endDate)");
         $response->bindParam(":name", $courseName);
         $response->bindParam(":teacher", $courseTeacher);
         $response->bindParam(":courseDesc", $courseDesc);
+        $response->bindParam(":dayTime", $courseDayTime);
         $response->bindParam(":startDate", $courseStartDate);
         $response->bindParam(":endDate", $courseEndDate);
         $response->execute();
@@ -45,14 +47,16 @@ class CourseManager extends Manager {
         $courseId = isset($params['courseid']) ? $params['courseid'] : NULL;
         $courseName = isset($params['courseName']) ? $params['courseName'] : NULL;
         $courseTeacher = isset($params['courseTeacher']) ? $params['courseTeacher'] : NULL;
+        $courseDayTime = isset($params['courseDayTime']) ? $params['courseDayTime'] : NULL;
         $courseDesc = isset ($params['courseDesc']) ? $params['courseDesc'] : NULL;
         $courseStartDate = isset($params['start']) ? $params['start'] : NULL;
         $courseEndDate = isset($params['end']) ? $params['end'] : NULL;
-        $response = $this->_connexion->prepare("UPDATE course SET name=:name, teacher=:teacher, courseDesc=:courseDesc, startDate=:startDate, endDate=:endDate WHERE id=:id");
+        $response = $this->_connexion->prepare("UPDATE course SET name=:name, teacher=:teacher, courseDesc=:courseDesc, dayTime=:dayTime, startDate=:startDate, endDate=:endDate WHERE id=:id");
         $response->bindParam(":id", $courseId);
         $response->bindParam(":name", $courseName);
         $response->bindParam(":teacher", $courseTeacher);
         $response->bindParam(":courseDesc", $courseDesc);
+        $response->bindParam(":dayTime", $courseDayTime);
         $response->bindParam(":startDate", $courseStartDate);
         $response->bindParam(":endDate", $courseEndDate);
         $response->execute();

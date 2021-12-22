@@ -9,6 +9,7 @@
 $courseid = isset($course) ? $course['id'] : "";
 $courseName = isset($course) ? $course['name'] : "";
 $courseTeacher = isset($course) ? $course['teacher'] : "";
+$dayTime = isset($course) ? $course['dayTime'] : "";
 $startDate = isset($course) ? $course['startDate'] : "";
 $endDate = isset($course) ? $course['endDate'] : "";
 $courseDesc = isset($course) ? $course['courseDesc'] : "";
@@ -53,8 +54,8 @@ $courseDesc = isset($course) ? $course['courseDesc'] : "";
             <label for="sunday">Sunday</label><br>
         </p> -->
         <p>
-            <label for="time">Course Start Time:</label><br>
-            <input type="time" id="courseTime" name="courseTime">   
+            <label for="time">Course Days and Time:</label><br>
+            <input type="text" id="courseTime" name="courseTime" value="<?=$dayTime?>">   
         </p>
         <p> 
             <label for="start">Start date:</label>
