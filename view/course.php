@@ -10,7 +10,7 @@
             <h1> 
                 <?= $course['name'];?>
             </h1>
-            <h2>
+            <h2 id="displayTeacherHeader">
                 <?= $course['teacher'];?>
             </h2>
         </div>
@@ -21,16 +21,26 @@
     <div id="displayLists" data-courseid=<?=$_GET['courseid']?>>
         <div id="displayTeacherList">
             <div id="displayForm">
-                <form autocomplete="off" action="index.php" method="POST">
-                    <input type="text" name="autosearch" id="autoseachInput">
+                <form name="assignTo" autocomplete="off" action="index.php" method="POST">
+                    <div id="teacherSearch">
+                        <input type="text" name="autosearch" id="autoseachInput" placeholder="Search teachers">                        
+                        <div id="results">
+                        </div>
+                    </div>
+
+                    <!-- <div id="studentsSearch">
+                        <input type="text" name="autosearch" id="autoseachInput" placeholder="Search students">                        
+                        <div id="results">
+                        </div>
+                    </div> -->
                 </form>
-                <div id="results">
-                </div>
             </div>
-            
-            <div id="displayTeacher">
+            <div id="displayTeacherDiv">
                 <a href="#"><i class="fas fa-trash" ></i></a> 
-                <?= $course['teacher'];?>
+                <div id="displayTeacher">
+                    <?= $course['teacher'];?>
+                </div>
+            <button id="addTeacherButton">Submit</button>    
             </div>
         </div>
 
@@ -46,3 +56,4 @@
 
 <?php $content = ob_get_clean();?>
 <?php require("template.php");?>
+

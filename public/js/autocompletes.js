@@ -19,8 +19,7 @@ function getTeachers(keywords) { // we pass keywords into the getTeachers functi
 
 // 4. function to choose and display the e.target from below
 function chooseResult(result) {
-
-
+    // e.preventDefault();
     results.style.display = "none"; 
     // we grab the div for the results (from the global variable) and set its style
     result.className = "" // we add an empty className to what we pass in
@@ -42,16 +41,33 @@ function displayResults(response) { // Display the results of a request
                 div.addEventListener('click', function(e) {
                     e.preventDefault();
                     console.log(e.target);
+
                     searchElement.value = e.target.textContent;
                     // chooseResult(e.target); // i need this choose result function
+                    let teacherNameDiv = document.querySelector("#displayTeacher");
+                    console.log(teacherNameDiv);
+                    teacherNameDiv.innerHTML = searchElement.value; // to change the text of the div next to the input
+                    let teacherNameHeader = document.querySelector("#displayTeacherHeader");
+                    console.log(teacherNameHeader);
+                    teacherNameHeader.innerHTML = searchElement.value; // to change the text of the header above the input
                     
-                    // when I click on one of the divs created in the autocomplete
-                    // it should show me the teacher i clicked on then load up the details
+                    // if I click outside of the display of results, the the results div should display 
+                
+                    // if (e.target != !results) {
+                    //     console.log("clciked outside");
+                    //     results.style.display = "none"; 
+                    // }
+
+                    // chooseResult(results.querySelector('#results'));
             });
+
+            document.body.addEventListener('click',()=>{
+                chooseResult(results)
+            })
         }
     }
 }
-// search.value = divs[i].textContent;
+
 
 //////////////////////////////////////////////////////////////////////////
 ////////////////////////////EXECUTION////////////////////////////////////
@@ -81,6 +97,8 @@ searchElement.addEventListener('keyup', function(e) {
         getTeachers(searchElement.value);
     }
 });
+
+
 
 // searchElement.addEventListener("submit", function(e) {
 //     if (e.keyCode == 13) {

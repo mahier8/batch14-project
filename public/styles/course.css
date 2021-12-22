@@ -38,10 +38,26 @@ h1, h2{
 /* displaying the teachers lists */
 #displayTeacherList {
     display: flex;
-    align-items: center;
+    align-items: top;
+    /* align-items: center; */
     justify-content: space-evenly;
     border: 1px solid black;
     padding: 15px;
+    /* background-color: magenta; */
+    height: 300px;
+    margin-bottom: 50px;
+    /* for the overlapping div */
+}
+
+/* the form */
+#displayForm {
+    /* border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+    /* background-color: mediumaquamarine; */
+    /* for the overlapping div */
+    /* position: absolute;
+    z-index: 2; */
+
 }
 
 #displayTeacherList form {
@@ -49,27 +65,31 @@ h1, h2{
     padding: 10px;
 }
 
-#displayForm {
-    border-radius: 8px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+#teacherSearch {
+    margin-right: 50px;
 }
 
 #autoseachInput {
     height: 20px;
     border-radius: 8px;
+    border: 1px solid gray;
+    /* border-style: none; */
 }
 
 #autoseachInput:hover {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+/* to remove the space left of the divs created in the search */
 .searchResults {
-    margin-left: 10px;
     padding: 5px 0;
+    text-align: center;
 }
 
 .searchResults:hover {
     background-color: rgb(227, 231, 235);
+    cursor: pointer;
+    /* border-bottom-right-radius: 8px; */
 }
 
 /* maries code */
@@ -86,20 +106,17 @@ h1, h2{
 } */
 /*  */
 
-#displayTeacher {
+#displayTeacherDiv {
     display: flex;
+}
+
+#addTeacherButton {
+    height: 50px;
 }
 
 /* displaying the student lists */
-#displayStudentList {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    border: 1px solid black;
-    padding: 15px;
-}
 
 /* keyup directions */
-.result_focus {
+/* .result_focus {
     background-color: rgb(227, 231, 235);
-}
+} */
