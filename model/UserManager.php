@@ -58,15 +58,3 @@ class UserManager extends Manager {
 }
  
 
-
-    // public function getUser() {
-    //     $sql = 'SELECT * FROM user WHERE id = :id';
-    //     $req = $this->_connexion->prepare($sql);
-    //     // $req->bindParam(1, $this->_user_id, PDO::PARAM_INT);
-    //     // $req->execute();
-    //     $req->execute(['id' => $id]); 
-    //     $user = $req->fetch(PDO::FETCH_ASSOC);
-    //     $req->closeCursor();
-    //     return $user;
-    // }
-

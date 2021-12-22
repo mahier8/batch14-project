@@ -24,13 +24,23 @@ try {
                 require("./view/userView.php");
             }
             break;
-        case "courseList" : courseList();
+        case "courseList" : 
+            courseList();
+            break;
+        case "course" :
+            course($_GET["courseid"]);
+            break;
+        case "addEditCourseForm" : 
+            if(isset($_GET["courseid"])){
+                addEditCourseForm($_GET["courseid"]);
+            } else {
+                addEditCourseForm();
+            }
             break;
         case "addEditCourse" : addEditCourse($_POST);
             break;
-        // case "editCourse" : editCourse();
-        //     break;
-        // case "deleteCourse" : deleteCourse();
+        case "deleteCourse" : deleteCourse($_GET["courseid"]);
+            break;
         default : landing();
             break;
     }
