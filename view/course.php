@@ -10,9 +10,12 @@
             <h1> 
                 <?= $course['name'];?>
             </h1>
-            <h2 id="displayTeacherHeader">
-                <?= $course['teacher'];?>
-            </h2>
+            <div id="displayTeacherHeader">
+               <h2>
+                   <?= $course['teacher'];?>
+                </h2> 
+            </div>    
+            
         </div>
         <?= '<img id="coursePic" src="'. $course['image'] . '">';?>
     </div>
@@ -37,9 +40,6 @@
             </div>
             <div id="displayTeacherDiv">
                 <a href="#"><i class="fas fa-trash" ></i></a> 
-                <div id="displayTeacher">
-                    <?= $course['teacher'];?>
-                </div>
                 <div id="displayStudent">
                     <!-- <?= $course['student'];?>  -->
                     <!-- Do i need to read from the database and display for the student -->

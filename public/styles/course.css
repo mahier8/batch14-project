@@ -30,6 +30,14 @@ h1, h2{
     border: 1px solid;
 }
 
+#displayTeacherHeader { 
+    /* display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 1px solid black;
+    padding: 15px; */
+}
+
 /* displaying the lists */
 #displayLists {
     margin-top: 50px;
@@ -110,8 +118,21 @@ h1, h2{
     display: flex;
 }
 
+.displayStudentsList {
+    background-color: hotpink;
+    border: 1px solid black;
+    margin-left: 50px;
+    flex-direction: column;
+}
+
 #addTeacherButton {
-    height: 50px;
+    height: 30px;
+    width: 70px;
+    margin-left: 30px;
+    background-color: #0C51A1;
+    color: white;
+    border-radius: 8px;
+    border-style: none;
 }
 
 /* keyup directions */
