@@ -59,9 +59,6 @@
             
     </div>
     <div id="announce">announcements</div>
-</div>
-
-
-            
+</div>           
 <?php $content = ob_get_clean();?>
 <?php require("template.php");?>

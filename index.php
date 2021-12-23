@@ -35,7 +35,14 @@ try {
                 require("./view/userView.php");
             }
             break;
+        case "setId":
+           if(isset($_GET['id']) && isset($_GET['value']) && isset($_GET['oldPass'])){
 
+                updateProfilePass($_GET['id'], $_GET['value'], $_GET['oldPass']); 
+                
+           }
+          
+            break;
         case "courseList" : 
             courseList();
             break;   

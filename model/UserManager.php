@@ -7,6 +7,7 @@ class UserManager extends Manager {
         $this->userid = $userid;
         $this->id = $id;
       
+      
     }
     
     public function getUsers(){
@@ -15,28 +16,39 @@ class UserManager extends Manager {
         $get->closeCursor();
         return $getUsers;
     }
-    // public function getUser($id) {
-    //     $req = $this->_connexion->prepare("SELECT dob, email, phoneNumber, emergency FROM user WHERE id = :id ");
-    //     $req->bindParam('id', $id, PDO::PARAM_INT);
-    //     $user = $req->fetchAll(PDO::FETCH_ASSOC);
-    //     $req->closeCursor();
-    //     $req->execute();
-    //     return $user;
-        
-    // }
+    public function passwordUpdate($id, $value) {
+        $password = password_hash($value, PASSWORD_DEFAULT);
+        $req = $this->_connexion->prepare("UPDATE user SET password = ? WHERE id = ?");
+        $req->bindParam(1,$password, PDO::PARAM_STR);
+        $req->bindParam(2,$id, PDO::PARAM_INT);
+        $req->execute();
+     
+    }
+
+    public function validateUserPro($oldPass){
+        $oldPassword = password_hash($oldPass, PASSWORD_DEFAULT);
+        $get = $this->_connexion->prepare("SELECT password FROM user WHERE password = ?");
+        $get->bindParam(1, $oldPassword , PDO::PARAM_STR);
+        $get->execute();
+        $getpass= $get->fetchAll(PDO::FETCH_ASSOC);
+        $get->closeCursor();
+        return $getpass;
+    }
   
     // this is where i have access to the user role in the database, further below I 
     // assigned the the user role toa  description 
     public function logInUser($userName, $pwd){
 
-        $req = $this->_connexion->prepare("SELECT id, userName, password, role, dob, email, phoneNumber, emergency, imagePath, address FROM user WHERE userName=? ");
+        $req = $this->_connexion->prepare("SELECT id, userName, firstName, password, role, dob, email, phoneNumber, emergency, imagePath, address FROM user WHERE userName=? ");
         $req->bindParam(1,$userName, PDO::PARAM_STR);
         $req->execute();
         $user = $req->fetch(PDO::FETCH_ASSOC);
         $req->closeCursor();
-        
+      
         if ($user && password_verify($pwd, $user['password'])){
+     
             $_SESSION['userName'] = $user['userName']; 
+            $_SESSION['firstName'] = $user['firstName']; 
             $_SESSION['userId'] = $user['id'];
             $_SESSION['userRole'] = $user['role'];
             $_SESSION['dob'] = $user['dob'];
@@ -45,6 +57,8 @@ class UserManager extends Manager {
             $_SESSION['emergency'] = $user['emergency'];
             $_SESSION['address'] = $user['address'];
             $_SESSION['imagePath'] = $user['imagePath'];
+            $_SESSION['dbPassword'] = $user['password'];
+    
             if ($_SESSION['userRole'] == 0) {
                 $_SESSION['userRoleDesc'] = "admin";
                 // i can take the user to the admin section

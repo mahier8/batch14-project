@@ -1,10 +1,9 @@
 // ~~~~~~~~~~~~~~~~~~~~~ USER VIEW FILTER ~~~~~~~~~~~~~~~~~~~~~
 const tbobj = {
-    input : document.querySelector(".filter") ,
+    input : document.getElementById("check") ,
     tr    :document.querySelectorAll("tr"), 
 }
 var td, i, tr, textValue,notfound;
-
 tbobj.input.addEventListener("keyup", function(e){
     
     var filter = e.target.value.toLowerCase(); 

@@ -44,6 +44,14 @@ function userView(){
     require("./view/userView.php");  
 }
 
+function  updateProfilePass($id, $value, $oldPass){
+    $userManager = new UserManager();
+    $userManager->passwordUpdate($id, $value);
+    $oldPassword = new UserManager();
+    $oldPassword->validateUserPro($oldPass);
+    require("./view/userProfile.php");
+}
+
 function userId($getId){
     $getId = new UserManager($getId);
     $getId->delete();

@@ -1,50 +1,46 @@
-#wrapper, #profileImg {
-    text-align: center;
+#wrapper{
+    display: flex;
     margin-top: 10px;
-    margin-bottom: 15px;
-    padding-top:20px;
-    padding-bottom:20px;
-
-}
-
-h1 {
-    text-align: center;
-}
-
+} 
 #profileImg img{
-    width:30%;
+    width:20%;
     border-radius: 50%;
     border-color: black;
     border: 1px solid;
-  
 }
+
 #profileInfor{
-    width: 40%;
-    margin-left: 30%;
-    border-radius: 10px;
-    box-shadow: 4px 4px 2px 1px rgba(0, 0, 255, .2);
+    margin-left: 60px;
+    margin-top: 60px;
+    margin-right:40px;
+    width: 60%;
 }
 
-#profileInfor div{
-    background: lightgray;
-    margin-bottom: 7px;
-    font-weight: bolder;
-    
+#form{
+    margin-top: 50px;
 }
-#inputDiv{
+#profileInfor p{
+   background:lightblue;
+   padding: 4px;
+}
+#inputNone{
     display: none;
-  
-}
-
-input[type='submit']{
-    background: blue;
-    color: #fff;
-    padding: 10px;
+    margin-right: 30px;
+    box-shadow: 3px 3px 3px lightslategray;
     border-radius: 10px;
+    padding: 10PX;
 }
-
-input[type='submit']:hover{
-    background: dodgerblue;
-
-    
+#error{
+    color: tomato;
+}
+.success{
+    display: none;
+}
+button{
+    color: white;
+    background: blue;
+    margin-left: 20px;
+}
+#button{
+    display: none;
 }
