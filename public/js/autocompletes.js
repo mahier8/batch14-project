@@ -97,31 +97,31 @@ function displayResults(response, role) { // Display the results of a request
 
 // 1. event listeners to enable enter, up, and down
 searchTeacher.addEventListener('keyup', function(e) {
-    var divs = teacherResults.querySelector('#teacherResults');
+    var teacherDivs = teacherResults.querySelector('#teacherResults');
 
     // alert("im here"); i do enter into this event listener
     // means we cant go above the first div
     if (e.code == 38 && selectedResult > -1) { // If the key pressed is the up arrow and not above the top result div
         
-        divs[selectedResult--].className = ''; // we move up and empty the class
+        teacherDivs[selectedResult--].className = ''; // we move up and empty the class
         console.log(selectedResult);
         if (selectedResult > -1) { // this condition protect from a modification of childNodes[-1], which is not existing
-            divs[selectedResult].className = 'result_focus'; // we set the class
+            teacherDivs[selectedResult].className = 'result_focus'; // we set the class
         }
     }
 
     // means we cant go below the last div
-    else if (e.code == 40 && selectedResult < divs.length - 1) { // if the key pressed is the arrow bottom and not above the top result div
+    else if (e.code == 40 && selectedResult < teacherDivs.length - 1) { // if the key pressed is the arrow bottom and not above the top result div
         alert("im here"); // why isnt this firing off???
         teacherResults.style.display = 'block'; // We display the results
         if (selectedResult > -1) { // this condition protect from a modification of childNodes[-1], which is not existing
-            divs[selectedResult].className = ''; // we empty the class
+            teacherDivs[selectedResult].className = ''; // we empty the class
         }
-        divs[++selectedResult].className = 'result_focus';//we move down and empty the class
-        console.log(divs[selectedResult]);
+        teacherDivs[++selectedResult].className = 'result_focus';//we move down and empty the class
+        console.log(teacherDivs[selectedResult]);
     }
     else if (e.code == 13 && selectedResult > -1) { // if the key pressed is Enter
-        chooseResult(divs[selectedResult]);
+        chooseResult(teacherDivs[selectedResult]);
     } else {
         getUsers(searchTeacher.value, '1');
     }
@@ -129,31 +129,31 @@ searchTeacher.addEventListener('keyup', function(e) {
 
 // 1. event listeners to enable enter, up, and down
 searchStudent.addEventListener('keyup', function(e) {
-    var divs = teacherResults.querySelector('#results');
+    var studentDivs = teacherResults.querySelector('#results');
 
     // alert("im here"); i do enter into this event listener
     // means we cant go above the first div
     if (e.code == 38 && selectedResult > -1) { // If the key pressed is the up arrow and not above the top result div
         
-        divs[selectedResult--].className = ''; // we move up and empty the class
+        studentDivs[selectedResult--].className = ''; // we move up and empty the class
         console.log(selectedResult);
         if (selectedResult > -1) { // this condition protect from a modification of childNodes[-1], which is not existing
-            divs[selectedResult].className = 'result_focus'; // we set the class
+            studentDivs[selectedResult].className = 'result_focus'; // we set the class
         }
     }
 
     // means we cant go below the last div
-    else if (e.code == 40 && selectedResult < divs.length - 1) { // if the key pressed is the arrow bottom and not above the top result div
+    else if (e.code == 40 && selectedResult < studentDivs.length - 1) { // if the key pressed is the arrow bottom and not above the top result div
         alert("im here"); // why isnt this firing off???
         teacherResults.style.display = 'block'; // We display the results
         if (selectedResult > -1) { // this condition protect from a modification of childNodes[-1], which is not existing
-            divs[selectedResult].className = ''; // we empty the class
+            studentDivs[selectedResult].className = ''; // we empty the class
         }
-        divs[++selectedResult].className = 'result_focus';//we move down and empty the class
-        console.log(divs[selectedResult]);
+        studentDivs[++selectedResult].className = 'result_focus';//we move down and empty the class
+        console.log(studentDivs[selectedResult]);
     }
     else if (e.code == 13 && selectedResult > -1) { // if the key pressed is Enter
-        chooseResult(divs[selectedResult]);
+        chooseResult(studentDivs[selectedResult]);
     } else {
         getUsers(searchStudent.value, '2');
     }
