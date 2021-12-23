@@ -1,17 +1,23 @@
 // Global variables
-var searchElement = document.querySelector('input[name="autosearch"]'), // we need to make sure we grab the correct input
+var searchElement = document.querySelector('input[name="autosearch"]'), 
+searchStudent = document.querySelector('input[name="studentAutosearch"]'), 
+// we need to make sure we grab the correct input
+
 results = document.getElementById('results'), // where we display the div dropdowns
+studentResults = document.getElementById('studentResults'),
+
 selectedResult = -1; // allow to know which result is selected : -1 means "no selection"
 
+// I should add in the parameter role, add role to my url, change the 
 // 2. function to search through the data for what i want
-function getTeachers(keywords) { // we pass keywords into the getTeachers function
+function getUsers(keywords, role) { // we pass keywords into the getTeachers function
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'index.php?action=autocompleteUsers&keywords=' + keywords); // no keywords here just load the file
+    xhr.open('GET', 'index.php?action=autocompleteUsers&keywords=' + keywords + '&role=' + role); // no keywords here just load the file
     xhr.addEventListener('readystatechange', function() {
         if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
-            let teacherObj = JSON.parse(xhr.responseText); // we are working with a teacherObj now
-            console.log(teacherObj);
-           displayResults(teacherObj);
+            let userObj = JSON.parse(xhr.responseText); // we are working with a teacherObj now
+            console.log(userObj);
+           displayResults(userObj, role);
         }
     });
     xhr.send(null);
@@ -28,7 +34,16 @@ function chooseResult(result) {
 }
 
 // 3. function to display the results of the above AJAX request in dropdown divs
-function displayResults(response) { // Display the results of a request
+function displayResults(response, role) { // Display the results of a request
+
+    if (role == '1')  {
+
+    } else {
+
+    }
+
+
+
     console.log(response);
     results.style.display = response.length ? 'block' : 'none'; // We hide the container if we don't have results
     if (response.length) { // We do modify the results only if we have ones
@@ -50,18 +65,10 @@ function displayResults(response) { // Display the results of a request
                     let teacherNameHeader = document.querySelector("#displayTeacherHeader");
                     console.log(teacherNameHeader);
                     teacherNameHeader.innerHTML = searchElement.value; // to change the text of the header above the input
-                    
-                    // if I click outside of the display of results, the the results div should display 
-                
-                    // if (e.target != !results) {
-                    //     console.log("clciked outside");
-                    //     results.style.display = "none"; 
-                    // }
 
                     // chooseResult(results.querySelector('#results'));
             });
-
-            document.body.addEventListener('click',()=>{
+            document.body.addEventListener('click',() =>{
                 chooseResult(results)
             })
         }
@@ -77,28 +84,33 @@ function displayResults(response) { // Display the results of a request
 searchElement.addEventListener('keyup', function(e) {
     var divs = results.querySelector('#results');
 
-    if (e.code == 38 && selectedResult > -1) { // If the key pressed is the up arrow
-        divs[selectedResult--].className = '';
+    // alert("im here"); i do enter into this event listener
+    // means we cant go above the first div
+    if (e.code == 38 && selectedResult > -1) { // If the key pressed is the up arrow and not above the top result div
+        
+        divs[selectedResult--].className = ''; // we move up and empty the class
+        console.log(selectedResult);
         if (selectedResult > -1) { // this condition protect from a modification of childNodes[-1], which is not existing
-            divs[selectedResult].className = 'result_focus';
+            divs[selectedResult].className = 'result_focus'; // we set the class
         }
     }
 
-    else if (e.code == 40 && selectedResult < divs.length - 1) { // if the key pressed is arrow bottom
+    // means we cant go below the last div
+    else if (e.code == 40 && selectedResult < divs.length - 1) { // if the key pressed is the arrow bottom and not above the top result div
+        alert("im here"); // why isnt this firing off???
         results.style.display = 'block'; // We display the results
         if (selectedResult > -1) { // this condition protect from a modification of childNodes[-1], which is not existing
-            divs[selectedResult].className = '';
+            divs[selectedResult].className = ''; // we empty the class
         }
-        divs[++selectedResult].className = 'result_focus';
+        divs[++selectedResult].className = 'result_focus';//we move down and empty the class
+        console.log(divs[selectedResult]);
     }
     else if (e.code == 13 && selectedResult > -1) { // if the key pressed is Enter
         chooseResult(divs[selectedResult]);
     }else {
-        getTeachers(searchElement.value);
+        getUsers(searchElement.value);
     }
 });
-
-
 
 // searchElement.addEventListener("submit", function(e) {
 //     if (e.keyCode == 13) {

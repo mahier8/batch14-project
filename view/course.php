@@ -28,11 +28,11 @@
                         </div>
                     </div>
 
-                    <!-- <div id="studentsSearch">
-                        <input type="text" name="autosearch" id="autoseachInput" placeholder="Search students">                        
-                        <div id="results">
+                    <div id="studentsSearch">
+                        <input type="text" name="studentAutosearch" id="studentAutosearchInput" placeholder="Search students">                        
+                        <div id="studentResults">
                         </div>
-                    </div> -->
+                    </div>
                 </form>
             </div>
             <div id="displayTeacherDiv">

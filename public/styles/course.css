@@ -69,6 +69,7 @@ h1, h2{
     margin-right: 50px;
 }
 
+/* autosearch for teachers */
 #autoseachInput {
     height: 20px;
     border-radius: 8px;
@@ -92,20 +93,19 @@ h1, h2{
     /* border-bottom-right-radius: 8px; */
 }
 
-/* maries code */
-/* #displayForm input {
-    box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.075),0 0 8px rgba(228, 127, 0, 0.6);
-    font-family: 'Abel', sans-serif;
-    padding:10px;
-    outline: none;
-    border: none;
-    width: 95%;
-    margin: auto;
-    border-radius: 9999rem;
-    background-color: blue;
-} */
-/*  */
+/* displaying the student lists */
+#studentAutosearchInput {
+    height: 20px;
+    border-radius: 8px;
+    border: 1px solid gray;
+    /* border-style: none; */
+}
 
+#studentAutosearchInput:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/* to display what we clicked on */
 #displayTeacherDiv {
     display: flex;
 }
@@ -114,9 +114,7 @@ h1, h2{
     height: 50px;
 }
 
-/* displaying the student lists */
-
 /* keyup directions */
-/* .result_focus {
-    background-color: rgb(227, 231, 235);
-} */
+.result_focus {
+    background-color: rgb(106, 156, 206);
+}

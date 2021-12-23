@@ -57,9 +57,11 @@ function course($courseid){
     require("./view/course.php");
 }
 
-// this is for the autocomplete step 4
-function autocompleteUsers($keywords) {
+// this is for the autocomplete step 4 
+function autocompleteUsers($keywords, $role) { 
     $userManager = new UserManager(); // we get the user mananger object 
-    echo $userManager->getUsersByRole($keywords); // we echo what we get from our read (SELECT)
+    echo $userManager->getUsersByRole($keywords, $role); // we echo what we get from our read (SELECT)
 
 }
+
+// added in role to 61 and 63

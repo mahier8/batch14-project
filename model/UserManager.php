@@ -56,7 +56,7 @@ class UserManager extends Manager {
 
     // this is for the autocomplete step 5, later I will need to change the role to include student, 
     // in the arguments to include the role of students. Maybe ill need to fetch as well
-    public function getUsersByRole ($keywords, $role = 1) {
+    public function getUsersByRole ($keywords, $role) {
         $keywords = trim($keywords)."%"; //from the query, i remove any whitesapce, as well as the percentage sign 
         $req = $this->_connexion->prepare(
             // Marie queried this into the database, using like, in the case of firstName and lastName
@@ -77,6 +77,9 @@ class UserManager extends Manager {
         return json_encode($teachers); 
     }
 }
+
+// i change the role, and remove the assignment 59
+// What do i add to the WHERE 65
 
     
 

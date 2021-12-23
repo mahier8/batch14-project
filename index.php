@@ -32,7 +32,7 @@ try {
             break;
             // this is for the autompletes step 3
         case "autocompleteUsers" : // we add this case to our switch, with the function 
-            autocompleteUsers($_GET['keywords']);
+            autocompleteUsers($_GET['keywords'], $_GET['role']); 
             break;
         default : landing();
             break;
@@ -45,3 +45,5 @@ catch(Exception $e){
     $line = $e->getLine();
     require("./view/exceptionView.php");
 }
+
+// do i need to add the role in 35
