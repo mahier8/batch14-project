@@ -42,6 +42,12 @@ try {
         case "course" :
             course($_GET["courseid"]);
             break;
+        case "createPost" :
+            createPost($_GET["courseid"], $_POST);
+            break;
+        case "updatePost" :
+            updatePost($_GET["courseid"], $_POST);
+            break;
         case "addEditCourseForm" : 
             if(isset($_GET["courseid"])){
                 addEditCourseForm($_GET["courseid"]);

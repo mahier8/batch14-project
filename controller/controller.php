@@ -47,15 +47,26 @@ function userProfile(){
     $profileUserManager = new UserManager();
     $userProf = $profileUserManager->getUser($_SESSION['userId']);
     require("./view/userProfile.php");
-// function userProfile($userId){
-//     $userManager = new UserManager();
-//     $user = $userManager->getUser($userId);
-//     
 }
+
 function course($courseid){
     $courseManager = new CourseManager();
     $course = $courseManager->getCourse($courseid);
+    $posts = $courseManager->getPosts($courseid);
     require("./view/course.php");
+}
+
+function createPost($courseid, $params){
+    $courseManager = new CourseManager();
+    $createPost = $courseManager->createPost($courseid, $params);
+    header('location:index.php?action=course&courseid=' . $courseid . '');
+    require("./view/course.php");
+}
+
+function updatePost($courseid, $params){
+    $courseManager = new CourseManager();
+    $createPost = $courseManager->updatePost($courseid, $params);
+    header('location:index.php?action=course&courseid=' . $courseid . '');
 }
 
 function addEditCourseForm($courseid=null){
@@ -112,5 +123,6 @@ function uploadImage(){
     $uploadManager->updateImage($userid, $imageAndId);
     header('Location:index.php?action=userProfile');
 }
+
 
 

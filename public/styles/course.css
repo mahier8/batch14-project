@@ -36,6 +36,7 @@ h1, h2{
     margin-top:10px;
     display:flex;
     width: 99%; 
+    flex-direction: column;
 }
 
 #postFormDiv {
@@ -48,36 +49,112 @@ h1, h2{
     display:flex;
     flex-direction: column;
     justify-content: center;
-}
-
-#postForm{
     align-items:center;
 }
 
+#postFormShow {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    padding:10px;
+    margin-top:-5px;
+}
+#pfHide {
+    display:none;
+}
+
+#pfTitleDiv {
+    padding:10px;
+    display:flex;
+    flex-direction: column;
+    text-align:center;
+}
+
+#pfTitleDiv label {
+    padding:10px;
+}
+
+#pfTitleDiv input{
+    align-self:center;
+    width:400px;
+    height:20px;
+}
+
+#pfContentDiv label{
+    display:flex;
+    flex-direction: column;
+    text-align:center;
+    margin:10px;
+}
+
+#pfContentInput {
+    width:400px;
+    height:100px;
+    font-family: 'Open Sans', Arial,  sans-serif;
+}
+
+#pfTypeDiv {
+    padding:10px;
+}
+
+#pfDueDiv {
+    margin:10px;
+}
+
+#pfSubmitBtn {
+    margin:10px;
+}
+
 .postContainer {
+    margin-top:10px;
     border: 1px solid black;
 }
 
 .postHeader {
     display:flex;
     justify-content: center;
-    padding: 15px;
+    width:100%;
+    padding-top:5px;
+    padding-bottom:5px;
+    margin:0;
 }
 
 .postHeader h2{
     margin:0;
 }
 
-.postTitle {
-    margin:5px;
+.postTitleDiv {
+    display:flex;
+    flex-direction: column;
+}
+.postEditDiv {
+    display:flex;
+    justify-content: center;
 }
 
 .postContent {
     display:flex;
     flex-direction:column;
-    padding: 15px;
+    padding: 15px;   
 }
 
-.postFiles {
-    list-style:square;
+#pfDetails {
+    display:flex;
+    text-align:center;
+    flex-direction: column;
+}
+#postAttachContainer {
+    text-align:center;
+}
+
+.postAttach {
+    padding:10px;
+}
+
+.postAttach label{
+    padding-left:5px;
+}
+#hiddenid {
+    display:none;
 }
