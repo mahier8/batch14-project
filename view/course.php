@@ -24,7 +24,7 @@
                 <form name="assignTo" autocomplete="off" action="index.php" method="POST">
                     <div id="teacherSearch">
                         <input type="text" name="autosearch" id="autoseachInput" placeholder="Search teachers">                        
-                        <div id="results">
+                        <div id="teacherResults">
                         </div>
                     </div>
 
@@ -39,6 +39,10 @@
                 <a href="#"><i class="fas fa-trash" ></i></a> 
                 <div id="displayTeacher">
                     <?= $course['teacher'];?>
+                </div>
+                <div id="displayStudent">
+                    <!-- <?= $course['student'];?>  -->
+                    <!-- Do i need to read from the database and display for the student -->
                 </div>
             <button id="addTeacherButton">Submit</button>    
             </div>
