@@ -49,6 +49,12 @@ a {
     text-decoration:none;
 }
 
+.exception {
+    display:flex;
+    margin-left: 6%;
+    margin-top: 10%;
+    flex-direction:column;
+}
 
 
 /* ////////////////////////////////////////////////////////// */

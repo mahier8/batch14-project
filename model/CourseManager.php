@@ -75,7 +75,7 @@ class CourseManager extends Manager {
     
 
     public function getPosts($id) {
-        $response = $this->_connexion->query("SELECT id, course_id, type, title, post_date, content, due_date, file1_name, file1_type, file1_link, file2_name, file2_type, file2_link, file3_name, file3_type, file3_link FROM post WHERE course_id = '$id' ORDER BY date DESC");
+        $response = $this->_connexion->query("SELECT id, course_id, type, title, post_date, content, due_date, file1_name, file1_type, file1_link, file2_name, file2_type, file2_link, file3_name, file3_type, file3_link FROM post WHERE course_id = '$id' ORDER BY post_date DESC");
         $posts = $response-> fetchAll(PDO::FETCH_ASSOC);
         $response->closeCursor();
         return $posts;
