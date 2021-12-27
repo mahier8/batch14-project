@@ -73,14 +73,15 @@ for (let i = 0; i < editPost.length; i++) {
             updateh2.removeAttribute('class', "elementHidden");
             updateh2.classList.add('postHeader', 'pinkStyle');
             create.setAttribute('class', "elementHidden");
+
             //Scrolling to the form
             window.scrollTo(500, 294);
             
             //Isolating the Post Elements
-            let editPostParent = editPost[i].parentElement.parentElement.parentElement; //Good
-            let postHeader = editPostParent.firstElementChild.firstElementChild; //Good
-            let postTitle = editPostParent.firstElementChild.nextSibling.nextSibling.firstElementChild; //Good
-            let postContent = editPostParent.lastElementChild.firstElementChild.nextElementSibling; //Good
+            let editPostParent = editPost[i].parentElement.parentElement.parentElement; 
+            let postHeader = editPostParent.firstElementChild.firstElementChild; 
+            let postTitle = editPostParent.firstElementChild.nextSibling.nextSibling.firstElementChild; 
+            let postContent = editPostParent.lastElementChild.firstElementChild.nextElementSibling; 
             let postFileName1 = editPostParent.lastElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.firstElementChild.firstElementChild; 
             let postFileType1 = editPostParent.lastElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.firstElementChild.firstChild; 
             let postFileURL1 = editPostParent.lastElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.firstElementChild.firstChild.nextSibling.href; 
@@ -90,10 +91,11 @@ for (let i = 0; i < editPost.length; i++) {
             let postFileName3 = editPostParent.lastElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.lastElementChild.lastElementChild; 
             let postFileURL3 = editPostParent.lastElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.lastElementChild.lastElementChild.href;
             let postFileType3 = editPostParent.lastElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.lastElementChild.firstChild;
-            // let postDueDate = editPostParent.lastElementChild.lastElementChild.previousElementSibling.previousElementSibling.lastChild;
+            let postDueDate = editPostParent.lastElementChild.lastElementChild.previousElementSibling.previousElementSibling.lastChild;
             let postHiddenId = editPostParent.lastElementChild.lastElementChild.textContent;
-            console.log(postFileType3);
-            // //Isolating the Form Input Fields
+            console.log(postDueDate);
+
+            //Isolating the Form Input Fields
             let pfHeaderInput1 = postForm.firstElementChild.firstElementChild.nextElementSibling.firstElementChild; 
             let pfHeaderInput2 = postForm.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling; 
             let pfHeaderInput3 = postForm.firstElementChild.firstElementChild.nextElementSibling.lastElementChild; 
@@ -128,8 +130,9 @@ for (let i = 0; i < editPost.length; i++) {
             pfFileURL2.value = postFileURL2;
             pfFileName3.value = postFileName3.textContent;
             pfFileURL3.value = postFileURL3;
-            // pfDueDate.value = postDueDate;
             pfHiddenId.value = postHiddenId;
+            pfDueDate.value = Date.parse(postDueDate.value + 'Z');
+            
             
 
             if (postHeader.textContent.includes(pfHeaderInput1.value)) {

@@ -12,6 +12,7 @@ class CourseManager extends Manager {
         $courses = $response->fetchAll(PDO::FETCH_ASSOC);
         $response->closeCursor();
         return $courses;
+        
     }
 
     //changed the ? from kaba's code. need to make variables for each item i want shown.
@@ -74,7 +75,7 @@ class CourseManager extends Manager {
     
 
     public function getPosts($id) {
-        $response = $this->_connexion->query("SELECT id, course_id, type, title, post_date, content, due_date, file1_name, file1_type, file1_link, file2_name, file2_type, file2_link, file3_name, file3_type, file3_link FROM post_test WHERE course_id = '$id' ORDER BY post_date");
+        $response = $this->_connexion->query("SELECT id, course_id, type, title, post_date, content, due_date, file1_name, file1_type, file1_link, file2_name, file2_type, file2_link, file3_name, file3_type, file3_link FROM post_test WHERE course_id = '$id' ORDER BY post_date DESC");
         $posts = $response-> fetchAll(PDO::FETCH_ASSOC);
         $response->closeCursor();
         return $posts;
@@ -102,7 +103,7 @@ class CourseManager extends Manager {
     
         $response->closeCursor();
 
-        
+        //Future Update - Insecure Query - Rebuild with Bind Param
     }
 
     public function updatePost($courseId, $params) {
@@ -113,12 +114,10 @@ class CourseManager extends Manager {
         $pfLink3Name = $params['pfLink3Name']; $pfLink3Type = $params['pfLink3Type']; $pfLink3URL = $params['pfLink3URL'];
 
         $response = $this->_connexion->prepare("UPDATE post_test SET title = '$pfTitle', content = '$pfContent', due_date = '$pfDueDate', type = '$pfType', file1_link = '$pfLink1URL',  file1_type = '$pfLink1Type', file1_link = '$pfLink1URL', file2_name = '$pfLink2Name', file2_type = '$pfLink2Type', file2_link = '$pfLink2URL', file3_name = '$pfLink3Name', file3_type = '$pfLink3Type', file3_link = '$pfLink3URL' WHERE course_id = '$courseId' AND id = $hiddenid");
-        #TODO    <!--Add the courseid and the post id after the WHERE
 
         $data = $response->execute();
-
         $response->closeCursor();
 
-        //Rebuild with Bind Param
+        //Future Update - Insecure Query - Rebuild with Bind Param
     }
 }

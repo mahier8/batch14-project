@@ -51,7 +51,7 @@
         </div>
 
         <div id="postFormShow">
-            <button type="button" class="blueStyle btn" id="expandForm">Start</button>
+            <button type="button" class="greenStyle btn" id="expandForm">Start</button>
 
             <form method="post" id="pfHide" action="">
 
