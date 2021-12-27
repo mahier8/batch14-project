@@ -93,7 +93,6 @@ for (let i = 0; i < editPost.length; i++) {
             let postFileType3 = editPostParent.lastElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.lastElementChild.firstChild;
             let postDueDate = editPostParent.lastElementChild.lastElementChild.previousElementSibling.previousElementSibling.lastChild;
             let postHiddenId = editPostParent.lastElementChild.lastElementChild.textContent;
-            console.log(postDueDate);
 
             //Isolating the Form Input Fields
             let pfHeaderInput1 = postForm.firstElementChild.firstElementChild.nextElementSibling.firstElementChild; 

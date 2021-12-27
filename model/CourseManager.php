@@ -75,7 +75,7 @@ class CourseManager extends Manager {
     
 
     public function getPosts($id) {
-        $response = $this->_connexion->query("SELECT id, course_id, type, title, post_date, content, due_date, file1_name, file1_type, file1_link, file2_name, file2_type, file2_link, file3_name, file3_type, file3_link FROM post WHERE course_id = '$id' ORDER BY post_date DESC");
+        $response = $this->_connexion->query("SELECT id, course_id, type, title, post_date, content, due_date, file1_name, file1_type, file1_link, file2_name, file2_type, file2_link, file3_name, file3_type, file3_link FROM post WHERE course_id = '$id' ORDER BY date DESC");
         $posts = $response-> fetchAll(PDO::FETCH_ASSOC);
         $response->closeCursor();
         return $posts;
@@ -113,7 +113,7 @@ class CourseManager extends Manager {
         $pfLink2Name = $params['pfLink2Name']; $pfLink2Type = $params['pfLink2Type']; $pfLink2URL = $params['pfLink2URL'];
         $pfLink3Name = $params['pfLink3Name']; $pfLink3Type = $params['pfLink3Type']; $pfLink3URL = $params['pfLink3URL'];
 
-        $response = $this->_connexion->prepare("UPDATE post_test SET title = '$pfTitle', content = '$pfContent', due_date = '$pfDueDate', type = '$pfType', file1_link = '$pfLink1URL',  file1_type = '$pfLink1Type', file1_link = '$pfLink1URL', file2_name = '$pfLink2Name', file2_type = '$pfLink2Type', file2_link = '$pfLink2URL', file3_name = '$pfLink3Name', file3_type = '$pfLink3Type', file3_link = '$pfLink3URL' WHERE course_id = '$courseId' AND id = $hiddenid");
+        $response = $this->_connexion->prepare("UPDATE post SET title = '$pfTitle', content = '$pfContent', due_date = '$pfDueDate', type = '$pfType', file1_link = '$pfLink1URL',  file1_type = '$pfLink1Type', file1_link = '$pfLink1URL', file2_name = '$pfLink2Name', file2_type = '$pfLink2Type', file2_link = '$pfLink2URL', file3_name = '$pfLink3Name', file3_type = '$pfLink3Type', file3_link = '$pfLink3URL' WHERE course_id = '$courseId' AND id = $hiddenid");
 
         $data = $response->execute();
         $response->closeCursor();
