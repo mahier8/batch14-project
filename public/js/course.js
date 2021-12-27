@@ -30,7 +30,7 @@ cancelPost.addEventListener('click', function() {
     //If the user clicks cancel, the form closes and reverts to 'create post'
     update.setAttribute('class', "elementHidden");
     create.removeAttribute('class', "elementHidden");
-    create.classList.add('postHeader', 'greenStyle');
+    create.classList.add('postHeader', 'pinkStyle');
     window.scrollTo(500, 294);
     postForm.setAttribute('id', 'pfHide');
     expand.textContent = "Start";
@@ -71,7 +71,7 @@ for (let i = 0; i < editPost.length; i++) {
             postForm.setAttribute('action', `index.php?action=updatePost&courseid=${courseidDiv.textContent}`);
             update.removeAttribute('class', "elementHidden");
             updateh2.removeAttribute('class', "elementHidden");
-            updateh2.classList.add('postHeader', 'pinkStyle');
+            updateh2.classList.add('postHeader', 'redStyle');
             create.setAttribute('class', "elementHidden");
 
             //Scrolling to the form

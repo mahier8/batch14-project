@@ -42,7 +42,7 @@
 
 
     <div id="postFormDiv">
-        <div id="create"  class="postHeader greenStyle">
+        <div id="create"  class="postHeader pinkStyle">
             <h2 id="createh2">Create Post</h2>
         </div>
         <div id="hiddenCourseId" class="elementHidden"><?php echo $course['id']?></div>
