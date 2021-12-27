@@ -75,14 +75,14 @@ class CourseManager extends Manager {
     
 
     public function getPosts($id) {
-        $response = $this->_connexion->query("SELECT id, course_id, type, title, post_date, content, due_date, file1_name, file1_type, file1_link, file2_name, file2_type, file2_link, file3_name, file3_type, file3_link FROM post_test WHERE course_id = '$id' ORDER BY post_date DESC");
+        $response = $this->_connexion->query("SELECT id, course_id, type, title, post_date, content, due_date, file1_name, file1_type, file1_link, file2_name, file2_type, file2_link, file3_name, file3_type, file3_link FROM post WHERE course_id = '$id' ORDER BY post_date DESC");
         $posts = $response-> fetchAll(PDO::FETCH_ASSOC);
         $response->closeCursor();
         return $posts;
     }
 
     public function createPost($courseId, $params) {
-        $response = $this->_connexion->prepare("INSERT INTO post_test(title, course_id, content, type, due_date, file1_name, file1_type, file1_link, file2_name, file2_type, file2_link, file3_name, file3_type, file3_link) VALUES(:title, :course_id, :content, :type, :due_date, :file1_name, :file1_type, :file1_link, :file2_name, :file2_type, :file2_link, :file3_name, :file3_type, :file3_link) ");
+        $response = $this->_connexion->prepare("INSERT INTO post(title, course_id, content, type, due_date, file1_name, file1_type, file1_link, file2_name, file2_type, file2_link, file3_name, file3_type, file3_link) VALUES(:title, :course_id, :content, :type, :due_date, :file1_name, :file1_type, :file1_link, :file2_name, :file2_type, :file2_link, :file3_name, :file3_type, :file3_link) ");
 
         $response->execute(array(
             'title' => $params['pfTitle'],
