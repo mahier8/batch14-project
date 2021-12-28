@@ -1,25 +1,29 @@
 // Global variables
+
+// the inputs
 var searchTeacher = document.querySelector('input[name="autosearch"]'), 
 searchStudent = document.querySelector('input[name="studentAutosearch"]'), 
-// we need to make sure we grab the correct input
 
+// where we display the div dropdowns
 teacherResults = document.getElementById('teacherResults'), 
 studentResults = document.getElementById('studentResults'),
-// where we display the div dropdowns
 
-selectedResult = -1; // allow to know which result is selected : -1 means "no selection"
-
+// allow to know which result is selected : -1 means "no selection"
+selectedResult = -1; 
 let studentsArr = [];
 
-// I should add in the parameter role, add role to my url, change the 
-// 2. function to search through the data for what i want
-function getUsers(keywords, role) { // we pass keywords into the getTeachers function
+// data from the form needed for formData object
+let courseId = document.getElementById('courseId').value;
+let teacher;
+
+// 2. function to search through the data and we pass keywords, role into the getTeachers function
+function getUsers(keywords, role) { 
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'index.php?action=autocompleteUsers&keywords=' + keywords + '&role=' + role); // no keywords here just load the file
+    xhr.open('GET', 'index.php?action=autocompleteUsers&keywords=' + keywords + '&role=' + role); 
     xhr.addEventListener('readystatechange', function() {
         let userObj = '';
         if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
-            userObj = JSON.parse(xhr.responseText); // we are working with a teacherObj now
+            userObj = JSON.parse(xhr.responseText); 
             console.log(userObj);
            displayResults(userObj, role);
         }
@@ -29,76 +33,102 @@ function getUsers(keywords, role) { // we pass keywords into the getTeachers fun
 
 // 4. function to choose and display the e.target from below
 function chooseResult(result) {
-    // e.preventDefault();
+    // we grab the div for the results (global variable) and set style
     teacherResults.style.display = "none"; 
     studentResults.style.display = "none";
-    // we grab the div for the results (from the global variable) and set its style
-    result.className = "" // we add an empty className to what we pass in
-    selectedResult = -1; // call in the global variable
-    // searchElement.focus(); // the input will have a focus 
+    result.className = "" 
+    selectedResult = -1; 
+    // searchElement.focus(); 
 }
 
 // 3. function to display the results of the above AJAX request in dropdown divs
-function displayResults(response, role) { // Display the results of a request
+function displayResults(response, role) { 
     studentResults.value = '';
     teacherResults.value = '';
-    if (role == '1')  {
+    if (role == '1')  { // if teacher
         teacherResults.style.display = response.length ? 'block' : 'none'; // We hide the container if we don't have results
-        if (response.length) { // We do modify the results only if we have ones
+        if (response.length) { // We do modify the results only if we have 
             var responseLen = response.length;
             teacherResults.innerHTML = ''; // We clear the results
             for (var i = 0, div ; i < responseLen ; i++) {
+                    // div creation to show results
                     div = teacherResults.appendChild(document.createElement('div'));
                     div.classList.add("searchResults");
-                    div.innerHTML = response[i].firstName + " " + response[i].lastName; // 2. I need to display both the firstName and lastName
+                    div.innerHTML = response[i].firstName + " " + response[i].lastName; // display the firstName + lastName in divs
                     div.addEventListener('click', function(e) {
                         e.preventDefault();
-                        console.log(e.target);
-
                         searchTeacher.value = e.target.textContent;
                         let teacherNameHeader = document.querySelector("#displayTeacherHeader");
                         console.log(teacherNameHeader);
                         teacherNameHeader.innerHTML = searchTeacher.value; // to change the text of the header above the input
+                        teacher = teacherNameHeader.innerHTML;
                         searchTeacher.value = '';
-                });
-                document.body.addEventListener('click',() =>{
-                    chooseResult(teacherResults)
-                })
+                    });
+                    document.body.addEventListener('click',() =>{
+                        chooseResult(teacherResults)
+                    })
+                }
             }
-    }
-    }   else if (role == '2') {
-        console.log(response);
-        studentResults.style.display = response.length ? 'block' : 'none'; // We hide the container if we don't have results
-        if (response.length) { // We do modify the results only if we have ones
+        }   else if (role == '2') { // if student
+                        
+            // 1. empty
+            // could be an if statement here saying if I already have the userObj, then I shouldnt reload it
+            // let studentsSearch = document.querySelectorAll('#studentResults');
+            // console.log(studentsSearch);
+            // if (studentsSearch) {
+            //     studentsSearch.forEach((item) => 
+            //     {
+            //     item.remove()
+            //     console.log(item)   
+            //     }
+            //     );
+            // }
+            console.log(response);
+
+            // We hide container if we no results and modify results if we have
+            studentResults.style.display = response.length ? 'block' : 'none'; 
+            if (response.length) {
             var responseLen = response.length;
-             // We clear the results
+
+            // 2. display
             for (var i = 0, div ; i < responseLen ; i++) {
                     div = studentResults.appendChild(document.createElement('div'));
-                    div.classList.add("searchResults");
-                    div.innerHTML = response[i].firstName + " " + response[i].lastName; // 2. I need to display both the firstName and lastName
+                    // div.classList.add("searchResults"); to add styles to the search
+                    // display firstName and lastName
+                    div.innerHTML = response[i].firstName + " " + response[i].lastName; 
                     div.addEventListener('click', function(e) {
                         e.preventDefault();
-                        console.log(e.target);
 
                         // for the input
                         searchStudent.value = e.target.textContent;
                         // chooseResult(e.target); // i need this choose result function
 
                         let studentNameDiv = document.querySelector("#displayStudent");
-                        studentNameDiv.classList.add("displayStudentsList"); 
-                        console.log(studentNameDiv);
-                        // for the div
-                        // studentNameDiv.innerHTML = searchStudent.value
-
-                        // I want to push the students that i click, into the empty array,
-                        // then display it
                         
-                        studentNameDiv.innerHTML += searchStudent.value + '\n'; // to change the text of the div next to the input
-                        searchStudent.value = '';
+                        studentNameDiv.classList.add("displayStudentsList"); 
 
-                        studentsArr.push(students);
+                        // to change the text of the div next to the input
+                        studentNameDiv.innerHTML += searchStudent.value + '\n'; 
+                        
+                        // studentResults.value = ''; 1. didnt work
+                        
+                        studentsArr.push(searchStudent.value); 
+
+                        // to empty the input after
+                        console.log(studentsArr);
+                        searchStudent.value = ''; 
+
+                        // // limit to 10
+                        // let tenLimit = studentsArr.slice(0, 10);
+                        // console.log(tenLimit);
+
+                        // // to reverse the order
+                        // let reverseArr = studentsArr.slice().reverse();
+                        // console.log(reverseArr);
+
+                        userObj = '';
                 });
-                userObj = '';
+                
                 document.body.addEventListener('click',() =>{
                     chooseResult(studentResults)
                 })
@@ -175,10 +205,21 @@ searchStudent.addEventListener('keyup', function(e) {
     }
 });
 
-// searchElement.addEventListener("submit", function(e) {
-//     if (e.keyCode == 13) {
-//         e.preventDefault();
-//     } else {
-//         console.log(searchElement.value);
-//     }
-// })
+// form to assign course using courseID, teacher, student
+let assignCourse = document.querySelector('#assignCourse');
+assignCourse.addEventListener('click', function(e) {
+    console.log('clicked');
+    // the request
+    var request = new XMLHttpRequest();
+    request.open("POST", "index.php?action=assignCourses");
+
+    // to create formdata object
+    let formData = new FormData();
+    formData.append('courseID', courseId);
+    formData.append('teacher', teacher); // teacher 
+    formData.append('students', studentsArr); // student
+
+    request.send(formData);
+});
+
+

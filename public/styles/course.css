@@ -118,11 +118,17 @@ h1, h2{
     display: flex;
 }
 
+#displayStudent {
+    display: flex;
+    flex-direction: column;
+}
+
 .displayStudentsList {
     background-color: hotpink;
     border: 1px solid black;
     margin-left: 50px;
-    flex-direction: column;
+    display: flex;
+    /* flex-direction: column; */
 }
 
 #addTeacherButton {

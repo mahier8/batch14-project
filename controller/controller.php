@@ -63,5 +63,11 @@ function autocompleteUsers($keywords, $role) {
     echo $userManager->getUsersByRole($keywords, $role); // we echo what we get from our read (SELECT)
 
 }
-
 // added in role to 61 and 63
+
+function assignCourses($teacher, $students, $courseID) {
+    $userManager = new UserManager();
+    $user = $userManager->assignCourses($teacher, $students, $courseID);
+
+}
+

@@ -76,10 +76,25 @@ class UserManager extends Manager {
         // we return a json object after, passing in the teachers variable 
         return json_encode($teachers); 
     }
+
+    // do i need a new table?
+    // public function assignCourses ($teacher, $students, $courseId) {
+    //     $req = $this->_connexion->prepare(
+    //     $coursesToAssign = $db->prepare("INSERT INTO users() VALUES (,NOW())");
+    //     $affectedCourses = $coursesToAssign->execute(array($teacher, $students, $courseId));
+    //     $coursesToAssign->closeCursor();
+    //     return $affectedCourses; 
+    // }
+
+    // public function addCommentToDB ($article_id, $author, $comment) {
+    //     $db = $this->dbConnect();
+    //     $commentToAdd = $db->prepare("INSERT INTO comments(post_id,author,comment,comment_date) VALUES (?,?,?,NOW())");
+    //     $affectedLines = $commentToAdd->execute(array($article_id,$author,$comment));
+    //     $commentToAdd->closeCursor();
+    //     return $affectedLines;
+    // }
 }
 
-// i change the role, and remove the assignment 59
-// What do i add to the WHERE 65
 
     
 

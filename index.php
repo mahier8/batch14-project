@@ -30,9 +30,11 @@ try {
         case "course" :
             course($_GET["courseid"]);
             break;
-            // this is for the autompletes step 3
-        case "autocompleteUsers" : // we add this case to our switch, with the function 
+        case "autocompleteUsers" : 
             autocompleteUsers($_GET['keywords'], $_GET['role']); 
+            break;
+        case "assignCourses" :
+            assignCourses($_POST['teacher'], $_POST['students'], $_POST['courseID']);
             break;
         default : landing();
             break;
@@ -45,5 +47,3 @@ catch(Exception $e){
     $line = $e->getLine();
     require("./view/exceptionView.php");
 }
-
-// do i need to add the role in 35

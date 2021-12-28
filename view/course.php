@@ -15,7 +15,6 @@
                    <?= $course['teacher'];?>
                 </h2> 
             </div>    
-            
         </div>
         <?= '<img id="coursePic" src="'. $course['image'] . '">';?>
     </div>
@@ -24,27 +23,29 @@
     <div id="displayLists" data-courseid=<?=$_GET['courseid']?>>
         <div id="displayTeacherList">
             <div id="displayForm">
-                <form name="assignTo" autocomplete="off" action="index.php" method="POST">
+                <div>
+                    <input type="hidden" name="action" value="assignCourse">
+                    <input type="hidden" id="courseId" name="courseId" value="<?php $course['id']; ?>">
                     <div id="teacherSearch">
-                        <input type="text" name="autosearch" id="autoseachInput" placeholder="Search teachers">                        
+                        <input type="text" name="autosearch" id="autoseachInput" placeholder="Search teachers" autocomplete="off">                        
                         <div id="teacherResults">
                         </div>
                     </div>
 
                     <div id="studentsSearch">
-                        <input type="text" name="studentAutosearch" id="studentAutosearchInput" placeholder="Search students">                        
+                        <input type="text" name="studentAutosearch" id="studentAutosearchInput" placeholder="Search students" autocomplete="off">                        
                         <div id="studentResults">
                         </div>
                     </div>
-                </form>
-            </div>
-            <div id="displayTeacherDiv">
-                <a href="#"><i class="fas fa-trash" ></i></a> 
-                <div id="displayStudent">
-                    <!-- <?= $course['student'];?>  -->
-                    <!-- Do i need to read from the database and display for the student -->
                 </div>
-            <button id="addTeacherButton">Submit</button>    
+                
+                <div id="displayTeacherDiv">
+                    <a href="#"><i class="fas fa-trash" ></i></a> 
+                    <div id="displayStudent">
+                        <!-- <?= $course['student'];?>  -->
+                        <!-- Do i need to read from the database and display for the student -->
+                    </div>
+                <button id="assignCourse">Submit</button>    
             </div>
         </div>
 
@@ -53,7 +54,6 @@
             
         </div>
     </div>
-    
 </div>
 
 <script src="./public/js/autocompletes.js"></script>
