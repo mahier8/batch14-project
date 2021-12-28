@@ -97,7 +97,6 @@ for (let i = 0; i < editPost.length; i++) {
 
             if (postDueDateRaw.textContent != 0) {
                 postDueDate = new Date(postDueDateRaw.textContent +'Z').toISOString().substring(0, 10);
-                console.log(`Post Due Date Valid: ${postDueDate}`);
             } else {
                 postDueDate = null;
             }

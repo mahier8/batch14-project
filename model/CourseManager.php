@@ -143,7 +143,7 @@ class CourseManager extends Manager {
             $response->closeCursor();
         } else {
 
-            $response = $this->_connexion->prepare("UPDATE post SET title =:title, content = :content, due_date = dueDate, type = :type, file1_name = :file1_name,  file1_type = :file1_type, file1_link = :file1_link, file2_name = :file2_name, file2_type = :file2_type, file2_link = :file2_link, file3_name = :file3_name, file3_type = :file3_type, file3_link = :file3_link WHERE course_id = '$courseId' AND id = $hiddenid");
+            $response = $this->_connexion->prepare("UPDATE post SET title =:title, content = :content, due_date = :due_date, type = :type, file1_name = :file1_name,  file1_type = :file1_type, file1_link = :file1_link, file2_name = :file2_name, file2_type = :file2_type, file2_link = :file2_link, file3_name = :file3_name, file3_type = :file3_type, file3_link = :file3_link WHERE course_id = '$courseId' AND id = $hiddenid");
             $response->bindParam(':title', $params['pfTitle']);
             $response->bindParam(':due_date', $params['pfDueDate']);
             $response->bindParam(':type', $params['pfType']);

@@ -163,20 +163,20 @@
             <h4>Posted: <?= $post['post_date'] ?></h4>
             <p><?= $post['content'] ?></p>
 
-            <div>Files:
+            <div>
                 <ul class="postFiles">
                     
-                    <?php if ($post['file1_name']) {
+                    <?php if ($post['file1_link']) {
                         echo '<li>' . $post['file1_type'] . ': <a href="' . $post['file1_link'] . '">' . $post['file1_name'] . '</a></li>'; 
                         } else {
                             echo '<li class="elementHidden">  <a> </a> </li>';
-                        } ?>
-                    <?php if ($post['file2_name']) {
+                        } ?> 
+                    <?php if ($post['file2_link']) {
                         echo '<li>' . $post['file2_type'] . ': <a href="' . $post['file2_link'] . '">' . $post['file2_name'] . '</a></li>'; 
                     } else {
                         echo '<li class="elementHidden">  <a> </a> </li>';
                     } ?>
-                    <?php if ($post['file3_name']) {
+                    <?php if ($post['file3_link']) {
                         echo '<li>' . $post['file3_type'] . ': <a href="' . $post['file3_link'] . '">' . $post['file3_name'] . '</a></li>';
                     } else {
                         echo '<li class="elementHidden">  <a> </a> </li>';
@@ -185,7 +185,7 @@
             </div>
 
             <?php if ($post['due_date'] != null) {
-                    echo '<h3>Due Date: <br>';
+                    echo '<h3 class="dueDate">Due Date: <br>';
                     echo   $post['due_date'] . '</h3>';
                     }; ?>
 

@@ -103,6 +103,12 @@ h1, h2{
     margin:10px;
 }
 
+.postFiles li{
+    list-style:none;
+    margin-left:0;
+    
+}
+
 .postContainer {
     margin-top:10px;
     border: 1px solid black;
@@ -154,4 +160,8 @@ h1, h2{
 }
 #hiddenid {
     display:none;
+}
+
+.dueDate {
+    text-align:center;
 }
