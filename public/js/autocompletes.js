@@ -104,14 +104,12 @@ function displayResults(response, role) {
                         // chooseResult(e.target); // i need this choose result function
 
                         let studentNameDiv = document.querySelector("#displayStudent");
-                        
-                        studentNameDiv.classList.add("displayStudentsList"); 
+                        let studentName = studentNameDiv.appendChild(document.createElement('div'));
 
+                        studentNameDiv.classList.add("displayStudentsList"); 
                         // to change the text of the div next to the input
-                        studentNameDiv.innerHTML += searchStudent.value + '\n'; 
-                        
-                        // studentResults.value = ''; 1. didnt work
-                        
+                        studentName.innerHTML += searchStudent.value + '\n'; 
+                                                
                         studentsArr.push(searchStudent.value); 
 
                         // to empty the input after

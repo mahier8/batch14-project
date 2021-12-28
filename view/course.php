@@ -49,7 +49,6 @@
             </div>
         </div>
 
-        <!-- we will need to create a similar autocomplete layout for the students as well -->
         <div id="displayStudentList">
             
         </div>
