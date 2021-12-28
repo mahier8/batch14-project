@@ -92,13 +92,23 @@ for (let i = 0; i < editPost.length; i++) {
             let postFileURL3 = editPostParent.lastElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.lastElementChild.lastElementChild.href;
             let postFileType3 = editPostParent.lastElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.lastElementChild.firstChild;
             let postDueDateRaw = editPostParent.lastElementChild.lastElementChild.previousElementSibling.previousElementSibling.lastChild;
-            let localDate = new Date(postDueDateRaw);
-            console.log(localDate);
+            let postDueDate;
+            console.log(postDueDateRaw.textContent);
 
-            let postDueDate = Date.parse(postDueDateRaw + 'Z');
-            
-            console.log(postDueDateRaw);
-            console.log(postDueDate);
+            if (postDueDateRaw.textContent != 0) {
+                postDueDate = new Date(postDueDateRaw.textContent +'Z').toISOString().substring(0, 10);
+                console.log(`Post Due Date Valid: ${postDueDate}`);
+            } else {
+                postDueDate = null;
+            }
+             
+            // let postDueDate = new Date(postDueDateRaw.textContent +'Z').toISOString().substring(0, 10);
+
+            //1. Take raw string, convert to ISO standard date
+            //2. Take only the first 10 characters of the ISO string
+            //3. Set value (see later)
+            // http://www.java2s.com/example/javascript/dom-html-element/prepopulating-date-input-field.html
+
             let postHiddenId = editPostParent.lastElementChild.lastElementChild.textContent;
 
             //Isolating the Form Input Fields
@@ -137,7 +147,9 @@ for (let i = 0; i < editPost.length; i++) {
             pfFileName3.value = postFileName3.textContent;
             pfFileURL3.value = postFileURL3;
             pfHiddenId.value = postHiddenId;
-            pfDueDate.value = postDueDate.value;
+            pfDueDate.value = postDueDate;
+
+            
             
             
             

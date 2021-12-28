@@ -184,7 +184,7 @@
                 </ul>
             </div>
 
-            <?php if ($post['due_date'] != '0000-00-00') {
+            <?php if ($post['due_date'] != null) {
                     echo '<h3>Due Date: <br>';
                     echo   $post['due_date'] . '</h3>';
                     }; ?>
