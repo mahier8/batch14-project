@@ -40,7 +40,7 @@
                 </div>
                 
                 <div id="displayTeacherDiv">
-                    <a href="#"><i class="fas fa-trash" ></i></a> 
+                    <!-- <a href="#"><i class="fas fa-trash" ></i></a>  -->
                     <div id="displayStudent">
                         <!-- <?= $course['student'];?>  -->
                         <!-- Do i need to read from the database and display for the student -->

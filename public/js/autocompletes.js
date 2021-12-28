@@ -103,12 +103,22 @@ function displayResults(response, role) {
                         searchStudent.value = e.target.textContent;
                         // chooseResult(e.target); // i need this choose result function
 
+                        // div creation
                         let studentNameDiv = document.querySelector("#displayStudent");
                         let studentName = studentNameDiv.appendChild(document.createElement('div'));
+                        console.log(studentName);
+                        let studentNameLink = studentName.appendChild(document.createElement('a'));
+                        let studentNameSpan = studentName.appendChild(document.createElement('span'));
+                        studentNameLink.title = "Delete student";
+                        studentNameLink.href = "/";
+                        let studentNameIcon = studentNameLink.appendChild(document.createElement('i'));
+                        studentNameIcon.innerHTML = '<i class="fa fa-trash-o" aria-hidden="true"></i>';
 
+                        // adding styles to the divs
                         studentNameDiv.classList.add("displayStudentsList"); 
+
                         // to change the text of the div next to the input
-                        studentName.innerHTML += searchStudent.value + '\n'; 
+                        studentNameSpan.innerHTML += searchStudent.value + '\n'; 
                                                 
                         studentsArr.push(searchStudent.value); 
 
