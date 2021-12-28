@@ -47,7 +47,7 @@ function userId($getId){
 
 function userProfile(){
     $userManager = new UserManager();
-    $user = $userManager->getUser();
+    $user = $userManager->getUser(1);
     require("./view/userProfile.php");
 }
 
@@ -55,4 +55,24 @@ function course($courseid){
     $courseManager = new CourseManager();
     $course = $courseManager->getCourse($courseid);
     require("./view/course.php");
+}
+
+function addEditUserForm($userId = null){
+    if($userId) {
+        $userManager = new UserManager();
+        $user = $userManager->getUser($userId);
+    }
+    require("./view/addEditUserForm.php");
+}
+
+function addEditUser($params){
+    $userManager = new UserManager();
+    print_r($params);
+    if(isset($params['userId'])) {
+        $userManager->updateUser($params);
+    } else {
+        $userManager->addUser($params);
+    }
+    
+    header("Location:index.php?action=userView");
 }

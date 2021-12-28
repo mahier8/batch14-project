@@ -21,5 +21,3 @@ class Manager {
     //     $this->_user_id = $user_id;
     // }   
 }
-
-

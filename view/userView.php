@@ -10,11 +10,7 @@
                 <input type="hidden" name="action" value='filterUsers'>
                 <input type="text" name="filter" placeholder="filter" size="30px" >
             </form>
-
-            <form  action="index.php" method="POST" class="newuser">
-                <input type="hidden" name="action" value='addUser'>
-                <button type="submit" name="addNewUser" ><i class="fas fa-user-plus"></i>Add New User</button>
-            </form>
+            <a href="index.php?action=addEditUserForm" class="newuser"><i class="fas fa-user-plus"></i>Add New User</a>
         </div>
     </div>
 
@@ -41,7 +37,7 @@
                         <td><?= htmlspecialchars($user['userName']); ?></td>
                         <td><?= htmlspecialchars($user['role']); ?></td>
                         <td><?= htmlspecialchars($user['phoneNumber']); ?></td>
-                        <td><a href="index.php?action=userEdit&edit=<?= $user['id'];?>"><i class="fas fa-edit"></i>Edit</a></td>   
+                        <td><a href="index.php?action=addEditUserForm&edit=<?= $user['id'];?>"><i class="fas fa-edit"></i>Edit</a></td>   
                         <td><a href="index.php?action=userDel&delete=<?= $user['id'];?>"><i class="fas fa-trash-alt"></i>Delete</a> </td>
                     
                     </tr>
