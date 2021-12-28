@@ -5,22 +5,22 @@
 <?php ob_start(); ?>
 <div id="mainContent">
     <div class="section">
+      
         <div class="contentHead">
-            <form method="POST" action="index.php" class="filter">
+            <form method="POST" action="index.php" class="filter" onsubmit="return false">
                 <input type="hidden" name="action" value='filterUsers'>
-                <input type="text" name="filter" placeholder="filter" size="30px" >
+                <input type="search" name="filter" placeholder="Enter a User Name" size="60px" id="filter" >
             </form>
 
-            <form  action="index.php" method="POST" class="newuser">
+            <form action="index.php"  method="POST" class="newuser">
                 <input type="hidden" name="action" value='addUser'>
-                <button type="submit" name="addNewUser" ><i class="fas fa-user-plus"></i>Add New User</button>
+                <button type="submit" class="greenStyle btn" name="addNewUser" ><i class="fas fa-user-plus"></i>Add New User</button>
             </form>
-        </div>
     </div>
 
-    <div class="contentBody">
+    <div>
         <table>
-            <thead>
+            <thead class="blueStyle"> 
                 <tr>
                     <th>User ID</th>
                     <th>First Name</th>
@@ -32,17 +32,25 @@
                  
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tableb">
                 <?php foreach($users as $user):?>
                     <tr>
                         <td><?= htmlspecialchars($user['id']) ; ?></td>
                         <td><?= htmlspecialchars($user['firstName']) ;?></td>
                         <td><?= htmlspecialchars($user['lastName']); ?></td>
                         <td><?= htmlspecialchars($user['userName']); ?></td>
-                        <td><?= htmlspecialchars($user['role']); ?></td>
+                        <td><?php 
+                        if (htmlspecialchars($user['role']) == 0) {
+                            echo 'admin';
+                        } elseif (htmlspecialchars($user['role']) == 1){
+                            echo 'teacher';
+                        } else {
+                            echo 'student';
+                        };
+                        ; ?></td>
                         <td><?= htmlspecialchars($user['phoneNumber']); ?></td>
-                        <td><a href="index.php?action=userEdit&edit=<?= $user['id'];?>"><i class="fas fa-edit"></i>Edit</a></td>   
-                        <td><a href="index.php?action=userDel&delete=<?= $user['id'];?>"><i class="fas fa-trash-alt"></i>Delete</a> </td>
+                        <td><a href="index.php?action=userEdit&edit=<?= $user['id'];?>"><i class="fas fa-edit greenLink"></i></a></td>   
+                        <td><a href="index.php?action=userDel&delete=<?= $user['id'];?>"><i class="fas fa-trash-alt greenLink"></i></a> </td>
                     
                     </tr>
                 <?php endforeach;?>
@@ -50,5 +58,6 @@
         </table>
     </div>
 </div>
+<script src="./public/js/userView.js"></script>
 <?php $content = ob_get_clean(); ?>
 <?php require("template.php");?>

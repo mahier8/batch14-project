@@ -1,17 +1,60 @@
 #wrapper {
-    width: 100%;
-    margin: 50px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    padding-top:20px;
+    padding-bottom:20px;
+    width:80%;
+
 }
 
 h1 {
     text-align: center;
 }
 
-#profilePic img{
-    width:200px;
+#profileImg img{
     height:200px;
+    width:200px;
     border-radius: 50%;
     border-color: black;
     border: 1px solid;
+  
+}
+#profileInfor{
+    width: 40%;
+    margin-left: 30%;
+    border-radius: 10px;
+    box-shadow: 4px 4px 2px 1px rgba(0, 0, 255, .2);
+}
 
+#profileInfor div{
+    background: lightgray;
+    margin-bottom: 7px;
+    font-weight: bolder;
+    
+}
+#inputDiv{
+    display: none;
+  
+}
+#upload {
+    font-family: 'Mulish', Arial, sans-serif;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+input[type=file] {
+    margin-left:90px;
+}
+input[type=file]::file-selector-button {
+    background-color: #0C51A1;
+    color: ivory;
+    margin-top:10px;
+    padding:5px;
+    cursor: pointer;
+    border-radius: 8px;
+    border-style: none;
+    font-family: 'Mulish', Arial, sans-serif;
 }

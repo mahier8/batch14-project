@@ -1,22 +1,32 @@
 .contentHead{
     display: flex;
+    align-items:center;
     justify-content: space-between;
     margin-bottom: 10px;
+    width:84%;
+    padding:10px;
+    margin-left:1%;
 }
 
 table{
     border-collapse:collapse ;
+    width: 85%;
+    padding:10px;
+    border: 1px black solid;
+    margin-left:1%;
 }
+
+ 
 
 th{
-  font-weight: bolder;
+    border: 1px black solid;
+
 }
 
-th , td{
-    border: 3px;
-    border-style: groove;
+th, td{
+    border: none;
     padding: 10px;
-    font-size: 19px;
+    text-align:center;
 }
 #mainContent{
     width:80%;
@@ -33,9 +43,13 @@ tbody tr:hover{
     background: lightgray;
 }
 
-form.newuser button{
-    background: indigo;
-    color: ivory;
-    outline: none;
-    padding: 10px;
-}
+#filter{
+    width:32%;
+    font-size: 0.9em;
+    margin-top:2%;
+    padding: 5px;
+    margin-right:3px;
+    border-radius: 8px;
+    font-family: 'Mulish', Arial, sans-serif;
+    cursor: pointer;
+}   
