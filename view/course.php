@@ -11,7 +11,7 @@
                 <?= $course['name'];?>
             </h1>
             <div id="displayTeacherHeader">
-               <h2>
+               <h2 id="teacherHeader">
                    <?= $course['teacher'];?>
                 </h2> 
             </div>    
@@ -23,9 +23,9 @@
     <div id="displayLists" data-courseid=<?=$_GET['courseid']?>>
         <div id="displayTeacherList">
             <div id="displayForm">
-                <div>
+                <div id="displaySearches">
                     <input type="hidden" name="action" value="assignCourse">
-                    <input type="hidden" id="courseId" name="courseId" value="<?php $course['id']; ?>">
+                    <input type="hidden" id="courseId" name="courseId" value="<?=$_GET['courseid']?>">
                     <div id="teacherSearch">
                         <input type="text" name="autosearch" id="autoseachInput" placeholder="Search teachers" autocomplete="off">                        
                         <div id="teacherResults">
@@ -37,15 +37,15 @@
                         <div id="studentResults">
                         </div>
                     </div>
-                </div>
-                
-                <div id="displayTeacherDiv">
+                    <div>
                     <!-- <a href="#"><i class="fas fa-trash" ></i></a>  -->
                     <div id="displayStudent">
                         <!-- <?= $course['student'];?>  -->
                         <!-- Do i need to read from the database and display for the student -->
                     </div>
-                <button id="assignCourse">Submit</button>    
+                    <button id="assignCourse">Submit</button> 
+ 
+                </div>
             </div>
         </div>
 

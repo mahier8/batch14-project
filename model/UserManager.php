@@ -59,7 +59,7 @@ class UserManager extends Manager {
     public function getUsersByRole ($keywords, $role) {
         $keywords = trim($keywords)."%"; //from the query, i remove any whitesapce, as well as the percentage sign 
         $req = $this->_connexion->prepare(
-            // Marie queried this into the database, using like, in the case of firstName and lastName
+            // queried into database, using like, in the case of firstName and lastName
             "SELECT id, firstName, lastName 
             FROM user 
             WHERE role=?
@@ -68,7 +68,6 @@ class UserManager extends Manager {
             ORDER BY firstName");
         $req->bindParam(1, $role, PDO::PARAM_INT);
         $req->bindParam(2, $keywords, PDO::PARAM_STR); 
-        // there was a massive mistake here with the variable $keywords, we used the wrong one
         $req->bindParam(3, $keywords, PDO::PARAM_STR);
         $req->execute();
         $teachers= $req->fetchAll(PDO::FETCH_ASSOC);
@@ -78,23 +77,23 @@ class UserManager extends Manager {
     }
 
     // do i need a new table?
-    // public function assignCourses ($teacher, $students, $courseId) {
-    //     $req = $this->_connexion->prepare(
-    //     $coursesToAssign = $db->prepare("INSERT INTO users() VALUES (,NOW())");
-    //     $affectedCourses = $coursesToAssign->execute(array($teacher, $students, $courseId));
-    //     $coursesToAssign->closeCursor();
-    //     return $affectedCourses; 
-    // }
+    public function assignCourses ($teacher, $students, $courseId) {
+        $req = $this->_connexion->prepare("UPDATE course SET teacher=? WHERE id=?");
+        $req->bindParam(1, $teacher, PDO::PARAM_STR);
+        $req->bindParam(2, $courseId, PDO::PARAM_INT);
+        $req->execute();
+        $req->closeCursor();
 
-    // public function addCommentToDB ($article_id, $author, $comment) {
-    //     $db = $this->dbConnect();
-    //     $commentToAdd = $db->prepare("INSERT INTO comments(post_id,author,comment,comment_date) VALUES (?,?,?,NOW())");
-    //     $affectedLines = $commentToAdd->execute(array($article_id,$author,$comment));
-    //     $commentToAdd->closeCursor();
-    //     return $affectedLines;
-    // }
+        for ($i = 0; $i < count($students); $i++) {
+            // $students[$i];
+            $students[$i] = $this->_connexion->prepare("INSERT INTO coursesTaken (id, courseId, studentId) VALUES ('', '', '')");
+            $students[$i]->bindParam(1, );
+            $students[$i]->bindParam(2, );
+            $students[$i]->execute();
+            $students[$i]->closeCursor();
+        }
+    }
 }
-
 
     
 

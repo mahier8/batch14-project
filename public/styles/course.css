@@ -58,6 +58,11 @@ h1, h2{
 }
 
 /* the form */
+#assignCourse {
+    margin-bottom: 50px;
+    margin-left: 50px;
+}
+
 #displayForm {
     /* border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
@@ -66,6 +71,10 @@ h1, h2{
     /* position: absolute;
     z-index: 2; */
 
+}
+
+#displaySearches {
+    display: flex;
 }
 
 #displayTeacherList form {
@@ -126,8 +135,11 @@ h1, h2{
 .displayStudentsList {
     background-color: hotpink;
     border: 1px solid black;
+    border-radius: 8px;
     margin-left: 50px;
+    width: 150px;
     display: flex;
+    padding: 5px;
     /* flex-direction: column; */
 }
 

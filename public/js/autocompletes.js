@@ -14,7 +14,7 @@ let studentsArr = [];
 
 // data from the form needed for formData object
 let courseId = document.getElementById('courseId').value;
-let teacher;
+let teacher = document.getElementById('teacherHeader').textContent;
 
 // 2. function to search through the data and we pass keywords, role into the getTeachers function
 function getUsers(keywords, role) { 
@@ -116,6 +116,7 @@ function displayResults(response, role) {
 
                         // adding styles to the divs
                         studentNameDiv.classList.add("displayStudentsList"); 
+                        studentNameSpan.style.marginLeft = '10px';
 
                         // to change the text of the div next to the input
                         studentNameSpan.innerHTML += searchStudent.value + '\n'; 
@@ -126,6 +127,7 @@ function displayResults(response, role) {
                         console.log(studentsArr);
                         searchStudent.value = ''; 
 
+                        console.log(searchStudent.value);
                         // // limit to 10
                         // let tenLimit = studentsArr.slice(0, 10);
                         // console.log(tenLimit);
@@ -217,17 +219,20 @@ searchStudent.addEventListener('keyup', function(e) {
 let assignCourse = document.querySelector('#assignCourse');
 assignCourse.addEventListener('click', function(e) {
     console.log('clicked');
+    console.log(courseId);
+    console.log(teacher);
+    console.log(studentsArr);
     // the request
-    var request = new XMLHttpRequest();
-    request.open("POST", "index.php?action=assignCourses");
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "index.php?action=assignCourses");
 
     // to create formdata object
     let formData = new FormData();
     formData.append('courseID', courseId);
-    formData.append('teacher', teacher); // teacher 
-    formData.append('students', studentsArr); // student
+    formData.append('teacher', teacher.trim()); 
+    formData.append('students', studentsArr); 
 
-    request.send(formData);
+    xhr.send(formData);
 });
 
 
