@@ -1,25 +1,28 @@
 <div id="sideBar">
     <?php if(!isset($_SESSION['userId'])):?>
         <div id="loggedOut">
-            <form id="loginForm" action="index.php" method="POST">
-                <input type="hidden" name="action" value="login">
-                <h3>Sign In</h3>
-                <input type="text" name="username" placeholder="username">
-            
-                <input type="password" name="password" placeholder="password">
-               
-                <button type="submit" class="blueStyle btn">Login</button>
-                <div id="checkBox">
-                    <input type="checkbox" name="checkbox" id="checkbox">
-                    <label for="checkbox">Remember me</label>
-                </div>    
-            </form>
+            <div id="loginContainer">
+                <form id="loginForm" action="index.php" method="POST">
+                    <input type="hidden" name="action" value="login">
+                    <h3>Sign In</h3>
+                    <input type="text" name="username" placeholder="username">
+                
+                    <input type="password" name="password" placeholder="password">
+                    
+                    <button type="submit" class="blueStyle btn">Login</button>
+                    <div id="checkBox">
+                        <input type="checkbox" name="checkbox" id="checkbox">
+                        <label for="checkbox">Remember me</label>
+                    </div>    
+                </form>
+            </div>
             <div id="infoSection">
                 <p>Unspecified English Academy</p>
-                <p>53, Seonggyeoldaehak-ro, Manan-gu, </p>
-                <p>Anyang-si, Gyeonggi-do
-                <p>Republic of Korea (14097)</p>
-                <p>Tel : +82-31-467-8114</p>
+                <p>IS Biz Tower 2 #1101, </p>
+                <p>23 Seonyu-ro 49-gil,
+                <p>Yeongdeungpo-gu, Seoul,</p>
+                <p>South Korea</p>
+                <p>Tel : +82-10-1000-1000</p>   
             </div>
         </div>
     <?php else: ?>

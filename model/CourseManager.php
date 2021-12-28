@@ -113,11 +113,22 @@ class CourseManager extends Manager {
         $pfLink2Name = $params['pfLink2Name']; $pfLink2Type = $params['pfLink2Type']; $pfLink2URL = $params['pfLink2URL'];
         $pfLink3Name = $params['pfLink3Name']; $pfLink3Type = $params['pfLink3Type']; $pfLink3URL = $params['pfLink3URL'];
 
+        
         $response = $this->_connexion->prepare("UPDATE post SET title = '$pfTitle', content = '$pfContent', due_date = '$pfDueDate', type = '$pfType', file1_link = '$pfLink1URL',  file1_type = '$pfLink1Type', file1_link = '$pfLink1URL', file2_name = '$pfLink2Name', file2_type = '$pfLink2Type', file2_link = '$pfLink2URL', file3_name = '$pfLink3Name', file3_type = '$pfLink3Type', file3_link = '$pfLink3URL' WHERE course_id = '$courseId' AND id = $hiddenid");
-
+        echo $pfDueDate;
+        echo gettype($pfDueDate);
         $data = $response->execute();
         $response->closeCursor();
 
         //Future Update - Insecure Query - Rebuild with Bind Param
     }
 }
+
+//course.js:137 The specified value "NaN" does not conform to the required format, "yyyy-MM-dd".
+
+// //         
+// if (empty($params['pfDueDate'])){
+//     $response = $this->_connexion->prepare("UPDATE post SET title = '$pfTitle', content = '$pfContent', type = '$pfType', file1_link = '$pfLink1URL',  file1_type = '$pfLink1Type', file1_link = '$pfLink1URL', file2_name = '$pfLink2Name', file2_type = '$pfLink2Type', file2_link = '$pfLink2URL', file3_name = '$pfLink3Name', file3_type = '$pfLink3Type', file3_link = '$pfLink3URL' WHERE course_id = '$courseId' AND id = $hiddenid");
+// } else {
+//     
+// }

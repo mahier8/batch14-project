@@ -32,7 +32,7 @@
                 <?php if (isset($course['startDate'])){
                     echo 'Start Date: ' . $course['startDate'];
                 }?> <?php if (isset($course['endDate']) && $course['endDate'] != null){
-                    echo 'to' . $course['endDate'];
+                    echo 'to ' . $course['endDate'];
                 }?>
             </h3>
         </div>

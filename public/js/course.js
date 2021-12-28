@@ -91,7 +91,14 @@ for (let i = 0; i < editPost.length; i++) {
             let postFileName3 = editPostParent.lastElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.lastElementChild.lastElementChild; 
             let postFileURL3 = editPostParent.lastElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.lastElementChild.lastElementChild.href;
             let postFileType3 = editPostParent.lastElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.lastElementChild.firstChild;
-            let postDueDate = editPostParent.lastElementChild.lastElementChild.previousElementSibling.previousElementSibling.lastChild;
+            let postDueDateRaw = editPostParent.lastElementChild.lastElementChild.previousElementSibling.previousElementSibling.lastChild;
+            let localDate = new Date(postDueDateRaw);
+            console.log(localDate);
+
+            let postDueDate = Date.parse(postDueDateRaw + 'Z');
+            
+            console.log(postDueDateRaw);
+            console.log(postDueDate);
             let postHiddenId = editPostParent.lastElementChild.lastElementChild.textContent;
 
             //Isolating the Form Input Fields
@@ -130,7 +137,8 @@ for (let i = 0; i < editPost.length; i++) {
             pfFileName3.value = postFileName3.textContent;
             pfFileURL3.value = postFileURL3;
             pfHiddenId.value = postHiddenId;
-            pfDueDate.value = Date.parse(postDueDate.value + 'Z');
+            pfDueDate.value = postDueDate.value;
+            
             
             
 
