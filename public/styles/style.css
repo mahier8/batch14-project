@@ -97,7 +97,14 @@ a {
     font-family: 'Mulish', Arial, sans-serif;
 }
 
+.centerText {
+    text-align:center;
+}
 
+.centerDiv {
+    display:flex;
+    justify-content: center;
+}
 
 /* ////////////////////////////////////////////////////////// */
 /* The SideBar  */

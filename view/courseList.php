@@ -19,7 +19,7 @@
                 </div>
             </a>
     <div id="cardContainer">
-            <h1 id="cogurseTitle" class="blueStyle">All Courses</h1> 
+            <h1 id="courseTitle" class="blueStyle">All Courses</h1> 
 
                 <?php foreach ($courses AS $course):?>
                     
@@ -57,7 +57,6 @@
              <?php endforeach;?>
             
     </div>
-<<<<<<< HEAD
         <div id="courseButtonTop">
 
 
@@ -69,9 +68,5 @@
 
 
             
-=======
-    <div id="announce">announcements</div>
-</div>           
->>>>>>> b423283dd20a8007cde6e9f576590ad289b61ee4
 <?php $content = ob_get_clean();?>
 <?php require("template.php");?>

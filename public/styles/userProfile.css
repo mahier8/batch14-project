@@ -1,43 +1,66 @@
 #wrapper {
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 15px;
+    display:flex;
     padding-top:20px;
-    padding-bottom:20px;
-    width:80%;
-
+    padding-bottom:65px;
+    flex-direction:row;
 }
-
 h1 {
     text-align: center;
 }
 
+#profileImg {
+    padding:10px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    text-align:justify;
+}
+
 #profileImg img{
-    height:200px;
-    width:200px;
+    height:100px;
+    width:100px;
     border-radius: 50%;
     border-color: black;
     border: 1px solid;
 }
+#profileInfo {
+    padding:10px;
+    display:flex;
+    flex-direction: row;
+}
+#profileInfo p{
+    margin:0;
+}
 
-#profileInfor{
-    margin-left: 60px;
-    margin-top: 60px;
-    margin-right:40px;
-    width: 60%;
+#profileInfo div {
+    
+    margin:10px;
+    width:260px;
+    flex-direction:row;
+}
+
+.profDetail {
+    border: 1px black solid;
+    padding:5px;
+}
+
+#uploadForm{
+    width:30%;
+    margin-top: 150px;
+    font-family: 'Mulish', Arial, sans-serif;
 }
 
 #form{
-    margin-top: 50px;
+    font-family: 'Mulish', Arial, sans-serif;
+    
 }
-#profileInfor p{
-   background:lightblue;
-   padding: 4px;
-}
+
 #inputNone{
     display: none;
+    justify-content: center;
   
 }
+
 #upload {
     font-family: 'Mulish', Arial, sans-serif;
     display:flex;
@@ -56,24 +79,28 @@ input[type=file] {
 #error{
     color: tomato;
 }
+
+#changeButtons {
+    display:flex;
+    align-content:center;
+    justify-content: space-between;
+}
+
 .success{
     color: chartreuse;
 }
 button{
-    color: white;
-    background: blue;
-    margin-left: 20px;
+    justify-content: center;
 }
 #submitButton{
-    display: none;
+    text-align:center;
 }
 
 input{
-    font-family: 'FontAwesome';
+    font-family: 'Mulish', Arial, sans-serif;
     padding: 10px;
     border-radius: 6px;
-    border: none;
-    border-bottom: 1px solid lightgray;
+    border: 1px black solid;
 }
 
 input:hover{
@@ -82,10 +109,10 @@ input:hover{
 input[type=file]::file-selector-button {
     background-color: #0C51A1;
     color: ivory;
-    margin-top:10px;
     padding:5px;
     cursor: pointer;
     border-radius: 8px;
     border-style: none;
     font-family: 'Mulish', Arial, sans-serif;
 }
+

@@ -12,11 +12,19 @@ const input = {
     
 };
 
+const hide = document.getElementById('subHide');
+
+hide.addEventListener('click', function(e){
+    input.inputDiv.style.display='none';
+    e.target.style.display='flex';
+    input.submitButton.style.display='none';
+    input.changeButton.style.display='flex';
+})
 
 input.changeButton.addEventListener('click', function(e){
-    input.inputDiv.style.display='block';
+    input.inputDiv.style.display='flex';
     e.target.style.display='none';
-    input.submitButton.style.display='block';
+    input.submitButton.style.display='flex';
 });
 
 input.submitButton.addEventListener('click', function(e){
