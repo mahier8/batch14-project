@@ -55,7 +55,6 @@ tbody tr:hover{
     cursor: pointer;
 }   
 a.newuser{
-    background: indigo;
     color: ivory;
     outline: none;
     padding: 10px;

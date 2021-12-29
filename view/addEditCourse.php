@@ -35,24 +35,7 @@ $courseDesc = isset($course) ? $course['courseDesc'] : "";
             <label for="courseTeacher">Course Teacher:</label>
             <input type="text" name="courseTeacher" id="courseTeacher" value="<?=$courseTeacher?>" required>  
         </p>
-        <!-- <p> 
-            <label for="courseDays">Course days:</label><br>
-            
-            <input type="checkbox" id="monday" name="courseDays" value="monday">
-            <label for="monday">Monday</label><br>
-            <input type="checkbox" id="tuesday" name="courseDays" value="tuesday">
-            <label for="tuesday">Tuesday</label><br>
-            <input type="checkbox" id="wednesday" name="courseDays" value="wednesday">
-            <label for="wednesday">Wednesday</label><br>
-            <input type="checkbox" id="thursday" name="courseDays" value="thursday">
-            <label for="thursday">Thursday</label><br>
-            <input type="checkbox" id="friday" name="courseDays" value="friday">
-            <label for="friday">Friday</label><br>
-            <input type="checkbox" id="saturday" name="courseDays" value="saturday">
-            <label for="saturday">Saturday</label><br>
-            <input type="checkbox" id="sunday" name="courseDays" value="sunday">
-            <label for="sunday">Sunday</label><br>
-        </p> -->
+
         <p>
             <label for="time">Course Days and Time:</label><br>
             <input type="text" id="courseTime" name="courseTime" value="<?=$dayTime?>">   
