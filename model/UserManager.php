@@ -83,23 +83,24 @@ class UserManager extends Manager {
         return json_encode($teachers); 
     }
 
-    // do i need a new table?
     public function assignCourses ($teacher, $students, $courseId) {
-        $req = $this->_connexion->prepare("UPDATE course SET teacher=? WHERE id=?");
-        $req->bindParam(1, $teacher, PDO::PARAM_STR);
-        $req->bindParam(2, $courseId, PDO::PARAM_INT);
+        $req = $this->_connexion->prepare("UPDATE course SET teacher=:teacher WHERE id=:id"); 
+        $req->bindParam(":teacher", $teacher);
+        $req->bindParam(":id", $courseId); 
         $req->execute();
         $req->closeCursor();
 
-        for ($i = 0; $i < count($students); $i++) {
-            // $students[$i];
-            $students[$i] = $this->_connexion->prepare("INSERT INTO coursesTaken (id, courseId, studentId) VALUES ('', '', '')");
-            $students[$i]->bindParam(1, );
-            $students[$i]->bindParam(2, );
-            $students[$i]->execute();
-            $students[$i]->closeCursor();
+        $studentsArr = explode(",", $students);
+
+        for ($i = 0; $i < count($studentsArr); $i++) {
+            $req = $this->_connexion->prepare("INSERT INTO coursesTaken (courseId, studentId) VALUES (:courseId, :studentId)"); // what are my conditions
+            $req->bindParam(":courseId", $courseId);
+            $req->bindParam(":studentId", $studentsArr[$i]);
+            $req->execute();
+            $req->closeCursor();
         }
     }
+
     public function updateImage($userid, $imagePath) {
         $req = $this->_connexion->prepare("UPDATE user SET imagePath = ? WHERE id = ?"); 
         $req->bindParam(1, $imagePath, PDO::PARAM_STR);

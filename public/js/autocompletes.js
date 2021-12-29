@@ -89,13 +89,15 @@ function displayResults(response, role) {
             studentResults.style.display = response.length ? 'block' : 'none'; 
             if (response.length) {
             var responseLen = response.length;
+        
 
             // 2. display
             for (var i = 0, div ; i < responseLen ; i++) {
                     div = studentResults.appendChild(document.createElement('div'));
                     // div.classList.add("searchResults"); to add styles to the search
                     // display firstName and lastName
-                    div.innerHTML = response[i].firstName + " " + response[i].lastName; 
+                    div.innerHTML = response[i].firstName + " " + response[i].lastName;
+                    let studentId = response[i].id; 
                     div.addEventListener('click', function(e) {
                         e.preventDefault();
 
@@ -121,7 +123,7 @@ function displayResults(response, role) {
                         // to change the text of the div next to the input
                         studentNameSpan.innerHTML += searchStudent.value + '\n'; 
                                                 
-                        studentsArr.push(searchStudent.value); 
+                        studentsArr.push(studentId); 
 
                         // to empty the input after
                         console.log(studentsArr);
@@ -215,24 +217,23 @@ searchStudent.addEventListener('keyup', function(e) {
     }
 });
 
+
+
 // form to assign course using courseID, teacher, student
 let assignCourse = document.querySelector('#assignCourse');
+console.log(assignCourse);
 assignCourse.addEventListener('click', function(e) {
-    console.log('clicked');
+    e.preventDefault();
     console.log(courseId);
     console.log(teacher);
     console.log(studentsArr);
+
     // the request
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "index.php?action=assignCourses");
+    xhr.open("GET", `index.php?action=assignCourses&courseID=${courseId}&teacher=${teacher.trim()}&students=${studentsArr}`);
 
-    // to create formdata object
-    let formData = new FormData();
-    formData.append('courseID', courseId);
-    formData.append('teacher', teacher.trim()); 
-    formData.append('students', studentsArr); 
-
-    xhr.send(formData);
+    // console.log(formData)
+    xhr.send();
 });
 
 

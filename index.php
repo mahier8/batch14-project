@@ -14,13 +14,12 @@ try {
             }
             break;
 
-        case "logout" : logout();
-        
+        case "logout" : 
+            logout(); 
             break; 
-
-        case "userView" : userView(); 
+        case "userView" : 
+            userView(); 
             break;
-
         case "userProfile" : 
             userProfile();
             break;
@@ -46,7 +45,8 @@ try {
             autocompleteUsers($_GET['keywords'], $_GET['role']); 
             break;
         case "assignCourses" :
-            assignCourses($_POST['teacher'], $_POST['students'], $_POST['courseID']);
+            assignCourses($_GET['teacher'], $_GET['students'], $_GET['courseID']);
+            break;
         case "createPost" :
             createPost($_GET["courseid"], $_POST);
             break;

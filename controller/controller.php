@@ -67,14 +67,14 @@ function createPost($courseid, $params){
 function autocompleteUsers($keywords, $role) { 
     $userManager = new UserManager(); // we get the user mananger object 
     echo $userManager->getUsersByRole($keywords, $role); // we echo what we get from our read (SELECT)
-
+    
 }
 // added in role to 61 and 63
 
 function assignCourses($teacher, $students, $courseID) {
     $userManager = new UserManager();
-    $user = $userManager->assignCourses($teacher, $students, $courseID);
-
+    $userManager->assignCourses($teacher, $students, $courseID);
+    courseList();
 }
 
 function updatePost($courseid, $params){

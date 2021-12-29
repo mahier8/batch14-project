@@ -68,7 +68,7 @@
                         <!-- <?= $course['student'];?>  -->
                         <!-- Do i need to read from the database and display for the student -->
                     </div>
-                    <button id="assignCourse">Submit</button> 
+                    <button name="assignCourse" type="button" id="assignCourse" onsubmit="return false">submit</button> 
  
                 </div>
             </div>
