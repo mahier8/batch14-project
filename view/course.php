@@ -29,6 +29,11 @@
                 }?>
             </h3>
             <h3>
+                <?php if (isset($course['dayTime'])){
+                    echo $course['dayTime'];
+                }?>
+            </h3>
+            <h3>
                 <?php if (isset($course['startDate'])){
                     echo 'Start Date: ' . $course['startDate'];
                 }?> <?php if (isset($course['endDate']) && $course['endDate'] != null){
@@ -36,16 +41,28 @@
                 }?>
             </h3>
         </div>
-
-        <div id="uploadForm">
+        <div class="centerDiv" id="uploadForm">
             <?= '<img id="coursePic" src="private/coursePics/'. $course['image'] . '">';?>
-            <form action="index.php" id="upload" method="post" enctype="multipart/form-data">
-                Change Profile Picture
-                <input type="file" class="btn" name="image" id="fileToUpload">
-                <input type="hidden" name="action" value="uploadCourseImage">
-                <input type="hidden" name="courseId" value="<?=$course['id'];?>">
-                <input type="submit" class="greenStyle btn" value="Upload Image" name="submit">
-            </form>
+            <div  <?php if ($_SESSION['userRoleDesc'] == 'Admin' || $_SESSION['userRoleDesc'] == 'Teacher') {
+                        echo 'class=""';
+                        } else {
+                        echo 'class="elementHidden';
+                        }  
+                    ?> 
+             class="centerDiv">
+                
+                
+                    <form action="index.php" id="upload" method="post" enctype="multipart/form-data">
+                        <input type="file" class="btn" name="image" id="fileToUpload">
+                        <input type="hidden" name="action" value="uploadCourseImage">
+                        <input type="hidden" name="courseId" value="<?=$course['id'];?>">
+                        <div class="centerDiv" id="uploadSubmit">
+                            <input type="submit" class="greenStyle btn" value="Upload Image" name="submit">
+                        </div>
+                    
+                    </form>
+                
+            </div>
         </div>
         
 
@@ -53,7 +70,12 @@
 
 
 
-    <div id="postFormDiv">
+    <div <?php if ($_SESSION['userRoleDesc'] == 'Admin' || $_SESSION['userRoleDesc'] == 'Teacher') {
+                        echo 'class=""';
+                        } else {
+                        echo 'class="elementHidden';
+                        }  
+                    ?> id="postFormDiv">
         <div id="create"  class="postHeader pinkStyle">
             <h2 id="createh2">Create Post</h2>
         </div>
@@ -202,7 +224,13 @@
                     }; ?>
 
             <div class="postEditDiv">
-                <button class="postEditBtn greenStyle btn">Edit Post</button>
+                <button  <?php if ($_SESSION['userRoleDesc'] == 'Admin' || $_SESSION['userRoleDesc'] == 'Teacher') {
+                        echo 'class="postEditBtn greenStyle btn"';
+                        } else {
+                        echo 'class="elementHidden';
+                        }  
+                    ?>
+                >Edit Post</button>
             </div>
 
             <?php if ($post['id']) {
