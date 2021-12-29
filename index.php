@@ -27,7 +27,7 @@ try {
 
         case 'updatePassword':
             // if(isset($_POST['submit'])){
-            updateProfilePass($_POST['userId'], $_POST['oldPassword'], $_POST['newPassword'], $_POST['rePassword']);
+            updateProfilePass($_POST['userId'], $_POST['oldPassword'], $_POST['newPassword']);
 
             break;
 
@@ -58,6 +58,7 @@ try {
                 addEditUserForm();
             }
             break;
+            
         case "addEditUser": 
             if(!empty($_POST['userName']) && !empty($_POST['firstName']) && !empty($_POST['lastName']) OR !empty($_POST['password']) &&
             !empty($_POST['role']) && !empty($_POST['email']) && !empty($_POST['phoneNumber'])

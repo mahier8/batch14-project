@@ -1,4 +1,5 @@
 <?php
+require_once("./model/security.php");
 require_once("./model/UserManager.php");
 require_once("./model/CourseManager.php");
 
@@ -11,7 +12,9 @@ function landing(){
 
 function login($params){
     $userManager = new UserManager();
-    $userConnected = $userManager->logInUser($params['username'], $params['password']);
+    $userName = pageSecurity($params['username']);
+    $password = pageSecurity($params['password']);
+    $userConnected = $userManager->logInUser($userName , $password);
    
     if($userConnected){
         header('Location: index.php?action=courseList'); 
@@ -38,9 +41,12 @@ function userView(){
     require("./view/userView.php");  
 }
 
-function updateProfilePass($userId, $oldPassword, $newPassword, $rePassword){
+function updateProfilePass($userId, $oldPassword, $newPassword){
     $userManager = new UserManager();
-    $password = $userManager->passwordUpdate($userId, $oldPassword, $newPassword, $rePassword);
+    $id = pageSecurity($userId);
+    $oldPass = pageSecurity($oldPassword);
+    $newPass = pageSecurity($newPassword);
+    $password = $userManager->passwordUpdate( $id, $oldPass, $newPass);
     $userProf = $userManager->getUser($_SESSION['userId']);
     require("./view/userProfile.php");
     // header("location:index.php?action=userProfile");
@@ -175,8 +181,15 @@ function addEditUserForm($userId = null){
 
 function addEditUser($params){
     $userManager = new UserManager();
-    print_r($params);
+    // print_r($params);
     if(isset($params['userId'])) {
+        // pageSecurity($params['']);
+        // pageSecurity($params['']);
+        // pageSecurity($params['']);
+        // pageSecurity($params['']);
+        // pageSecurity($params['']);
+        // pageSecurity($params['']);
+        // pageSecurity($params['']);
         $userManager->updateUser($params);
     } else {
         $userManager->addUser($params);

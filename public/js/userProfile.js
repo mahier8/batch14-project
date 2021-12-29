@@ -9,7 +9,6 @@ const input = {
     changeButton : document.getElementById('changeButton'),
     submitButton : document.getElementById('submitButton'),
     error : document.getElementById('error')
-    
 };
 
 const hide = document.getElementById('subHide');

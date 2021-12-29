@@ -23,7 +23,7 @@ class UserManager extends Manager {
         return $user;
     }
 
-    public function passwordUpdate($id, $oldPass, $newPass, $rePass) {
+    public function passwordUpdate($id, $oldPass, $newPass) {
         
         // $oldPassword = password_hash($oldPass, PASSWORD_DEFAULT);
         $pass = $this->_connexion->prepare("SELECT password FROM user WHERE id = ?");
