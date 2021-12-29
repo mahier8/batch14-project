@@ -1,6 +1,10 @@
+
 <?php ob_start();?>
 <link rel="stylesheet" href="./public/styles/userProfile.css">
-<?php $style = ob_get_clean();?>
+<?php 
+    $style = ob_get_clean();
+    ob_start();
+?>
 
 <?php ob_start();?>
 <div id="wrapper">
@@ -42,23 +46,37 @@
         <div id = "courses">
             Courses:
         </div>
-   
-    <h3>Change Password</h3>
-        <div id="inputDiv">
-            <input type="password" name="oldpassword" placeholder="old Password">
-            <br>
-            <br>
-            <input type="password" name="newPassword" placeholder="New Password">
-            <br>
-            <br>
-            <input type="password" name="rePassword" placeholder="confirm Password">
-            <br>
-            <br>
-        </div>
-        <input type="submit" value="Change Password" class="blueStyle btn">
-    </div>
-</div>
 
+      
+    <div id="form">
+      
+       <div id='inputNone'>
+            <p id="error"></p>
+            <form action="index.php" method="POST" id="form">
+        
+                <input type="hidden"  name="action" value="updatePassword">
+                <!-- <input type="hidden"  name="updatePassword"> -->
+                <input type="hidden" name="userId" value="<?= $_SESSION['userId']; ?>">
+            
+                <input type="password" id="oldPassword" name="oldPassword" placeholder="Curent Password&emsp;&emsp;&emsp;&emsp;&emsp;&#xf06e">
+                <br>
+                <br>
+                <input type="password" id="newPassword" name="newPassword" placeholder="New Password&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&#xf06e">
+                <br>
+                <br>
+                <input type="password" id="rePassword" name="rePassword" placeholder="Password Comfirmation&emsp;&emsp;&#xf06e">
+                <br>
+                <br>
+                <button type="submit" id="submitButton" name="submit">Submit</button>
+
+            </form>
+        
+        </div>
+      
+        <button id='changeButton'>Change Password</button>
+    </div>
+
+</div>
 <script src="./public/js/userProfile.js"></script>
 <?php $content = ob_get_clean();?>
 <?php require("template.php");?>

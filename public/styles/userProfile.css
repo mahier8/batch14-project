@@ -18,22 +18,23 @@ h1 {
     border-radius: 50%;
     border-color: black;
     border: 1px solid;
-  
-}
-#profileInfor{
-    width: 40%;
-    margin-left: 30%;
-    border-radius: 10px;
-    box-shadow: 4px 4px 2px 1px rgba(0, 0, 255, .2);
 }
 
-#profileInfor div{
-    background: lightgray;
-    margin-bottom: 7px;
-    font-weight: bolder;
-    
+#profileInfor{
+    margin-left: 60px;
+    margin-top: 60px;
+    margin-right:40px;
+    width: 60%;
 }
-#inputDiv{
+
+#form{
+    margin-top: 50px;
+}
+#profileInfor p{
+   background:lightblue;
+   padding: 4px;
+}
+#inputNone{
     display: none;
   
 }
@@ -47,6 +48,36 @@ h1 {
 
 input[type=file] {
     margin-left:90px;
+    margin-right: 60px;
+    box-shadow: 3px 3px 3px lightslategray;
+    border-radius: 10px;
+    padding: 10PX;
+}
+#error{
+    color: tomato;
+}
+.success{
+    color: chartreuse;
+}
+button{
+    color: white;
+    background: blue;
+    margin-left: 20px;
+}
+#submitButton{
+    display: none;
+}
+
+input{
+    font-family: 'FontAwesome';
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    border-bottom: 1px solid lightgray;
+}
+
+input:hover{
+    outline:1px solid dodgerblue;
 }
 input[type=file]::file-selector-button {
     background-color: #0C51A1;

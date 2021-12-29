@@ -8,7 +8,7 @@
     <script src="https://kit.fontawesome.com/9cb80c9d72.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./public/styles/style.css">
     <script src="https://kit.fontawesome.com/9cb80c9d72.js" crossorigin="anonymous"></script>
-    <?= $style; ?>
+    <?= $style;?>
 </head>
 <body>
     <!-- navbar, the blue banner on every page with 100% width-->
@@ -26,7 +26,11 @@
     <footer>
         <div id="leftFooterDiv">Copyright © 2021 LeHamburger</div>
         <div>IS Biz Tower 2 #1101, 23 Seonyu-ro 49-gil, Yeongdeungpo-gu, Seoul, South Korea</div>
+<<<<<<< HEAD
     </footer>
 <script src="./public/js/main.js"></script>
+=======
+</footer>
+>>>>>>> b423283dd20a8007cde6e9f576590ad289b61ee4
 </body>
 </html>

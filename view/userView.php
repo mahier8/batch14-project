@@ -9,7 +9,7 @@
         <div class="contentHead">
             <form method="POST" action="index.php" class="filter" onsubmit="return false">
                 <input type="hidden" name="action" value='filterUsers'>
-                <input type="search" name="filter" placeholder="Enter a User Name" size="60px" id="filter" >
+                <input type="search" name="filter" placeholder="Enter a User Name" size="60px" id="check" >
             </form>
             <a href="index.php?action=addEditUserForm" class="newuser greenStyle btn"><i class="fas fa-user-plus"></i>Add New User</a>
         </div>

@@ -19,11 +19,23 @@
                 </div>
             </a>
     <div id="cardContainer">
+<<<<<<< HEAD
         <div class="blueStyle">
             
             <h1 class="courseTitle">All Courses</h1> 
 
         </div>
+=======
+            <h1 id="courseTitle">All Courses</h1> 
+            
+            <div id="courseButtonTop">
+            <a href="#"><div>Add Course<i class="fas fa-plus"></i></div></a>
+            </div>
+            <?php echo $_SESSION['userId']; 
+                echo $_SESSION['userName'];
+             
+            ?>
+>>>>>>> b423283dd20a8007cde6e9f576590ad289b61ee4
                 <?php foreach ($courses AS $course):?>
                     
                     <div class="courseCard">
@@ -60,6 +72,7 @@
              <?php endforeach;?>
             
     </div>
+<<<<<<< HEAD
         <div id="courseButtonTop">
 
 
@@ -71,5 +84,9 @@
 
 
             
+=======
+    <div id="announce">announcements</div>
+</div>           
+>>>>>>> b423283dd20a8007cde6e9f576590ad289b61ee4
 <?php $content = ob_get_clean();?>
 <?php require("template.php");?>

@@ -12,8 +12,9 @@ function landing(){
 function login($params){
     $userManager = new UserManager();
     $userConnected = $userManager->logInUser($params['username'], $params['password']);
+   
     if($userConnected){
-        header('Location: index.php?action=courseList');
+        header('Location: index.php?action=courseList'); 
     } else {
         header('Location: index.php');
     }
@@ -37,17 +38,23 @@ function userView(){
     require("./view/userView.php");  
 }
 
-function userId($id){
-    $idManager = new UserManager($id);
-    $idManager->delete();
+function updateProfilePass($userId, $oldPassword, $newPassword, $rePassword){
+    $userManager = new UserManager();
+    $password = $userManager->passwordUpdate($userId, $oldPassword, $newPassword, $rePassword);
+    $userProf = $userManager->getUser($_SESSION['userId']);
+    require("./view/userProfile.php");
+    // header("location:index.php?action=userProfile");
+}
+
+function userId($getId){
+    $getId = new UserManager($getId);
+    $getId->delete();
     header("location:index.php?action=userView");
 }
 
 function userProfile(){
     $profileUserManager = new UserManager();
     $userProf = $profileUserManager->getUser($_SESSION['userId']);
-    $userManager = new UserManager();
-    $user = $userManager->getUser(1);
     require("./view/userProfile.php");
 }
 

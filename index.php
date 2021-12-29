@@ -1,9 +1,12 @@
 <?php
+
+
 include("./controller/controller.php");
 try {
     $action = (isset($_REQUEST['action'])) ? $_REQUEST['action'] : "";
     switch($action) {
-        case "landing" : landing();
+        case "landing" : 
+            landing();
             break;
             
         case "login" : 
@@ -14,17 +17,24 @@ try {
             }
             break;
 
-        case "logout" : logout();
-        
+        case "logout" : 
+            logout();
             break; 
 
-        case "userView" : userView(); 
+        case "userView" : 
+            userView(); 
+            break;
+
+        case 'updatePassword':
+            // if(isset($_POST['submit'])){
+            updateProfilePass($_POST['userId'], $_POST['oldPassword'], $_POST['newPassword'], $_POST['rePassword']);
+
             break;
 
         case "userProfile" : 
             userProfile();
             break;
-            
+       
         case "uploadImage" :
             uploadImage();
             break;
@@ -61,9 +71,11 @@ try {
         case "createPost" :
             createPost($_GET["courseid"], $_POST);
             break;
+
         case "updatePost" :
             updatePost($_GET["courseid"], $_POST);
             break;
+
         case "addEditCourseForm" : 
             if(isset($_GET["courseid"])){
                 addEditCourseForm($_GET["courseid"]);
