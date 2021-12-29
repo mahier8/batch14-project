@@ -24,11 +24,6 @@ class UserManager extends Manager {
         return $user;
     }
 
-    // public function getUser($userid) {
-    //     $req = $this->_connexion->prepare('SELECT id, firstName, lastName, userName, password, role, phoneNumber, dob, imagePath, emergency, address, email FROM user WHERE id = ?');
-    //     $req->bindParam(1, $userid, PDO::PARAM_INT);
-    //     $req->execute();
-    // }
 
 
     // this is where i have access to the user role in the database, further below I 
