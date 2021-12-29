@@ -82,41 +82,82 @@ class CourseManager extends Manager {
     }
 
     public function createPost($courseId, $params) {
-        $response = $this->_connexion->prepare("INSERT INTO post(title, course_id, content, type, due_date, file1_name, file1_type, file1_link, file2_name, file2_type, file2_link, file3_name, file3_type, file3_link) VALUES(:title, :course_id, :content, :type, :due_date, :file1_name, :file1_type, :file1_link, :file2_name, :file2_type, :file2_link, :file3_name, :file3_type, :file3_link) ");
 
-        $response->execute(array(
-            'title' => $params['pfTitle'],
-            'course_id' => $courseId,
-            'type' => $params['pfType'],
-            'content' => $params['pfContent'],
-            'due_date' => $params['pfDueDate'],
-            'file1_name' => $params['pfLink1Name'],
-            'file1_type' => $params['pfLink1Type'],
-            'file1_link' => $params['pfLink1URL'],
-            'file2_name' => $params['pfLink2Name'],
-            'file2_type' => $params['pfLink2Type'],
-            'file2_link' => $params['pfLink2URL'],
-            'file3_name' => $params['pfLink3Name'],
-            'file3_type' => $params['pfLink3Type'],
-            'file3_link' => $params['pfLink3URL']
-            ));
-    
-        $response->closeCursor();
-
-        //Future Update - Insecure Query - Rebuild with Bind Param
+        if (empty($params['pfDueDate'])) {
+            $response = $this->_connexion->prepare("INSERT INTO post(title, course_id, content, type, file1_name, file1_type, file1_link, file2_name, file2_type, file2_link, file3_name, file3_type, file3_link) VALUES(:title, :course_id, :content, :type, :file1_name, :file1_type, :file1_link, :file2_name, :file2_type, :file2_link, :file3_name, :file3_type, :file3_link)");
+            $response->bindParam(':title', $params['pfTitle']);
+            $response->bindParam(':course_id', $courseId);
+            $response->bindParam(':type', $params['pfType']);
+            $response->bindParam(':content', $params['pfContent']);
+            $response->bindParam(':file1_name', $params['pfLink1Name']);
+            $response->bindParam(':file1_type', $params['pfLink1Type']);
+            $response->bindParam(':file1_link', $params['pfLink1URL']);
+            $response->bindParam(':file2_name', $params['pfLink2Type']);
+            $response->bindParam(':file2_type', $params['pfLink2Name']);
+            $response->bindParam(':file2_link', $params['pfLink2URL']);
+            $response->bindParam(':file3_name', $params['pfLink3Type']);
+            $response->bindParam(':file3_type', $params['pfLink3Name']);
+            $response->bindParam(':file3_link', $params['pfLink3URL']);
+            $response->execute();
+            $response->closeCursor();
+            
+        } else {
+            $response = $this->_connexion->prepare("INSERT INTO post(title, course_id, content, type, due_date, file1_name, file1_type, file1_link, file2_name, file2_type, file2_link, file3_name, file3_type, file3_link) VALUES(:title, :course_id, :content, :type, :due_date, :file1_name, :file1_type, :file1_link, :file2_name, :file2_type, :file2_link, :file3_name, :file3_type, :file3_link)");
+            $response->bindParam(':title', $params['pfTitle']);
+            $response->bindParam(':course_id', $courseId);
+            $response->bindParam(':due_date', $params['pfDueDate']);
+            $response->bindParam(':type', $params['pfType']);
+            $response->bindParam(':content', $params['pfContent']);
+            $response->bindParam(':file1_name', $params['pfLink1Name']);
+            $response->bindParam(':file1_type', $params['pfLink1Type']);
+            $response->bindParam(':file1_link', $params['pfLink1URL']);
+            $response->bindParam(':file2_name', $params['pfLink2Name']);
+            $response->bindParam(':file2_type', $params['pfLink2Type']);
+            $response->bindParam(':file2_link', $params['pfLink2URL']);
+            $response->bindParam(':file3_name', $params['pfLink3Name']);
+            $response->bindParam(':file3_type', $params['pfLink3Type']);
+            $response->bindParam(':file3_link', $params['pfLink3URL']);
+            $response->execute();
+            $response->closeCursor();
+        } 
     }
 
     public function updatePost($courseId, $params) {
-        $hiddenid = $params['hiddenid']; $pfTitle = $params['pfTitle']; $pfType = $params['pfType']; 
-        $pfContent = $params['pfContent']; $pfDueDate = $params['pfDueDate'];
-        $pfLink1Name = $params['pfLink1Name']; $pfLink1Type = $params['pfLink1Type']; $pfLink1URL = $params['pfLink1URL'];
-        $pfLink2Name = $params['pfLink2Name']; $pfLink2Type = $params['pfLink2Type']; $pfLink2URL = $params['pfLink2URL'];
-        $pfLink3Name = $params['pfLink3Name']; $pfLink3Type = $params['pfLink3Type']; $pfLink3URL = $params['pfLink3URL'];
+        $hiddenid = $params['hiddenid'];
 
-        
-        $response = $this->_connexion->prepare("UPDATE post SET title = '$pfTitle', content = '$pfContent', due_date = '$pfDueDate', type = '$pfType', file1_link = '$pfLink1URL',  file1_type = '$pfLink1Type', file1_link = '$pfLink1URL', file2_name = '$pfLink2Name', file2_type = '$pfLink2Type', file2_link = '$pfLink2URL', file3_name = '$pfLink3Name', file3_type = '$pfLink3Type', file3_link = '$pfLink3URL' WHERE course_id = '$courseId' AND id = $hiddenid");
-        echo $pfDueDate;
-        echo gettype($pfDueDate);
+        if (empty($params['pfDueDate'])) {
+            $response = $this->_connexion->prepare("UPDATE post SET title =:title, content = :content, type = :type, file1_name = :file1_name,  file1_type = :file1_type, file1_link = :file1_link, file2_name = :file2_name, file2_type = :file2_type, file2_link = :file2_link, file3_name = :file3_name, file3_type = :file3_type, file3_link = :file3_link WHERE course_id = '$courseId' AND id = $hiddenid");
+            $response->bindParam(':title', $params['pfTitle']);
+            $response->bindParam(':type', $params['pfType']);
+            $response->bindParam(':content', $params['pfContent']);
+            $response->bindParam(':file1_name', $params['pfLink1Name']);
+            $response->bindParam(':file1_type', $params['pfLink1Type']);
+            $response->bindParam(':file1_link', $params['pfLink1URL']);
+            $response->bindParam(':file2_name', $params['pfLink2Name']);
+            $response->bindParam(':file2_type', $params['pfLink2Type']);
+            $response->bindParam(':file2_link', $params['pfLink2URL']);
+            $response->bindParam(':file3_name', $params['pfLink3Name']);
+            $response->bindParam(':file3_type', $params['pfLink3Type']);
+            $response->bindParam(':file3_link', $params['pfLink3URL']);
+            $response->execute();
+            $response->closeCursor();
+        } else {
+
+            $response = $this->_connexion->prepare("UPDATE post SET title =:title, content = :content, due_date = :due_date, type = :type, file1_name = :file1_name,  file1_type = :file1_type, file1_link = :file1_link, file2_name = :file2_name, file2_type = :file2_type, file2_link = :file2_link, file3_name = :file3_name, file3_type = :file3_type, file3_link = :file3_link WHERE course_id = '$courseId' AND id = $hiddenid");
+            $response->bindParam(':title', $params['pfTitle']);
+            $response->bindParam(':due_date', $params['pfDueDate']);
+            $response->bindParam(':type', $params['pfType']);
+            $response->bindParam(':content', $params['pfContent']);
+            $response->bindParam(':file1_name', $params['pfLink1Name']);
+            $response->bindParam(':file1_type', $params['pfLink1Type']);
+            $response->bindParam(':file1_link', $params['pfLink1URL']);
+            $response->bindParam(':file2_name', $params['pfLink2Name']);
+            $response->bindParam(':file2_type', $params['pfLink2Type']);
+            $response->bindParam(':file2_link', $params['pfLink2URL']);
+            $response->bindParam(':file3_name', $params['pfLink3Name']);
+            $response->bindParam(':file3_type', $params['pfLink3Type']);
+            $response->bindParam(':file3_link', $params['pfLink3URL']);
+        }
         $data = $response->execute();
         $response->closeCursor();
 
@@ -124,11 +165,3 @@ class CourseManager extends Manager {
     }
 }
 
-//course.js:137 The specified value "NaN" does not conform to the required format, "yyyy-MM-dd".
-
-// //         
-// if (empty($params['pfDueDate'])){
-//     $response = $this->_connexion->prepare("UPDATE post SET title = '$pfTitle', content = '$pfContent', type = '$pfType', file1_link = '$pfLink1URL',  file1_type = '$pfLink1Type', file1_link = '$pfLink1URL', file2_name = '$pfLink2Name', file2_type = '$pfLink2Type', file2_link = '$pfLink2URL', file3_name = '$pfLink3Name', file3_type = '$pfLink3Type', file3_link = '$pfLink3URL' WHERE course_id = '$courseId' AND id = $hiddenid");
-// } else {
-//     
-// }
