@@ -44,12 +44,11 @@ function userView(){
     require("./view/userView.php");  
 }
 
-function  updateProfilePass($id, $value, $oldPass){
+function  updateProfilePass($userId, $oldPassword, $newPassword, $rePassword){
     $userManager = new UserManager();
-    $userManager->passwordUpdate($id, $value);
-    $oldPassword = new UserManager();
-    $oldPassword->validateUserPro($oldPass);
+    $password = $userManager->passwordUpdate($userId, $oldPassword, $newPassword, $rePassword);
     require("./view/userProfile.php");
+    // header("location:index.php?action=userProfile");
 }
 
 function userId($getId){

@@ -1,4 +1,5 @@
 // ~~~~~~~~~~~~~~~~~~~~~ USER VIEW FILTER ~~~~~~~~~~~~~~~~~~~~~
+
 const tbobj = {
     input : document.getElementById("check") ,
     tr    :document.querySelectorAll("tr"), 

@@ -25,7 +25,7 @@
 }
 #inputNone{
     display: none;
-    margin-right: 30px;
+    margin-right: 60px;
     box-shadow: 3px 3px 3px lightslategray;
     border-radius: 10px;
     padding: 10PX;
@@ -34,13 +34,25 @@
     color: tomato;
 }
 .success{
-    display: none;
+    color: chartreuse;
 }
 button{
     color: white;
     background: blue;
     margin-left: 20px;
 }
-#button{
+#submitButton{
     display: none;
+}
+
+input{
+    font-family: 'FontAwesome';
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    border-bottom: 1px solid lightgray;
+}
+
+input:hover{
+    outline:1px solid dodgerblue;
 }

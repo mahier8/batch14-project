@@ -26,8 +26,6 @@
     <footer>
         <div id="leftFooterDiv">Copyright © 2021 LeHamburger</div>
         <div>IS Biz Tower 2 #1101, 23 Seonyu-ro 49-gil, Yeongdeungpo-gu, Seoul, South Korea</div>
-    </footer>
-<script src="./public/js/main.js"></script>
-
+</footer>
 </body>
 </html>

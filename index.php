@@ -1,9 +1,12 @@
 <?php
+
+
 include("./controller/controller.php");
 try {
     $action = (isset($_REQUEST['action'])) ? $_REQUEST['action'] : "";
     switch($action) {
-        case "landing" : landing();
+        case "landing" : 
+            landing();
             break;
             
         case "login" : 
@@ -14,15 +17,23 @@ try {
             }
             break;
 
-        case "logout" : logout();
-        
+        case "logout" : 
+            logout();
             break; 
 
-        case "userView" : userView(); 
+        case "userView" : 
+            userView(); 
             break;
 
-        case "userProfile" : userProfile();
-            
+        case 'updatePassword':
+            if(isset($_POST['submit'])){
+                updateProfilePass($_POST['userId'], $_POST['oldPassword'], $_POST['newPassword'], $_POST['rePassword']);
+            }
+
+            break;
+
+        case "userProfile" : 
+            userProfile();
             break;
        
         case "uploadImage" :
@@ -35,22 +46,17 @@ try {
                 require("./view/userView.php");
             }
             break;
-        case "setId":
-           if(isset($_GET['id']) && isset($_GET['value']) && isset($_GET['oldPass'])){
-
-                updateProfilePass($_GET['id'], $_GET['value'], $_GET['oldPass']); 
-                
-           }
-          
-            break;
+      
         case "courseList" : 
             courseList();
             break;   
         case "course" :
             course($_GET["courseid"]);
             break;
-        default : landing();
-            break;
+
+        default : 
+        landing();
+        break;
     }
 }
 catch(Exception $e){

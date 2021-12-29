@@ -60,5 +60,4 @@
 </div>
 <script src="./public/js/userView.js"></script>
 <?php $content = ob_get_clean(); ?>
-
 <?php require("template.php");?>
