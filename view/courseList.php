@@ -48,8 +48,8 @@
                                 }
                                 ?>
                             >
-                            <a href="index.php?action=addEditCourseForm&courseid=<?=$course['id']?>"><i class="fas fa-edit greenLink"></i></a>
-                    <a href="index.php?action=deleteCourse&courseid=<?=$course['id']?>"><i class="fas fa-trash greenLink" ></i></a>
+                            <a href="index.php?action=addEditCourseForm&courseid=<?=$course['id']?>" ><i class="fas fa-edit greenLink"></i></a>
+                    <a href="index.php?action=deleteCourse&courseid=<?=$course['id']?>" class="courseDel" ><i class="fas fa-trash greenLink" ></i></a>
                             </div>
                         </div>
                     </div>
@@ -57,21 +57,8 @@
              <?php endforeach;?>
             
     </div>
-<<<<<<< HEAD
-        <div id="courseButtonTop">
-
-
-        </div>
-        
-    </div>
-    <!-- <div id="announce">announcements</div> -->
-</div>
-
-
-            
-=======
     <div id="announce">announcements</div>
-</div>           
->>>>>>> b423283dd20a8007cde6e9f576590ad289b61ee4
+</div> 
+<script src="./public/js/courseDel.js"></script>          
 <?php $content = ob_get_clean();?>
 <?php require("template.php");?>

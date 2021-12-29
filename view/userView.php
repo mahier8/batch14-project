@@ -46,8 +46,8 @@
                         };
                         ; ?></td>
                         <td><?= htmlspecialchars($user['phoneNumber']); ?></td>
-                        <td class="greenLink"><a href="index.php?action=addEditUserForm&edit=<?= $user['id'];?>"><i class="fas fa-edit"></i>Edit</a></td>   
-                        <td class="greenLink"><a href="index.php?action=userDel&delete=<?= $user['id'];?>"><i class="fas fa-trash-alt"></i>Delete</a> </td>
+                        <td class="greenLink"><a href="index.php?action=addEditUserForm&edit=<?= $user['id'];?>" ><i class="fas fa-edit"></i>Edit</a></td>   
+                        <td class="greenLink"><a href="index.php?action=userDel&delete=<?= $user['id'];?>" class="delete"><i class="fas fa-trash-alt"></i>Delete</a> </td>
                     
                     </tr>
                 <?php endforeach;?>
@@ -56,5 +56,6 @@
     </div>
 </div>
 <script src="./public/js/userView.js"></script>
+<script src="./public/js/comfirmUserDel.js"></script>
 <?php $content = ob_get_clean(); ?>
 <?php require("template.php");?>
