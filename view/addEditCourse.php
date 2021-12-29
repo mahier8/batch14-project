@@ -37,8 +37,8 @@ $courseDesc = isset($course) ? $course['courseDesc'] : "";
         </p>
 
         <p>
-            <label for="time">Course Days and Time:</label><br>
-            <input type="text" id="courseTime" name="courseTime" value="<?=$dayTime?>">   
+            <label for="courseDayTime">Course Days and Time:</label><br>
+            <input type="text" id="courseTime" name="courseDayTime" value="<?=$dayTime?>">   
         </p>
         <p> 
             <label for="start">Start date:</label>
