@@ -8,6 +8,7 @@ class UserManager extends Manager {
         $this->value = "%".$value."%";
     }
     
+    //userView function 
     public function getUsers(){
         $get = $this->_connexion->query("SELECT id, firstName, lastName, userName, password, role, phoneNumber FROM user");
         $getUsers= $get->fetchAll(PDO::FETCH_ASSOC);
@@ -15,14 +16,20 @@ class UserManager extends Manager {
         return $getUsers;
     }
 
-    public function getUser($userid) {
-        $req = $this->_connexion->prepare('SELECT id, firstName, lastName, userName, password, role, phoneNumber, dob, imagePath, emergency, address, email FROM user WHERE id = ?');
-        $req->bindParam(1, $userid, PDO::PARAM_INT);
-        $req->execute();
+
+    public function getUser($userId) {
+        $req = $this->_connexion->query("SELECT * FROM user WHERE id = $userId");
         $user = $req->fetch(PDO::FETCH_ASSOC);
         $req->closeCursor();
         return $user;
     }
+
+    // public function getUser($userid) {
+    //     $req = $this->_connexion->prepare('SELECT id, firstName, lastName, userName, password, role, phoneNumber, dob, imagePath, emergency, address, email FROM user WHERE id = ?');
+    //     $req->bindParam(1, $userid, PDO::PARAM_INT);
+    //     $req->execute();
+    // }
+
 
     // this is where i have access to the user role in the database, further below I 
     // assigned the the user role toa  description 
@@ -57,7 +64,7 @@ class UserManager extends Manager {
   
     public function delete(){
         $req = $this->_connexion->prepare("DELETE FROM user WHERE id = :userId");
-        $req->bindParam("userId", $this->userid, PDO::PARAM_STR);
+        $req->bindParam(":userId", $this->userid, PDO::PARAM_STR);
         $req->execute();
     }
 
@@ -69,5 +76,68 @@ class UserManager extends Manager {
         $req->closeCursor();
         
     }
+
+    public function addUser($params){
+        $userName = $params['userName'];
+        $firstName = $params['firstName'];
+        $lastName = $params['lastName'];
+        $password = $params['password'];
+        $role = $params['role'];
+        $email = $params['email'];
+        $phoneNumber = $params['phoneNumber'];
+
+        $dob = isset($params['dob'])? $params['dob'] : NULL;
+        $address = isset($params['address']) ? $params['address'] : NULL;
+        $emergency = isset($params['emergency']) ?  $params['emergency'] : NULL;
+
+
+        $req = $this->_connexion->prepare("INSERT INTO user(id, firstName, lastName, userName, password, role, phoneNumber, dob, email, address, emergency, imagePath) 
+        VALUES ( NULL , :firstName, :lastName, :userName, :password, :role, :phoneNumber, :dob, :email,:address, :emergency, 'default.jpg')");
+        $arrayQueryExec = array(
+            "userName"=> $userName,
+            "firstName"=> $firstName,
+            "lastName"=> $lastName,
+            "password"=> password_hash($password, PASSWORD_DEFAULT), 
+            "role"=> $role,
+            "phoneNumber"=> $phoneNumber,
+            "dob"=> $dob,
+            "email"=> $email,
+            "address"=> $address,
+            "emergency"=> $emergency,
+        );
+        $req->execute($arrayQueryExec);
+    }
+
+    public function updateUser($params) {
+        $userName = $params['userName'];
+        $firstName = $params['firstName'];
+        $lastName = $params['lastName'];
+        $userId = $params['userId'];
+        $role = $params['role'];
+        $email = $params['email'];
+        $phoneNumber = $params['phoneNumber'];
+
+        $dob = isset($params['dob'])? $params['dob'] : NULL;
+        $address = isset($params['address']) ? $params['address'] : NULL;
+        $emergency = isset($params['emergency']) ?  $params['emergency'] : NULL;
+
+
+        $req = $this->_connexion->prepare("UPDATE user SET firstName=:firstName, lastName=:lastName, userName=:userName, role=:role, phoneNumber=:phoneNumber, dob=:dob, email=:email, address=:address, emergency=:emergency WHERE id =:userId");
+        $arrayQueryExec = array(
+            "userName"=> $userName,
+            "firstName"=> $firstName,
+            "lastName"=> $lastName,
+            "role"=> $role,
+            "phoneNumber"=> $phoneNumber,
+            "dob"=> $dob,
+            "email"=> $email,
+            "address"=> $address,
+            "emergency"=> $emergency,
+            "userId"=> $userId,
+        );
+        $req->execute($arrayQueryExec);
+    }
 }
+
+
 

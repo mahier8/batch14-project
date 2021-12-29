@@ -46,8 +46,11 @@ function userId($id){
 function userProfile(){
     $profileUserManager = new UserManager();
     $userProf = $profileUserManager->getUser($_SESSION['userId']);
+    $userManager = new UserManager();
+    $user = $userManager->getUser(1);
     require("./view/userProfile.php");
 }
+
 
 function course($courseid){
     $courseManager = new CourseManager();
@@ -126,3 +129,22 @@ function uploadImage(){
 
 
 
+function addEditUserForm($userId = null){
+    if($userId) {
+        $userManager = new UserManager();
+        $user = $userManager->getUser($userId);
+    }
+    require("./view/addEditUserForm.php");
+}
+
+function addEditUser($params){
+    $userManager = new UserManager();
+    print_r($params);
+    if(isset($params['userId'])) {
+        $userManager->updateUser($params);
+    } else {
+        $userManager->addUser($params);
+    }
+    
+    header("Location:index.php?action=userView");
+}

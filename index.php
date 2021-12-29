@@ -36,6 +36,22 @@ try {
             }
             break;
 
+        case "addEditUserForm":
+            if(isset($_REQUEST['edit'])) {
+                addEditUserForm($_REQUEST['edit']);
+            } else {
+                addEditUserForm();
+            }
+            break;
+        case "addEditUser": 
+            if(!empty($_POST['userName']) && !empty($_POST['firstName']) && !empty($_POST['lastName']) OR !empty($_POST['password']) &&
+            !empty($_POST['role']) && !empty($_POST['email']) && !empty($_POST['phoneNumber'])
+            ){
+                addEditUser($_POST);
+            } else {
+                addEditUserForm();
+            }
+            break;
         case "courseList" : 
             courseList();
             break;

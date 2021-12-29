@@ -11,11 +11,8 @@
                 <input type="hidden" name="action" value='filterUsers'>
                 <input type="search" name="filter" placeholder="Enter a User Name" size="60px" id="filter" >
             </form>
-
-            <form action="index.php"  method="POST" class="newuser">
-                <input type="hidden" name="action" value='addUser'>
-                <button type="submit" class="greenStyle btn" name="addNewUser" ><i class="fas fa-user-plus"></i>Add New User</button>
-            </form>
+            <a href="index.php?action=addEditUserForm" class="newuser greenStyle btn"><i class="fas fa-user-plus"></i>Add New User</a>
+        </div>
     </div>
 
     <div>
@@ -49,8 +46,8 @@
                         };
                         ; ?></td>
                         <td><?= htmlspecialchars($user['phoneNumber']); ?></td>
-                        <td><a href="index.php?action=userEdit&edit=<?= $user['id'];?>"><i class="fas fa-edit greenLink"></i></a></td>   
-                        <td><a href="index.php?action=userDel&delete=<?= $user['id'];?>"><i class="fas fa-trash-alt greenLink"></i></a> </td>
+                        <td class="greenLink"><a href="index.php?action=addEditUserForm&edit=<?= $user['id'];?>"><i class="fas fa-edit"></i>Edit</a></td>   
+                        <td class="greenLink"><a href="index.php?action=userDel&delete=<?= $user['id'];?>"><i class="fas fa-trash-alt"></i>Delete</a> </td>
                     
                     </tr>
                 <?php endforeach;?>
