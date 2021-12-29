@@ -160,8 +160,17 @@ class CourseManager extends Manager {
         }
         $data = $response->execute();
         $response->closeCursor();
-
+    
         //Future Update - Insecure Query - Rebuild with Bind Param
     }
-}
+        public function updateCourseImage($courseId, $imagePath) {
+            $req = $this->_connexion->prepare("UPDATE course SET image = ? WHERE id = ?"); 
+            $req->bindParam(1, $imagePath, PDO::PARAM_STR);
+            $req->bindParam(2, $courseId, PDO::PARAM_INT);
+            $req->execute();
+            $req->closeCursor();
+            
+        }
+    
+    }
 

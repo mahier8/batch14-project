@@ -36,7 +36,19 @@
                 }?>
             </h3>
         </div>
-        <?= '<img id="coursePic" src="'. $course['image'] . '">';?>
+
+        <div id="uploadForm">
+            <?= '<img id="coursePic" src="private/coursePics/'. $course['image'] . '">';?>
+            <form action="index.php" id="upload" method="post" enctype="multipart/form-data">
+                Change Profile Picture
+                <input type="file" class="btn" name="image" id="fileToUpload">
+                <input type="hidden" name="action" value="uploadCourseImage">
+                <input type="hidden" name="courseId" value="<?=$course['id'];?>">
+                <input type="submit" class="greenStyle btn" value="Upload Image" name="submit">
+            </form>
+        </div>
+        
+
     </div>
 
 

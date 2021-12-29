@@ -134,6 +134,35 @@ function uploadImage(){
     header('Location:index.php?action=userProfile');
 }
 
+function uploadCourseImage($courseId){
+    
+    $maxSize = 1300000;
+    $valid_extensions = array('jpg', 'jpeg','png');
+    $imageTmpName = $_FILES['image']['tmp_name'];
+    $imageName = $_FILES['image']['name'];
+    $imageSize = $_FILES['image']['size'];
+    $imageError = $_FILES['image']['error'];
+    $image_sizes = getimagesize($_FILES['image']['tmp_name']);
+
+    if($imageError > 0) {
+        throw new Exception("Error during upload");
+    } 
+    if ($imageSize> $maxSize) {
+        throw new Exception( "the size of your file is too big");
+    }
+
+    $uploadExtension =  strtolower(substr(strrchr($imageName,"."), 1));
+    $relativePath = dirname(__DIR__, 1). "/private/coursePics/";
+    $dir  = $relativePath.$courseId;
+    $imageName = "_coursimg."  . $uploadExtension;
+    $imageAndId = $courseId . "_coursimg."  . $uploadExtension;
+    $imageLocation = $dir . $imageName;
+    move_uploaded_file($imageTmpName, $imageLocation);
+    $uploadManager = new CourseManager();
+    $uploadManager->updateCourseImage($courseId, $imageAndId);
+    header("location:index.php?action=course&courseid=".$courseId);
+}
+
 
 
 function addEditUserForm($userId = null){

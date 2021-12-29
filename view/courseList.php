@@ -19,13 +19,13 @@
                 </div>
             </a>
     <div id="cardContainer">
-            <h1 id="courseTitle" class="blueStyle">All Courses</h1> 
+            <h1 class="blueStyle">All Courses</h1> 
 
                 <?php foreach ($courses AS $course):?>
                     
                     <div class="courseCard">
 
-                    <div class="courseImage"><?php echo '<img src="' . $course['image'] . '">' ?> </div>
+                    <div class="courseImage"><?php echo '<img src="private/coursePics/'. $course['image'] . '">' ?> </div>
 
                         <div class="courseDetails">
                             <?php 

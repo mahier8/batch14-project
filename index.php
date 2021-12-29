@@ -38,6 +38,11 @@ try {
         case "uploadImage" :
             uploadImage();
             break;
+        
+        case "uploadCourseImage" :
+            uploadCourseImage($_POST["courseId"]);
+
+            break;
 
         case "userDel"; 
             if(isset($_GET['delete']) && $_GET['delete'] > 0){

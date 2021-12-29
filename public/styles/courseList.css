@@ -18,6 +18,12 @@
     width:95%;
 }
 
+#cardContainer h1{
+    padding:5px;
+    margin:0;
+    text-align:center;
+}
+
 #addCourse {
     align-self:flex-end;
     padding:20px;
@@ -26,10 +32,6 @@
     
 }
 
-.courseTitle {
-    padding:5px;
-    margin:0;
-}
 
 .courseCard {
     padding:10px;

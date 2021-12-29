@@ -7,6 +7,10 @@
     justify-content: center;
 }
 
+#courseTitle {
+    padding:10px;
+}
+
 h1, h2{
     text-align: center;
 }
