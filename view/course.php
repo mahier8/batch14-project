@@ -70,7 +70,12 @@
 
 
 
-    <div id="postFormDiv">
+    <div <?php if ($_SESSION['userRoleDesc'] == 'Admin' || $_SESSION['userRoleDesc'] == 'Teacher') {
+                        echo 'class=""';
+                        } else {
+                        echo 'class="elementHidden';
+                        }  
+                    ?> id="postFormDiv">
         <div id="create"  class="postHeader pinkStyle">
             <h2 id="createh2">Create Post</h2>
         </div>
@@ -219,7 +224,13 @@
                     }; ?>
 
             <div class="postEditDiv">
-                <button class="postEditBtn greenStyle btn">Edit Post</button>
+                <button  <?php if ($_SESSION['userRoleDesc'] == 'Admin' || $_SESSION['userRoleDesc'] == 'Teacher') {
+                        echo 'class="postEditBtn greenStyle btn"';
+                        } else {
+                        echo 'class="elementHidden';
+                        }  
+                    ?>
+                >Edit Post</button>
             </div>
 
             <?php if ($post['id']) {
