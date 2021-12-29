@@ -37,14 +37,15 @@
             </h3>
         </div>
 
-        <div id="uploadForm">
+        <div id="uploadForm" class="centerDiv">
             <?= '<img id="coursePic" src="private/coursePics/'. $course['image'] . '">';?>
             <form action="index.php" id="upload" method="post" enctype="multipart/form-data">
-                Change Profile Picture
                 <input type="file" class="btn" name="image" id="fileToUpload">
                 <input type="hidden" name="action" value="uploadCourseImage">
                 <input type="hidden" name="courseId" value="<?=$course['id'];?>">
-                <input type="submit" class="greenStyle btn" value="Upload Image" name="submit">
+                <div class="centerDiv" id="uploadSubmit">
+                    <input type="submit" class="greenStyle btn" value="Upload Image" name="submit">
+                </div>
             </form>
         </div>
         

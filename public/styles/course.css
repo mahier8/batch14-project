@@ -169,3 +169,11 @@ h1, h2{
 .dueDate {
     text-align:center;
 }
+
+#uploadForm {
+    flex-direction: column;
+}
+
+#uploadSubmit {
+    width:70%;
+}
