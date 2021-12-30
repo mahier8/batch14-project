@@ -24,6 +24,15 @@ class CourseManager extends Manager {
         $response->closeCursor();
         return $course;
     }
+
+    public function getStudents($courseid) {
+        $response = $this->_connexion->prepare("SELECT firstName, lastName, user.id AS id FROM user JOIN coursesTaken ON user.id=coursesTaken.studentId WHERE courseId =:courseId");
+        $response->bindParam(":courseId", $courseid);
+        $response->execute();
+        $students = $response->fetchAll(PDO::FETCH_ASSOC);
+        $response->closeCursor();
+        return $students;
+    }
  
     public function addCourse($params){
         $courseName = isset($params['courseName']) ? $params['courseName'] : NULL;

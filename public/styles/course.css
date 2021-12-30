@@ -129,10 +129,21 @@ h1, h2{
 #displayStudent {
     display: flex;
     flex-direction: column;
+    margin-left: 50px;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+#assignCourse {
+    background-color: #0C51A1;
+    border-radius: 8px;
+    border-style: none;
+    height: 25px;
+    width: 70px;
+    color: white;
 }
 
 .displayStudentsList {
-    background-color: hotpink;
     border: 1px solid black;
     border-radius: 8px;
     margin-left: 50px;

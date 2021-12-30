@@ -19,15 +19,11 @@
             </h1>
             <div id="displayTeacherHeader">
                <h2 id="teacherHeader">
-                   <?= $course['teacher'];?>
+                   <?php if (isset($course['teacher'])) {
+                       echo $course['teacher'];
+                }?>
                 </h2> 
             </div>    
-            <h2>
-                <?php if (isset($course['teacher'])){
-                    echo $course['teacher'];
-                }?>
-            </h2>
-            <!-- -->
             <h3>
                 <?php if (isset($course['courseDesc'])){
                     echo $course['courseDesc'];
@@ -65,11 +61,18 @@
                     <div>
                     <!-- <a href="#"><i class="fas fa-trash" ></i></a>  -->
                     <div id="displayStudent">
-                        <!-- <?= $course['student'];?>  -->
-                        <!-- Do i need to read from the database and display for the student -->
+                        <?php if(isset($students)): 
+                            foreach ($students AS $student):?>
+                                <div>
+                                    <a title="Delete Student" href="/">
+                                    <i class="fa fa-trash-o iconDisplayStudent" aria-hidden="true" studentId="<?= $student['id'] ?>"></i>
+                                    </a>
+                                    <span><?= $student['firstName'] . ' '. $student['lastName'] ?></span>
+                                </div>
+                            <?php endforeach;?>
+                        <?php endif;?>
                     </div>
                     <button name="assignCourse" type="button" id="assignCourse" onsubmit="return false">submit</button> 
- 
                 </div>
             </div>
         </div>

@@ -83,6 +83,14 @@ class UserManager extends Manager {
         return json_encode($teachers); 
     }
 
+    /**
+     * Function to assign courses to student. Before we insert into db, we read through to
+     * we check if students is already taking course.
+     *
+     * @param  String $teacher - teachers name
+     * @param  String $students - string of student ids "eg. '2,8,10'"
+     * @param  Integer $courseId - id of course
+     */
     public function assignCourses ($teacher, $students, $courseId) {
         $req = $this->_connexion->prepare("UPDATE course SET teacher=:teacher WHERE id=:id"); 
         $req->bindParam(":teacher", $teacher);
@@ -91,14 +99,32 @@ class UserManager extends Manager {
         $req->closeCursor();
 
         $studentsArr = explode(",", $students);
+        for ($i = 0; $i < count($studentsArr); $i++) { 
 
-        for ($i = 0; $i < count($studentsArr); $i++) {
-            $req = $this->_connexion->prepare("INSERT INTO coursesTaken (courseId, studentId) VALUES (:courseId, :studentId)"); // what are my conditions
-            $req->bindParam(":courseId", $courseId);
+            $req = $this->_connexion->prepare("SELECT studentId FROM coursesTaken WHERE studentId=:studentId AND courseId=:courseId");
             $req->bindParam(":studentId", $studentsArr[$i]);
+            $req->bindParam(":courseId", $courseId); 
             $req->execute();
+            $studentExist= $req->fetch(PDO::FETCH_ASSOC);
             $req->closeCursor();
+
+            if (!$studentExist) {
+                // if i dont have a studentId which matches with the courseId
+                $req = $this->_connexion->prepare("INSERT INTO coursesTaken (courseId, studentId) VALUES (:courseId, :studentId)"); // what are my conditions
+                $req->bindParam(":courseId", $courseId);
+                $req->bindParam(":studentId", $studentsArr[$i]);
+                $req->execute();
+                $req->closeCursor();
+            }
         }
+    }
+
+    public function delAssignedStudent($studentId, $courseId) {
+        $req = $this->_connexion->prepare("DELETE FROM coursesTaken WHERE courseId = :courseId AND studentId = :studentId");
+        $req->bindParam(":courseId", $courseId);
+        $req->bindParam(":studentId", $studentId);
+        $req->execute();
+        $req->closeCursor(); 
     }
 
     public function updateImage($userid, $imagePath) {

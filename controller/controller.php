@@ -53,6 +53,7 @@ function course($courseid){
     $courseManager = new CourseManager();
     $course = $courseManager->getCourse($courseid);
     $posts = $courseManager->getPosts($courseid);
+    $students = $courseManager->getStudents($courseid);
     require("./view/course.php");
 }
 
@@ -67,14 +68,18 @@ function createPost($courseid, $params){
 function autocompleteUsers($keywords, $role) { 
     $userManager = new UserManager(); // we get the user mananger object 
     echo $userManager->getUsersByRole($keywords, $role); // we echo what we get from our read (SELECT)
-    
 }
-// added in role to 61 and 63
 
 function assignCourses($teacher, $students, $courseID) {
     $userManager = new UserManager();
     $userManager->assignCourses($teacher, $students, $courseID);
-    courseList();
+    courseList(); // relocation not working
+}
+
+function delAssignedStudent($studentId, $courseID) {
+    $userManager = new UserManager();
+    $userManager->delAssignedStudent($studentId, $courseID);
+    courseList(); 
 }
 
 function updatePost($courseid, $params){

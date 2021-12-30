@@ -47,6 +47,9 @@ try {
         case "assignCourses" :
             assignCourses($_GET['teacher'], $_GET['students'], $_GET['courseID']);
             break;
+        case "delAssignedStudent" :
+            delAssignedStudent($_GET['studentId'], $_GET['courseID']);
+            break; 
         case "createPost" :
             createPost($_GET["courseid"], $_POST);
             break;
