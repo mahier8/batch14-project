@@ -6,8 +6,8 @@ class CourseManager extends Manager {
         parent::__construct();
     }
 
+    //Get the list of courses to display on CourseList.php
     public function getCourses() {
-    //If you want to use this query with a specific id, you need to convert to a prepare/execute/bind param structure
         $response = $this->_connexion->query("SELECT * FROM course ORDER BY id");
         $courses = $response->fetchAll(PDO::FETCH_ASSOC);
         $response->closeCursor();
