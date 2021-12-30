@@ -75,7 +75,7 @@ for (let i = 0; i < editPost.length; i++) {
             create.setAttribute('class', "elementHidden");
 
             //Scrolling to the form
-            window.scrollTo(500, 294);
+            
             
             //Isolating the Post Elements
             let editPostParent = editPost[i].parentElement.parentElement.parentElement; 
@@ -211,7 +211,7 @@ for (let i = 0; i < editPost.length; i++) {
             expand.textContent = "Hide";
             hide = false;
             
-            
+            window.scrollTo(400, 294);
             // console.log(hiddenid);
         });
 }

@@ -3,8 +3,10 @@
     justify-content: center;
     flex-direction:row;
     width: 80%;
-    height:90vh;
+    margin-bottom:7%;
     margin-top: 3%;
+    padding-bottom:0;
+    
 }  
 h1 {
     text-align: center;
@@ -17,6 +19,8 @@ h1 {
     align-items: center;
     text-align:justify;
     border: 1px black solid;
+    padding-bottom:5%;
+    margin-bottom:7%;
 }
 
 #profileTitle {
@@ -95,4 +99,12 @@ td {
 
 .strong {
     font-weight:bold;
+}
+
+#changeButton {
+    display:flex;
+}
+
+#inputNone {
+    display:none;
 }
