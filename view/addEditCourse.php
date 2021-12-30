@@ -1,5 +1,5 @@
 <?php ob_start();?>
-<link rel="stylesheet" href="./public/styles/user.css">
+<link rel="stylesheet" href="./public/styles/addEdit.css">
 <?php $style = ob_get_clean();?>
 
 
@@ -15,22 +15,19 @@ $endDate = isset($course) ? $course['endDate'] : "";
 $courseDesc = isset($course) ? $course['courseDesc'] : "";
 ?>
 
-<div id="wrapper">
-    
-    <br><br>
-    <h1>
+<div class="mainContent" id="courseContainer" >
+
+    <h1 class="centerText">
         Create/Edit Course
     </h1>
-    <form action="index.php" method="POST">
+    <form action="index.php" method="POST" name="addEditCourse" id="addEditCourse">
         <input type="hidden" name="action" value="addEditCourse">
         <?php if (isset($course)) :?>
             <input type="hidden" name="edit" value="1">
             <input type="hidden" name="courseid" value="<?=$courseid?>">
         <?php endif;?>
-        <p>
-            <label for="courseName">Course Name:</label>
+            <span for="courseName">Course Name:</span>
             <input type="text" name="courseName" id="courseName" value="<?=$courseName?>" required>  
-        </p>
         <p>
             <label for="courseTeacher">Course Teacher:</label>
             <input type="text" name="courseTeacher" id="courseTeacher" value="<?=$courseTeacher?>" required>  
@@ -50,7 +47,7 @@ $courseDesc = isset($course) ? $course['courseDesc'] : "";
             <label for="courseDesc">Course Description:</label>
             <textarea name="courseDesc" id="courseDesc"><?=$courseDesc?></textarea>
         </p>
-        <input type="submit" value="Submit">
+        <input class="greenStyle btn" type="submit" id="addEditSubmit" value="Submit">
     </form>
 </div>
 

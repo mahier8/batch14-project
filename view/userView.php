@@ -1,9 +1,10 @@
 <?php ob_start();?>
-<link rel="stylesheet" href="./public/styles/user.css">
+<link rel="stylesheet" href="./public/styles/userView.css">
 <?php $style = ob_get_clean();?>
 
 <?php ob_start(); ?>
 <div id="mainContent">
+<h1>User List</h1>
     <div class="section">
       
         <div class="contentHead">

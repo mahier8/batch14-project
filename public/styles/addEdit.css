@@ -1,62 +1,15 @@
-.contentHead{
-    display: flex;
-    align-items:center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    width:84%;
-    padding:10px;
-    margin-left:1%;
-}
-
-table{
-    border-collapse:collapse ;
-    width: 85%;
-    padding:10px;
-    border: 1px black solid;
-    margin-left:1%;
-}
-
-th{
-    border: 1px black solid;
+.mainContent{
+  width:80%;
+  padding-bottom:2%;
+  margin-top: 3%;
+  margin-bottom: 3%;
 
 }
 
-th, td{
-    border: none;
-    padding: 10px;
-    text-align:center;
-}
-#mainContent{
-    width:80%;
-    height: 90vh;
-    margin-top: 5%;
-    margin-bottom: 5%;
-}
-
-
-tr a{
-    text-decoration: none;
-    padding: 10px;
-}
-
-tbody tr:hover{
-    background: lightgray;
-}
-
-#filter{
-    width:32%;
-    font-size: 0.9em;
-    margin-top:2%;
-    padding: 5px;
-    margin-right:3px;
-    border-radius: 8px;
-    font-family: 'Mulish', Arial, sans-serif;
-    cursor: pointer;
-}   
-a.newuser{
-    color: ivory;
-    outline: none;
-    padding: 10px;
+#courseContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ************************************* */
@@ -75,8 +28,8 @@ a.newuser{
     @include animation;
   } */
   
-form.createUser{
-    margin: 12% auto;
+form.createUser, form.addEditCourse{
+    margin: 6% auto;
     width: 19em;
     text-align: center;
     position: relative;
@@ -87,6 +40,8 @@ form.createUser{
     -moz-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
 }
+
+
   
 @-webkit-keyframes moveDown {
   0%   {-webkit-transform: translate(0,-10%);opacity: 0;}
@@ -134,10 +89,22 @@ input:not(input[type='radio']), textarea {
   transition: border .25s;
 }
 
+#datefield {
+  width:95%;
+}
+
 /* emergency contact */
 textarea {
-    width: 300px;
+    width: 100%;
     height: 200px;
+}
+
+#emergency {
+  width: 95%;
+}
+
+#start, #end {
+  width:100%;
 }
 
 input:focus {
@@ -194,15 +161,20 @@ form.createUser button {
   outline: none;
   border: none;
   background: transparent;
-  color: hotpink;
-  font-size: 2.05em;
+  font-size: 1.5em;
   padding: 3% 7%;
   cursor: pointer;
-  background-color: lightblue; 
+
 }
 
-form.createUser button:hover,  form.createUser button:focus {
-  color: #111111;
+#genButton, #copyButton {
+  background-color: #0C51A1;
+  color: ivory;
+}
+
+
+#genButton:hover, #genButton:focus, #copyButton:hover, #copyButton:focus{
+  background-color: #0f70df;
 }
   
 form.createUser button span {
@@ -214,4 +186,16 @@ form.createUser button span {
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+
 }
+
+#submit, #addEditSubmit {
+  background-color: #0ca14a;
+  color: ivory;
+}
+
+#submit:hover, #addEditSubmit:hover{
+  background-color: #14d464;
+  color: ivory;
+}
+

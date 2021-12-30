@@ -1,22 +1,27 @@
 #wrapper {
     display:flex;
-    padding-top: 1%;
-    padding-bottom: 1%;
     justify-content: center;
     flex-direction:row;
     width: 80%;
-}
+    height:100vh;
+}  
 h1 {
     text-align: center;
 }
 
 #profileImg {
-    margin-top: 3%;
+    height:100%;
+    margin-top: 5%;
     display:flex;
     /* height: 100vh; */
     flex-direction: column;
     align-items: center;
     text-align:justify;
+    border: 1px black solid;
+}
+
+#profileTitle {
+    width:100%;
 }
 
 #profileImg img{
@@ -29,22 +34,21 @@ h1 {
 #profileInfo {
     padding:10px;
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 #profileInfo p{
     margin:0;
 }
 
 #profileInfo div {
-    
     margin:10px;
     width:260px;
     flex-direction:row;
 }
 
-.profDetail {
-    border: 1px black solid;
-    padding:5px;
+.profBorder {
+    
+    /* padding:5px; */
 }
 
 #uploadForm{
@@ -120,3 +124,11 @@ input[type=file]::file-selector-button {
     font-family: 'Mulish', Arial, sans-serif;
 }
 
+td {
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.strong {
+    font-weight:bold;
+}
