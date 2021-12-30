@@ -247,6 +247,11 @@ h1, h2{
     margin:10px;
 }
 
+.postFiles {
+    padding:0;
+    margin:0;
+    
+}
 .postFiles li{
     list-style:none;
     margin-left:0;
@@ -283,6 +288,7 @@ h1, h2{
 .postContent {
     display:flex;
     flex-direction:column;
+    text-align:center;
     padding: 15px;  
      
 }
