@@ -19,6 +19,7 @@ const wrapper = document.getElementById('wrapper');
 
 showUpload.addEventListener('click', function(e){
     uploadDiv.style.display='flex';
+    uploadHide.style.display='flex';
     uploadDiv.setAttribute('class', 'centerDiv');
     e.target.style.display='none';
     wrapper.scrollTo(500, 294);
@@ -29,6 +30,7 @@ uploadHide.addEventListener('click', function(e){
     uploadDiv.style.display='none';
     e.target.style.display='none';
     showUpload.style.display='flex';
+    
 })
 
 hide.addEventListener('click', function(e){

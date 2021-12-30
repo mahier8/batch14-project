@@ -47,7 +47,7 @@ $courseDesc = isset($course) ? $course['courseDesc'] : "";
             <label for="courseDesc">Course Description:</label>
             <textarea name="courseDesc" id="courseDesc"><?=$courseDesc?></textarea>
         </p>
-        <input class="greenStyle btn" type="submit" id="addEditSubmit" value="Submit">
+        <input type="submit" class="btn" id="addEditSubmit" value="Submit">
     </form>
 </div>
 

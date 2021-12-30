@@ -1,7 +1,7 @@
 const expand = document.querySelector('#expandForm');
 const postForm = document.querySelector('#pfHide');
 let courseidDiv = document.querySelector('#hiddenCourseId');
-
+const mainCont = document.querySelector('#create');
 postForm.setAttribute('action', `index.php?action=createPost&courseid=${courseidDiv.textContent}`);
 const editPost = document.querySelectorAll('.postEditBtn');
 let postContainer = document.querySelector('.postContainer');
@@ -31,7 +31,7 @@ cancelPost.addEventListener('click', function() {
     update.setAttribute('class', "elementHidden");
     create.removeAttribute('class', "elementHidden");
     create.classList.add('postHeader', 'pinkStyle');
-    window.scrollTo(500, 294);
+    
     postForm.setAttribute('id', 'pfHide');
     expand.textContent = "Start";
     hide = true;
@@ -73,7 +73,7 @@ for (let i = 0; i < editPost.length; i++) {
             updateh2.removeAttribute('class', "elementHidden");
             updateh2.classList.add('postHeader', 'redStyle');
             create.setAttribute('class', "elementHidden");
-
+            
             //Scrolling to the form
             
             
@@ -210,8 +210,8 @@ for (let i = 0; i < editPost.length; i++) {
             postForm.setAttribute('id', 'postForm');
             expand.textContent = "Hide";
             hide = false;
+            mainCont.scrollTo(100, 294);
             
-            window.scrollTo(400, 294);
             // console.log(hiddenid);
         });
 }
