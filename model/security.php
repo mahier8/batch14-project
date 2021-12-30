@@ -7,6 +7,5 @@ function pageSecurity($loginData){
    $data = trim($loginData);
    $data = strip_tags($loginData);
    return $data;
-
 }
 ?>

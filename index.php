@@ -1,6 +1,6 @@
 <?php
 
-
+session_start();
 include("./controller/controller.php");
 try {
     $action = (isset($_REQUEST['action'])) ? $_REQUEST['action'] : "";
@@ -22,17 +22,24 @@ try {
             break; 
 
         case "userView" : 
-            userView(); 
+            if(isset($_SESSION['userName'])){
+                userView(); 
+            }else{
+                landing();
+            }
             break;
 
         case 'updatePassword':
             // if(isset($_POST['submit'])){
             updateProfilePass($_POST['userId'], $_POST['oldPassword'], $_POST['newPassword']);
-
             break;
 
         case "userProfile" : 
-            userProfile();
+            if(isset($_SESSION['userName']) ){
+                userProfile();
+            }else{
+                landing();
+            }
             break;
        
         case "uploadImage" :
@@ -69,29 +76,57 @@ try {
             }
             break;
         case "courseList" : 
-            courseList();
-            break;
+            if(isset($_SESSION['userName']) ){
+                courseList();
+            }else{
+                landing();
+            }
+           break;
         case "course" :
-            course($_GET["courseid"]);
+            if(isset($_SESSION['userName'])){
+                course($_GET["courseid"]);
+            }else{
+                landing();
+            }
             break;
         case "createPost" :
-            createPost($_GET["courseid"], $_POST);
+            if(isset($_SESSION['userName']) ){
+                createPost($_GET["courseid"], $_POST);
+            }else{
+                landing();
+            }
             break;
 
         case "updatePost" :
-            updatePost($_GET["courseid"], $_POST);
+            if(isset($_SESSION['userName']) ){
+                updatePost($_GET["courseid"], $_POST);
+            }else{
+                landing();
+            }
             break;
 
         case "addEditCourseForm" : 
-            if(isset($_GET["courseid"])){
-                addEditCourseForm($_GET["courseid"]);
-            } else {
-                addEditCourseForm();
+            if(isset($_SESSION['userName']) ){
+                if(isset($_GET["courseid"])){
+                    addEditCourseForm($_GET["courseid"]);
+                } else {
+                    addEditCourseForm();
+                }
             }
             break;
-        case "addEditCourse" : addEditCourse($_POST);
+        case "addEditCourse" : 
+            if(isset($_SESSION['userName']) ){
+                addEditCourse($_POST);
+            }else{
+                landing();
+            }
             break;
-        case "deleteCourse" : deleteCourse($_GET["courseid"]);
+        case "deleteCourse" : 
+            if(isset($_SESSION['userName']) ){
+                deleteCourse($_GET["courseid"]);
+            }else{
+                landing();
+            }
             break;
         default : landing();
             break;

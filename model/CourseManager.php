@@ -26,12 +26,19 @@ class CourseManager extends Manager {
     }
  
     public function addCourse($params){
+       
         $courseName = isset($params['courseName']) ? $params['courseName'] : NULL;
+        $courseName = pageSecurity($courseName );
         $courseTeacher = isset($params['courseTeacher']) ? $params['courseTeacher'] : NULL;
+        $courseTeacher= pageSecurity( $courseTeacher);
         $courseDayTime = isset($params['courseDayTime']) ? $params['courseDayTime'] : NULL;
+        $courseDayTime = pageSecurity($courseDayTime);
         $courseDesc = isset ($params['courseDesc']) ? $params['courseDesc'] : NULL;
+        $courseDesc  = pageSecurity($courseDesc);
         $courseStartDate = isset($params['start']) ? $params['start'] : NULL;
+        $courseStartDate = pageSecurity($courseStartDate);
         $courseEndDate = isset($params['end']) ? $params['end'] : NULL;
+        $courseEndDate = pageSecurity($courseEndDate);
         $response = $this->_connexion->prepare("INSERT INTO course (name, teacher, courseDesc, dayTime, startDate, endDate) VALUES (:name, :teacher, :courseDesc, :dayTime, :startDate, :endDate)");
         $response->bindParam(":name", $courseName);
         $response->bindParam(":teacher", $courseTeacher);
