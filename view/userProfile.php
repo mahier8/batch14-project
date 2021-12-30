@@ -59,13 +59,11 @@
                         </table>
 
                         <div id='inputNone'>
-                                <p id="error"></p>
+                            <p id="error"></p>
                                 <form action="index.php" method="POST" id="form">
-                            
                                     <input type="hidden"  name="action" value="updatePassword">
-
                                     <input type="hidden" name="userId" value="<?= $_SESSION['userId']; ?>">
-                                
+                                    
                                     <input type="password" id="oldPassword" name="oldPassword" placeholder="Current Password&emsp;&emsp;&emsp;&emsp;&emsp;&#xf06e">
                                     <br>
                                     <br>
@@ -81,10 +79,9 @@
                                     </div>
                                 </form>
                             
-                            </div>
-                            <div class="centerDiv">
-                                <button class="blueStyle btn" id='changeButton'>Change Password</button>
-                            </div>
+                        </div>
+                        <div class="centerDiv">
+                            <button class="blueStyle btn" id='changeButton'>Change Password</button>
                         </div>
                     </div>
             </div>
