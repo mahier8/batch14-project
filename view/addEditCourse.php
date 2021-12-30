@@ -1,5 +1,5 @@
 <?php ob_start();?>
-<link rel="stylesheet" href="./public/styles/createCourse.css">
+<link rel="stylesheet" href="./public/styles/user.css">
 <?php $style = ob_get_clean();?>
 
 
