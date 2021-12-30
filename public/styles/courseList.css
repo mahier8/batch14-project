@@ -6,10 +6,11 @@
 
 #clContentContainer {
     display:flex;
-    margin-top:20px;
-    width:65%;
-    height:100%;
-    margin-bottom:40px;
+    margin-top: 3%;
+    width:80%;
+    height:90vh;
+    align-items: center;
+    margin-bottom: 10%;
     flex-direction:column;
 }
 
