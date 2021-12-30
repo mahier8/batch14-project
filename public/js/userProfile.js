@@ -12,6 +12,24 @@ const input = {
 };
 
 const hide = document.getElementById('subHide');
+const showUpload = document.getElementById('picButton');
+const uploadDiv = document.getElementById('uploadDiv');
+const uploadHide = document.getElementById('uploadHide')
+const wrapper = document.getElementById('wrapper');
+
+showUpload.addEventListener('click', function(e){
+    uploadDiv.style.display='flex';
+    uploadDiv.setAttribute('class', 'centerDiv');
+    e.target.style.display='none';
+    wrapper.scrollTo(500, 294);
+});
+
+
+uploadHide.addEventListener('click', function(e){
+    uploadDiv.style.display='none';
+    e.target.style.display='none';
+    showUpload.style.display='flex';
+})
 
 hide.addEventListener('click', function(e){
     input.inputDiv.style.display='none';
@@ -22,8 +40,11 @@ hide.addEventListener('click', function(e){
 
 input.changeButton.addEventListener('click', function(e){
     input.inputDiv.style.display='flex';
+    input.inputDiv.style.justifyContent='center';
+    input.inputDiv.style.alignItems='center';
     e.target.style.display='none';
     input.submitButton.style.display='flex';
+    wrapper.scrollTo(500, 294);
 });
 
 input.submitButton.addEventListener('click', function(e){
@@ -33,11 +54,13 @@ input.submitButton.addEventListener('click', function(e){
 
     if(oldPassword ==='' || newPassword ==='' || rePassword ===''){
       e.preventDefault();
-        input.error.innerHTML="Password must be filled out!";
+        alert("Password must be filled out!")
+        // input.error.innerHTML="Password must be filled out!";
         
     }else if(newPassword != rePassword){
         e.preventDefault();
-        input.error.innerHTML="Password Comfirm not match!";
+        alert("Password does not match confirmation!")
+        // input.error.innerHTML="Password does not match confirmation!";
         
     }else{
         input.inputDiv.style.display='none';
@@ -46,7 +69,8 @@ input.submitButton.addEventListener('click', function(e){
         oldPassword ='';
         newPassword ='';
         rePassword ='';
-        input.success.textContent='Thanks, Password Updated.';
+        alert('Password Updated Successfully')
+        // input.success.textContent='Thanks, Password Updated.';
     }
 
   

@@ -42,9 +42,15 @@ h1 {
 
 #form{
     font-family: 'Mulish', Arial, sans-serif;
-    
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
+#uploadDiv {
+    display:none;
+}
 
 #upload {
     font-family: 'Mulish', Arial, sans-serif;
@@ -108,3 +114,18 @@ td {
 #inputNone {
     display:none;
 }
+
+.columnDiv {
+    display:flex;
+    flex-direction:column;
+}
+
+#upload input[type='submit'], #upload button {
+    width:22%;
+    align-self:center;
+}
+
+#form button {
+    align-self:center;
+}
+

@@ -57,7 +57,7 @@
                    
 
 
-                <div>
+                <div class="centerDiv columnDiv">
                         <div id='inputNone'>
 
                                 <p id="error"></p>
@@ -65,7 +65,9 @@
                             <form action="index.php" method="POST" id="form">
                                 <input type="hidden"  name="action" value="updatePassword">
                                 <input type="hidden" name="userId" value="<?= $_SESSION['userId']; ?>">
-                                
+                                Change Password
+                                <br>
+                                <br>
                                 <input type="password" id="oldPassword" name="oldPassword" placeholder="Current Password&emsp;&emsp;&emsp;&emsp;&emsp;&#xf06e">
                                 <br>
                                 <br>
@@ -89,14 +91,20 @@
                     
 
                     
-                        <div>
-                            <form action="index.php" id="upload" method="post" enctype="multipart/form-data">
-                                Change Profile Picture
+                        <div  id="uploadDiv">
+                            <form class="columnDiv" action="index.php" id="upload" method="post" enctype="multipart/form-data">
+                                <div class="centerDiv">Change Profile Picture</div>
+                                
                                 <input type="file" class="btn" name="image" id="fileToUpload">
                                 <input type="hidden" name="action" value="uploadImage">
                                 <input type="hidden" name="userId" value="<?=$_SESSION['userId'];?>">
-                                <input type="submit" class="greenStyle btn" value="Upload Image" name="submit">
+                                <input type="submit" class="greenStyle btn" id="uploadSubmit" value="Upload Image" name="submit">
+                                <button class="greenStyle btn" type="button" id="uploadHide" name="hide">Hide</button>
                             </form>
+                        </div>
+
+                        <div class="centerDiv">
+                            <button class="blueStyle btn" id='picButton'>Change Profile Picture</button>
                         </div>
                 </div> 
             
