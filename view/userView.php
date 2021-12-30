@@ -4,17 +4,17 @@
 
 <?php ob_start(); ?>
 <div id="mainContent">
-<h1>User List</h1>
-    <div class="section">
+    <h1>User List</h1>
+    
       
         <div class="contentHead">
             <form method="POST" action="index.php" class="filter" onsubmit="return false">
                 <input type="hidden" name="action" value='filterUsers'>
-                <input type="search" name="filter" placeholder="Enter a User Name" size="60px" id="check" >
+                <input type="search" name="filter" placeholder="Search by username" size="60px" id="check" >
             </form>
             <a href="index.php?action=addEditUserForm" class="newuser greenStyle btn"><i class="fas fa-user-plus"></i>Add New User</a>
         </div>
-    </div>
+    
 
     <div>
         <table>

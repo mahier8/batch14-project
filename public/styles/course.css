@@ -22,6 +22,7 @@ h1, h2{
     justify-content: space-evenly;
     border: 1px solid black;
     padding: 15px;
+    
 }
 
 #coursePic{
@@ -33,13 +34,13 @@ h1, h2{
     border: 1px solid;
 }
 
-#displayTeacherHeader { 
+/* #displayTeacherHeader { 
     /* display: flex;
     align-items: center;
     justify-content: space-evenly;
     border: 1px solid black;
     padding: 15px; */
-}
+/* } 
 
 /* displaying the lists */
 #displayLists {
@@ -66,15 +67,15 @@ h1, h2{
     margin-left: 50px;
 }
 
-#displayForm {
+/* #displayForm {
     /* border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
     /* background-color: mediumaquamarine; */
     /* for the overlapping div */
     /* position: absolute;
-    z-index: 2; */
+    z-index: 2; 
 
-}
+}*/
 
 #displaySearches {
     display: flex;
@@ -176,6 +177,7 @@ h1, h2{
     display:flex;
     width: 99%; 
     flex-direction: column;
+    margin-bottom:3%;
 }
 
 #postFormDiv {
@@ -252,8 +254,8 @@ h1, h2{
 }
 
 .postContainer {
-    margin-top:10px;
     border: 1px solid black;
+    margin-top:2%;
 }
 
 .postHeader {
@@ -281,7 +283,8 @@ h1, h2{
 .postContent {
     display:flex;
     flex-direction:column;
-    padding: 15px;   
+    padding: 15px;  
+     
 }
 
 #pfDetails {
