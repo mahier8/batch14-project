@@ -117,6 +117,7 @@ function addEditCourse($params){
     if(isset($params['edit'])) {
         $course_id = $courseManager->updateCourse($params);
     } else {
+        
         $course_id = $courseManager->addCourse($params);
     }
     header("location:index.php?action=course&courseid=".$course_id);
