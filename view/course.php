@@ -17,12 +17,13 @@
                     echo $course['name'];
                 }?>
             </h1>
-            <h2>
-                <?php if (isset($course['teacher'])){
-                    echo $course['teacher'];
+            <div id="displayTeacherHeader">
+               <h2 id="teacherHeader">
+                   <?php if (isset($course['teacher'])) {
+                       echo $course['teacher'];
                 }?>
-            </h2>
-            <!-- -->
+                </h2> 
+            </div>    
             <h3>
                 <?php if (isset($course['courseDesc'])){
                     echo $course['courseDesc'];
@@ -68,7 +69,43 @@
 
     </div>
 
+    <!-- this is for the autocompletes step 1, for the input and a div to show the results -->
+    <div id="displayLists" data-courseid=<?=$_GET['courseid']?>>
+        <div id="displayTeacherList">
+            <div id="displayForm">
+                <div id="displaySearches">
+                    <input type="hidden" name="action" value="assignCourse">
+                    <input type="hidden" id="courseId" name="courseId" value="<?=$_GET['courseid']?>">
+                    <div id="teacherSearch">
+                        <input type="text" name="autosearch" id="autoseachInput" placeholder="Search teachers" autocomplete="off">                        
+                        <div id="teacherResults">
+                        </div>
+                    </div>
 
+                    <div id="studentsSearch">
+                        <input type="text" name="studentAutosearch" id="studentAutosearchInput" placeholder="Search students" autocomplete="off">                        
+                        <div id="studentResults">
+                        </div>
+                    </div>
+                    <div>
+                    <!-- <a href="#"><i class="fas fa-trash" ></i></a>  -->
+                    <div id="displayStudent">
+                        <?php if(isset($students)): 
+                            foreach ($students AS $student):?>
+                                <div>
+                                    <a title="Delete Student" href="/">
+                                    <i class="fa fa-trash-o iconDisplayStudent" aria-hidden="true" studentId="<?= $student['id'] ?>"></i>
+                                    </a>
+                                    <span><?= $student['firstName'] . ' '. $student['lastName'] ?></span>
+                                </div>
+                            <?php endforeach;?>
+                        <?php endif;?>
+                    </div>
+                    <button name="assignCourse" type="button" id="assignCourse" onsubmit="return false">submit</button> 
+                </div>
+            </div>
+        </div>
+            </div>
 
     <div <?php if ($_SESSION['userRoleDesc'] == 'Admin' || $_SESSION['userRoleDesc'] == 'Teacher') {
                         echo 'class=""';
@@ -250,9 +287,13 @@
     <div id="displayPosts">
     </div>
 
-    <div id="displayStudentList">
+        <div id="displayStudentList">
+            
+        </div>
     </div>
 </div>
+
+<script src="./public/js/autocompletes.js"></script>
 
 <script src="./public/js/course.js"></script>
 <?php $content = ob_get_clean();?>

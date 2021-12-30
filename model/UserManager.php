@@ -92,6 +92,72 @@ class UserManager extends Manager {
         $req->execute();
     }
 
+    // this is for the autocomplete step 5, later I will need to change the role to include student, 
+    // in the arguments to include the role of students. Maybe ill need to fetch as well
+    public function getUsersByRole ($keywords, $role) {
+        $keywords = trim($keywords)."%"; //from the query, i remove any whitesapce, as well as the percentage sign 
+        $req = $this->_connexion->prepare(
+            // queried into database, using like, in the case of firstName and lastName
+            "SELECT id, firstName, lastName 
+            FROM user 
+            WHERE role=?
+            AND  (firstName LIKE ?
+            OR lastName LIKE ?)
+            ORDER BY firstName");
+        $req->bindParam(1, $role, PDO::PARAM_INT);
+        $req->bindParam(2, $keywords, PDO::PARAM_STR); 
+        $req->bindParam(3, $keywords, PDO::PARAM_STR);
+        $req->execute();
+        $teachers= $req->fetchAll(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+        // we return a json object after, passing in the teachers variable 
+        return json_encode($teachers); 
+    }
+
+    /**
+     * Function to assign courses to student. Before we insert into db, we read through to
+     * we check if students is already taking course.
+     *
+     * @param  String $teacher - teachers name
+     * @param  String $students - string of student ids "eg. '2,8,10'"
+     * @param  Integer $courseId - id of course
+     */
+    public function assignCourses ($teacher, $students, $courseId) {
+        $req = $this->_connexion->prepare("UPDATE course SET teacher=:teacher WHERE id=:id"); 
+        $req->bindParam(":teacher", $teacher);
+        $req->bindParam(":id", $courseId); 
+        $req->execute();
+        $req->closeCursor();
+
+        $studentsArr = explode(",", $students);
+        for ($i = 0; $i < count($studentsArr); $i++) { 
+
+            $req = $this->_connexion->prepare("SELECT studentId FROM coursesTaken WHERE studentId=:studentId AND courseId=:courseId");
+            $req->bindParam(":studentId", $studentsArr[$i]);
+            $req->bindParam(":courseId", $courseId); 
+            $req->execute();
+            $studentExist= $req->fetch(PDO::FETCH_ASSOC);
+            $req->closeCursor();
+
+            if (!$studentExist) {
+                // if i dont have a studentId which matches with the courseId
+                $req = $this->_connexion->prepare("INSERT INTO coursesTaken (courseId, studentId) VALUES (:courseId, :studentId)"); // what are my conditions
+                $req->bindParam(":courseId", $courseId);
+                $req->bindParam(":studentId", $studentsArr[$i]);
+                $req->execute();
+                $req->closeCursor();
+            }
+        }
+    }
+
+    public function delAssignedStudent($studentId, $courseId) {
+        $req = $this->_connexion->prepare("DELETE FROM coursesTaken WHERE courseId = :courseId AND studentId = :studentId");
+        $req->bindParam(":courseId", $courseId);
+        $req->bindParam(":studentId", $studentId);
+        $req->execute();
+        $req->closeCursor(); 
+    }
+
     public function updateImage($userid, $imagePath) {
         $req = $this->_connexion->prepare("UPDATE user SET imagePath = ? WHERE id = ?"); 
         $req->bindParam(1, $imagePath, PDO::PARAM_STR);

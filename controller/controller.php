@@ -69,6 +69,7 @@ function course($courseid){
     $courseManager = new CourseManager();
     $course = $courseManager->getCourse($courseid);
     $posts = $courseManager->getPosts($courseid);
+    $students = $courseManager->getStudents($courseid);
     require("./view/course.php");
 }
 
@@ -77,6 +78,24 @@ function createPost($courseid, $params){
     $createPost = $courseManager->createPost($courseid, $params);
     header('location:index.php?action=course&courseid=' . $courseid . '');
     require("./view/course.php");
+}
+
+// this is for the autocomplete step 4 
+function autocompleteUsers($keywords, $role) { 
+    $userManager = new UserManager(); // we get the user mananger object 
+    echo $userManager->getUsersByRole($keywords, $role); // we echo what we get from our read (SELECT)
+}
+
+function assignCourses($teacher, $students, $courseID) {
+    $userManager = new UserManager();
+    $userManager->assignCourses($teacher, $students, $courseID);
+    courseList(); // relocation not working
+}
+
+function delAssignedStudent($studentId, $courseID) {
+    $userManager = new UserManager();
+    $userManager->delAssignedStudent($studentId, $courseID);
+    courseList(); 
 }
 
 function updatePost($courseid, $params){

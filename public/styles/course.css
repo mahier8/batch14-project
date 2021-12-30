@@ -33,6 +33,144 @@ h1, h2{
     border: 1px solid;
 }
 
+#displayTeacherHeader { 
+    /* display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 1px solid black;
+    padding: 15px; */
+}
+
+/* displaying the lists */
+#displayLists {
+    margin-top: 50px;
+}
+
+/* displaying the teachers lists */
+#displayTeacherList {
+    display: flex;
+    align-items: top;
+    /* align-items: center; */
+    justify-content: space-evenly;
+    border: 1px solid black;
+    padding: 15px;
+    /* background-color: magenta; */
+    height: 300px;
+    margin-bottom: 50px;
+    /* for the overlapping div */
+}
+
+/* the form */
+#assignCourse {
+    margin-bottom: 50px;
+    margin-left: 50px;
+}
+
+#displayForm {
+    /* border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+    /* background-color: mediumaquamarine; */
+    /* for the overlapping div */
+    /* position: absolute;
+    z-index: 2; */
+
+}
+
+#displaySearches {
+    display: flex;
+}
+
+#displayTeacherList form {
+    display: flex;
+    padding: 10px;
+}
+
+#teacherSearch {
+    margin-right: 50px;
+}
+
+/* autosearch for teachers */
+#autoseachInput {
+    height: 20px;
+    border-radius: 8px;
+    border: 1px solid gray;
+    /* border-style: none; */
+}
+
+#autoseachInput:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/* to remove the space left of the divs created in the search */
+.searchResults {
+    padding: 5px 0;
+    text-align: center;
+}
+
+.searchResults:hover {
+    background-color: rgb(227, 231, 235);
+    cursor: pointer;
+    /* border-bottom-right-radius: 8px; */
+}
+
+/* displaying the student lists */
+#studentAutosearchInput {
+    height: 20px;
+    border-radius: 8px;
+    border: 1px solid gray;
+    /* border-style: none; */
+}
+
+#studentAutosearchInput:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/* to display what we clicked on */
+#displayTeacherDiv {
+    display: flex;
+}
+
+#displayStudent {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+#assignCourse {
+    background-color: #0C51A1;
+    border-radius: 8px;
+    border-style: none;
+    height: 25px;
+    width: 70px;
+    color: white;
+}
+
+.displayStudentsList {
+    border: 1px solid black;
+    border-radius: 8px;
+    margin-left: 50px;
+    width: 150px;
+    display: flex;
+    padding: 5px;
+    /* flex-direction: column; */
+}
+
+#addTeacherButton {
+    height: 30px;
+    width: 70px;
+    margin-left: 30px;
+    background-color: #0C51A1;
+    color: white;
+    border-radius: 8px;
+    border-style: none;
+}
+
+/* keyup directions */
+.result_focus {
+    background-color: rgb(106, 156, 206);
+}
 #displayPosts {
     margin-top:10px;
     display:flex;

@@ -16,11 +16,10 @@ try {
                 echo "Please fill the form";
             }
             break;
-
         case "logout" : 
             logout();
             break; 
-
+            
         case "userView" : 
             userView(); 
             break;
@@ -30,7 +29,6 @@ try {
             updateProfilePass($_POST['userId'], $_POST['oldPassword'], $_POST['newPassword']);
 
             break;
-
         case "userProfile" : 
             userProfile();
             break;
@@ -74,6 +72,15 @@ try {
         case "course" :
             course($_GET["courseid"]);
             break;
+        case "autocompleteUsers" : 
+            autocompleteUsers($_GET['keywords'], $_GET['role']); 
+            break;
+        case "assignCourses" :
+            assignCourses($_GET['teacher'], $_GET['students'], $_GET['courseID']);
+            break;
+        case "delAssignedStudent" :
+            delAssignedStudent($_GET['studentId'], $_GET['courseID']);
+            break; 
         case "createPost" :
             createPost($_GET["courseid"], $_POST);
             break;
