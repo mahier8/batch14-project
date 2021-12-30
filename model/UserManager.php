@@ -1,5 +1,6 @@
 <?php
-session_start();
+// session_start();
+require_once("./model/security.php");
 require_once("Manager.php");
 class UserManager extends Manager {
     public function __construct($userid = 0) {
