@@ -71,6 +71,7 @@
 
     <!-- this is for the autocompletes step 1, for the input and a div to show the results -->
     <div id="displayLists" data-courseid=<?=$_GET['courseid']?>>
+    <?php if ($_SESSION['userRoleDesc'] == 'Admin'): ?>
         <div id="displayTeacherList">
             <div id="displayForm">
                 <div id="displaySearches">
@@ -88,12 +89,11 @@
                         </div>
                     </div>
                     <div>
-                    <!-- <a href="#"><i class="fas fa-trash" ></i></a>  -->
                     <div id="displayStudent">
                         <?php if(isset($students)): 
                             foreach ($students AS $student):?>
                                 <div>
-                                    <a title="Delete Student" href="/">
+                                    <a title="Delete Student" href="" onclick="return false">
                                     <i class="fa fa-trash-o iconDisplayStudent" aria-hidden="true" studentId="<?= $student['id'] ?>"></i>
                                     </a>
                                     <span><?= $student['firstName'] . ' '. $student['lastName'] ?></span>
@@ -105,7 +105,8 @@
                 </div>
             </div>
         </div>
-            </div>
+    </div>
+    <?php endif;?>
 
     <div <?php if ($_SESSION['userRoleDesc'] == 'Admin' || $_SESSION['userRoleDesc'] == 'Teacher') {
                         echo 'class=""';

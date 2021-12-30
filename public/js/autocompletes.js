@@ -13,7 +13,8 @@ let studentsArr = [];
 for(let i = 0; i < iconDisplayStudent.length; i++) {
   let iconAttribute = iconDisplayStudent[i].getAttribute("studentid");
   studentsArr.push(iconAttribute);
-  
+  console.log(iconAttribute);
+
 }
 
 // data from the form needed for formData object
@@ -89,6 +90,7 @@ function displayResults(response, role) {
       // 2. display
       for (var i = 0; i < responseLen; i++) {
         div = studentResults.appendChild(document.createElement("div"));
+        div.classList.add("searchStudentResults");
         div.innerHTML = response[i].firstName + " " + response[i].lastName;
         let studentId = response[i].id;
         div.addEventListener("click", function (e) {
@@ -118,7 +120,7 @@ function displayResults(response, role) {
             );
             studentNameIcon.innerHTML =
               '<i class="fa fa-trash-o" aria-hidden="true"></i>';
-
+              console.log(studentNameIcon);
             // to delete div in displayStudent div
             studentNameIcon.addEventListener("click", function (e) {
               e.preventDefault();
@@ -141,6 +143,7 @@ function displayResults(response, role) {
 
             // adding styles to the divs
             studentNameDiv.classList.add("displayStudentsList");
+            studentName.classList.add("displayStudentName");
             studentNameSpan.style.marginLeft = "10px";
 
             // to change the text of the div next to the input
