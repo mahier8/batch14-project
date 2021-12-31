@@ -6,7 +6,7 @@ class CourseManager extends Manager {
         parent::__construct();
     }
 
-    //Get the list of courses to display on CourseList.php
+    //Get the list of courses to display on CourseList.php view
     public function getCourses() {
         $response = $this->_connexion->query("SELECT * FROM course ORDER BY id");
         $courses = $response->fetchAll(PDO::FETCH_ASSOC);
@@ -15,7 +15,7 @@ class CourseManager extends Manager {
         
     }
 
-    //changed the ? from kaba's code. need to make variables for each item i want shown.
+    //Get a specified course for display on course.php view
     public function getCourse($id) {
         $response = $this->_connexion->prepare("SELECT * FROM course WHERE id=?");
         $response->bindParam(1,$id, PDO::PARAM_INT);
@@ -25,6 +25,7 @@ class CourseManager extends Manager {
         return $course;
     }
 
+    //Get a specified course for display on course.php
     public function getStudents($courseid) {
         $response = $this->_connexion->prepare("SELECT firstName, lastName, user.id AS id FROM user JOIN coursesTaken ON user.id=coursesTaken.studentId WHERE courseId =:courseId");
         $response->bindParam(":courseId", $courseid);
@@ -177,7 +178,6 @@ class CourseManager extends Manager {
         $data = $response->execute();
         $response->closeCursor();
     
-        //Future Update - Insecure Query - Rebuild with Bind Param
     }
         public function updateCourseImage($courseId, $imagePath) {
             $req = $this->_connexion->prepare("UPDATE course SET image = ? WHERE id = ?"); 

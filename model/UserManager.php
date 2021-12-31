@@ -1,5 +1,4 @@
 <?php
-// session_start();
 require_once("./model/security.php");
 require_once("Manager.php");
 class UserManager extends Manager {
@@ -8,7 +7,6 @@ class UserManager extends Manager {
         $this->userid = $userid;
     }
     
-    //userView function 
     public function getUsers(){
         $get = $this->_connexion->query("SELECT id, firstName, lastName, userName, password, role, phoneNumber FROM user");
         $getUsers= $get->fetchAll(PDO::FETCH_ASSOC);
@@ -25,18 +23,14 @@ class UserManager extends Manager {
     }
 
     public function passwordUpdate($id, $oldPass, $newPass) {
-        
-        // $oldPassword = password_hash($oldPass, PASSWORD_DEFAULT);
         $pass = $this->_connexion->prepare("SELECT password FROM user WHERE id = ?");
         $pass->bindParam(1, $id, PDO::PARAM_INT);
         $pass->execute();
         $getPassword = $pass->fetch(PDO::FETCH_ASSOC);
         $pass->closeCursor();
 
-        //need to hash oldpassword to compare line below
       
         if(password_verify($oldPass, $getPassword['password'])){
-            //need to hash newpass before actual placing 
             $newPassword = password_hash($newPass, PASSWORD_DEFAULT);
             $req = $this->_connexion->prepare("UPDATE user SET password = ? WHERE id = ?");
             $req->bindParam(1, $newPassword , PDO::PARAM_STR);
@@ -46,9 +40,6 @@ class UserManager extends Manager {
         } 
     }
 
-
-    // this is where i have access to the user role in the database, further below I 
-    // assigned the the user role toa  description 
     public function logInUser($userName, $pwd){
         $req = $this->_connexion->prepare("SELECT id, userName, firstName, password, role, dob, email, phoneNumber, emergency, imagePath, address FROM user WHERE userName=? ");
         $req->bindParam(1,$userName, PDO::PARAM_STR);
@@ -72,13 +63,10 @@ class UserManager extends Manager {
     
             if ($_SESSION['userRole'] == 0) {
                 $_SESSION['userRoleDesc'] = "Admin";
-                // i can take the user to the admin section
             }elseif($_SESSION['userRole'] == 1) {
                 $_SESSION['userRoleDesc'] = "Teacher";
-                // i can take the user to the teacher section 
             }else {
                 $_SESSION['userRoleDesc'] = "Student";
-                // i can take the user to the student section 
             }
             return $user;
         } else {
@@ -92,13 +80,9 @@ class UserManager extends Manager {
         $req->bindParam(":userId", $this->userid, PDO::PARAM_STR);
         $req->execute();
     }
-
-    // this is for the autocomplete step 5, later I will need to change the role to include student, 
-    // in the arguments to include the role of students. Maybe ill need to fetch as well
     public function getUsersByRole ($keywords, $role) {
-        $keywords = trim($keywords)."%"; //from the query, i remove any whitesapce, as well as the percentage sign 
+        $keywords = trim($keywords)."%";
         $req = $this->_connexion->prepare(
-            // queried into database, using like, in the case of firstName and lastName
             "SELECT id, firstName, lastName 
             FROM user 
             WHERE role=?
@@ -111,7 +95,6 @@ class UserManager extends Manager {
         $req->execute();
         $teachers= $req->fetchAll(PDO::FETCH_ASSOC);
         $req->closeCursor();
-        // we return a json object after, passing in the teachers variable 
         return json_encode($teachers); 
     }
 
@@ -141,8 +124,7 @@ class UserManager extends Manager {
             $req->closeCursor();
 
             if (!$studentExist) {
-                // if i dont have a studentId which matches with the courseId
-                $req = $this->_connexion->prepare("INSERT INTO coursesTaken (courseId, studentId) VALUES (:courseId, :studentId)"); // what are my conditions
+                $req = $this->_connexion->prepare("INSERT INTO coursesTaken (courseId, studentId) VALUES (:courseId, :studentId)");
                 $req->bindParam(":courseId", $courseId);
                 $req->bindParam(":studentId", $studentsArr[$i]);
                 $req->execute();
