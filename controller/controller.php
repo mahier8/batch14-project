@@ -157,6 +157,7 @@ function uploadImage(){
 
     $uploadManager = new UserManager();
     $uploadManager->updateImage($userid, $imageAndId);
+    echo '<script>alert("Updated image")</script>';
     header('Location:index.php?action=userProfile');
 }
 
@@ -186,6 +187,7 @@ function uploadCourseImage($courseId){
     move_uploaded_file($imageTmpName, $imageLocation);
     $uploadManager = new CourseManager();
     $uploadManager->updateCourseImage($courseId, $imageAndId);
+    echo '<script>alert("Updated image")</script>';
     header("location:index.php?action=course&courseid=".$courseId);
 }
 

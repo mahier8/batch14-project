@@ -34,14 +34,6 @@ h1, h2{
     border: 1px solid;
 }
 
-/* #displayTeacherHeader { 
-    /* display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    border: 1px solid black;
-    padding: 15px; */
-/* } 
-
 /* displaying the lists */
 #displayLists {
     margin-top: 50px;
@@ -51,11 +43,9 @@ h1, h2{
 #displayTeacherList {
     display: flex;
     align-items: top;
-    /* align-items: center; */
     justify-content: space-evenly;
     border: 1px solid black;
     padding: 15px;
-    /* background-color: magenta; */
     height: 300px;
     margin-bottom: 50px;
     /* for the overlapping div */
@@ -66,16 +56,6 @@ h1, h2{
     margin-bottom: 50px;
     margin-left: 50px;
 }
-
-/* #displayForm {
-    /* border-radius: 8px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
-    /* background-color: mediumaquamarine; */
-    /* for the overlapping div */
-    /* position: absolute;
-    z-index: 2; 
-
-}*/
 
 #displaySearches {
     display: flex;
@@ -114,6 +94,16 @@ h1, h2{
     /* border-bottom-right-radius: 8px; */
 }
 
+.searchStudentResults {
+    padding: 5px 0;
+    text-align: center;
+}
+
+.searchStudentResults:hover {
+    background-color: rgb(227, 231, 235);
+    cursor: pointer;
+}
+
 /* displaying the student lists */
 #studentAutosearchInput {
     height: 20px;
@@ -136,6 +126,7 @@ h1, h2{
     flex-direction: column;
     margin-left: 50px;
     border: 1px solid black;
+    border-radius: 8px;
     padding: 10px;
 }
 
@@ -144,8 +135,11 @@ h1, h2{
     border-radius: 8px;
     border-style: none;
     height: 25px;
-    width: 70px;
+    width: 80px;
     color: white;
+    margin-top: 20px;
+    cursor: pointer;
+    font-family: 'Mulish', Arial, sans-serif;
 }
 
 .displayStudentsList {
