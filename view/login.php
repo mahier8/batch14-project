@@ -10,7 +10,7 @@
                 
                     <input type="password" name="password" placeholder="password">
                     
-                    <button type="submit" class="blueStyle btn">Login</button>
+                    <button type="submit" class="blueStyle blueStyleHover btn">Login</button>
                     <div id="checkBox">
                         <input type="checkbox" name="checkbox" id="checkbox">
                         <label for="checkbox">Remember me</label>
@@ -45,7 +45,7 @@
                 <div>
                     <form id="logoutForm" action="index.php" method=POST>
                         <input type="hidden" name="action" value="logout">
-                        <button type="submit" class="blueStyle btn">Logout</button>
+                        <button type="submit" class="blueStyle blueStyleHover btn">Logout</button>
                     </form>
                 </div>
             </div> 
