@@ -165,7 +165,7 @@ class UserManager extends Manager {
         $req->bindParam(2, $userid, PDO::PARAM_INT);
         $req->execute();
         $req->closeCursor();
-        
+        echo '<script>alert("Updated image")</script>';
     }
 
     public function addUser($params){

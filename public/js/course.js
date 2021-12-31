@@ -211,7 +211,7 @@ for (let i = 0; i < editPost.length; i++) {
             expand.textContent = "Hide";
             hide = false;
             courseWrapper.scrollTo(550, 730);
-            
+            alert('Post Updated.');
             // console.log(hiddenid);
         });
 }
