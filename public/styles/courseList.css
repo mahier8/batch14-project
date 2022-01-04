@@ -1,51 +1,68 @@
-#cardContainer {
-    padding:20px;
+#topContainer {
+    display:flex;
+    justify-content: space-between;
+    padding:5px;
+}
+
+#clContentContainer {
+    display:flex;
+    margin-top: 3%;
     width:80%;
+    height:90vh;
+    align-items: center;
+    margin-bottom: 10%;
+    flex-direction:column;
+}
+
+#cardContainer {
+    padding-left:10px;
+    width:95%;
+    margin-bottom:5%;
+}
+
+#cardContainer h1{
+    padding:5px;
+    margin:0;
+    text-align:center;
+}
+
+#addCourse {
+    align-self:flex-end;
+    padding:20px;
+    margin-right:10px;
+    margin-top:15px;
     
 }
+
 
 .courseCard {
     padding:10px;
     display:flex;
     flex-direction: row;
+    justify-content:space-between;
     border: 1px black solid;
-    width: 49%;
 }
-
-#courseButtonTop {
-    display:flex;
-    justify-content: flex-end;
-    flex-direction:row;
-    width: 49%;
-    margin-bottom:5px;
-}
-
-#courseButtonTop div{
-    width:110px;
-    display:flex;
-    flex-direction:row;
-}
-
-#courseButtonTop i {
-    padding:5px;
-    height:15px;
+.courseCard a{
+    font-weight:bold;
+    font-size:1.3em;
+    color:black;
+    
 }
 
 .courseImage {
     display:flex;
     align-items:center;
-    margin-right:5px;
+    
 }
 
 .courseImage img{
     height:100px;
     width:100px;
+    border-radius:50%;
 }
 
 .courseDetails {
-    width:350px;
-    margin-left:10px;
-
+    text-align:center;
 }
 
 #courseRight {
@@ -57,17 +74,13 @@
 .courseBtn {
     display:flex;
     flex-direction: row;
-    padding-left:20px;
+    padding-left:30px;
 }
+
 
 .elementDisplay {
     display:flex;
 }
-
-.elementHidden {
-    display:none;
-}
-
 
 .courseStudents {
     display:flex;
@@ -76,8 +89,15 @@
 }
 
 .fa-plus, .fa-edit, .fa-trash{
-    font-size:1.5em;
     margin-right:5px;
     display:flex;
     align-items:flex-end;
+    font-size:1.5em;
+}
+
+#announce {
+    margin-top:125px;
+    border: 1px black solid;
+    padding:10px;
+    width:200px;
 }

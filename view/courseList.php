@@ -1,39 +1,36 @@
-
-
-
-<?php  ob_start(); ?>
+<?php ob_start(); ?>
     <link rel="stylesheet" href="./public/styles/courseList.css">
-<?php $style= ob_get_clean();?>
-
-
+    <?php $style= ob_get_clean();?>
 <?php ob_start();?>
 
-<div id="cardContainer">
-            <h1>All Courses</h1> 
-            
-            <div id="courseButtonTop">
-                <div>Add Course<i class="fas fa-plus"></i></div>
-            </div>
-            
+<div id="clContentContainer">
+    <a href="index.php?action=addEditCourseForm" id="addCourse">
+                <div
+                    <?php 
+                        if ($_SESSION['userRoleDesc'] == 'Admin') {
+                        echo 'class="greenStyle btn';
+                        } else {
+                        echo 'class="elementHidden';
+                        }
+                        ?>
+                >
+                
+                <i class="fas fa-plus greenStyle"></i>Add New Course
+                </div>
+            </a>
+    <div id="cardContainer">
+            <h1 class="blueStyle">All Courses</h1> 
+
                 <?php foreach ($courses AS $course):?>
                     
                     <div class="courseCard">
 
-                        <div class="courseImage">
-                            <?php 
-                                if ($course['image'] != null) {
-                                    echo '<img src="' . $course['image'] . '">';
-                                } else {
-                                    echo '<img src=".\public\styles\images\courseDefault.jpg">';
-                                    
-                                }
-                            ?>
-                        </div>
+                    <div class="courseImage"><?php echo '<img src="private/coursePics/'. $course['image'] . '">' ?> </div>
 
                         <div class="courseDetails">
                             <?php 
-                            echo '<a href="action=coursePage&courseid=' . $course['id']  . '">' . $course['name'] . '</a>' .
-                            '<br>' . $course['teacher'] . 
+                            echo '<a href="index.php?action=course&courseid=' . $course['id']  . '">' . $course['name'] . '</a>' .
+                            '<br><br>' . $course['teacher'] . 
                             '<br>' . $course['dayTime']
                             ?>
                         </div>
@@ -44,22 +41,24 @@
                             </div>
                             <div
                                 <?php 
-                                if ($_SESSION['userRole'] == 0) {
-                                    echo 'class="courseBtn "';
+                                if ($_SESSION['userRoleDesc'] == 'Admin') {
+                                    echo 'class="greenReverse courseBtn"';
                                 } else {
                                     echo 'class="elementHidden';
                                 }
                                 ?>
                             >
-                                <a href="#"><i class="fas fa-edit"></i></a>
-                                <a href="#"><i class="fas fa-trash" ></i></a>
+                            <a href="index.php?action=addEditCourseForm&courseid=<?=$course['id']?>" ><i class="fas fa-edit greenLink"></i></a>
+                    <a href="index.php?action=deleteCourse&courseid=<?=$course['id']?>" class="courseDel" ><i class="fas fa-trash greenLink" ></i></a>
                             </div>
-
                         </div>
-
                     </div>
 
-            <?php endforeach;?>
-
+             <?php endforeach;?>
+            
+    </div>
+    
+</div> 
+<script src="./public/js/courseDel.js"></script>          
 <?php $content = ob_get_clean();?>
 <?php require("template.php");?>

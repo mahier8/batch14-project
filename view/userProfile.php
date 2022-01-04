@@ -1,49 +1,119 @@
 
 <?php ob_start();?>
 <link rel="stylesheet" href="./public/styles/userProfile.css">
-<?php $style = ob_get_clean();?>
-
+<?php 
+    $style = ob_get_clean();
+    ob_start();
+?>
 
 <?php ob_start();?>
-<div id="wrapper">
-    <h1>
-        <?= $user['firstName'] . " " . $user['lastName'];?>
-    </h1>
-    <div id="profilePic">
-        <?php 
-        echo '<img src="'. $user['imagePath'] . '">';
-        ?>
-    </div>
-    <!-- <form action="./view/upload.php" method="post" enctype="multipart/form-data">
-    Select image to upload:
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
-    </form> -->
+    <div id="wrapper">
+        <div>
+            <div id="profileImg" class="profBorder">
+                <div id="profileTitle" class="blueStyle centerText"><h2>User Profile</h2></div> 
+                    <h1><?= ucfirst($userProf['firstName']) . " " . ucfirst($userProf['lastName']);?></h1>
+                        <?php 
+                        echo '<img src="./private/profilePics/'. $userProf['imagePath'] . '">' ?>
 
-    <div id = "id">
-        User ID: <?= htmlspecialchars($user['id']);?>
+                   
+                        
+                        <table>
+                            <tr >
+                                <td class="strong">Username</td>
+                                <td class=""><?= htmlspecialchars($userProf['userName']);?></td>  
+                            </tr>
+                            <tr >
+                                <td class="strong">Courses </td>
+                                <td >Insert Courses here</td>  
+                            </tr>
+                            <tr >
+                                <td class="strong">Date of Birth </td>
+                                <td ><?= htmlspecialchars($userProf['dob']);?></td>
+                            </tr>
+                            <tr >
+                                <td class="strong">Email Address </td>
+                                <td ><?= htmlspecialchars($userProf['email']);?></td>
+                            </tr>
+                        
+                            <tr >
+                                <td class="strong">Address </td>
+                                <td ><?= htmlspecialchars($userProf['address']);?></td>
+                            </tr>
+                            <tr >
+                                <td class="strong">Phone Number </td>
+                                <td ><?= htmlspecialchars($userProf['phoneNumber']);?></td>
+                            </tr>
+                            <tr >
+                                <td class="strong">Emergency Contact </td>
+                                <td ><?= htmlspecialchars($userProf['emergency']);?>
+                            </tr>
+
+                        </table>
+
+                    
+
+
+
+                   
+
+
+                <div class="centerDiv columnDiv">
+                        <div id='inputNone'>
+
+                                <p id="error"></p>
+
+                            <form action="index.php" method="POST" id="form">
+                                <input type="hidden"  name="action" value="updatePassword">
+                                <input type="hidden" name="userId" value="<?= $_SESSION['userId']; ?>">
+                                Change Password
+                                <br>
+                                <br>
+                                <input type="password" id="oldPassword" name="oldPassword" placeholder="Current Password&emsp;&emsp;&emsp;&emsp;&emsp;&#xf06e">
+                                <br>
+                                <br>
+                                <input type="password" id="newPassword" name="newPassword" placeholder="New Password&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&#xf06e">
+                                <br>
+                                <br>
+                                <input type="password" id="rePassword" name="rePassword" placeholder="Password Confirmation&emsp;&emsp;&#xf06e">
+                                <br>
+                                <br>
+                                <div id="changeButtons">
+                                    <button class="greenStyle btn" type="submit" id="submitButton" name="submit">Submit</button>
+                                    <button class="greenStyle btn" type="button" id="subHide" name="hide">Hide</button>
+                                </div>
+                            </form>
+
+                        </div>
+
+                        <div class="centerDiv">
+                            <button class="blueStyle btn" id='changeButton'>Change Password</button>
+                        </div>
+                    
+
+                    
+                        <div  id="uploadDiv">
+                            <form class="columnDiv" action="index.php" id="upload" method="post" enctype="multipart/form-data">
+                                <div class="centerDiv">Change Profile Picture</div>
+                                
+                                <input type="file" class="btn" name="image" id="fileToUpload">
+                                <input type="hidden" name="action" value="uploadImage">
+                                <input type="hidden" name="userId" value="<?=$_SESSION['userId'];?>">
+                                <input type="submit" class="greenStyle btn" id="uploadSubmit" value="Upload Image" name="submit">
+                                <button class="greenStyle btn" type="button" id="uploadHide" name="hide">Hide</button>
+                            </form>
+                        </div>
+
+                        <div class="centerDiv">
+                            <button class="blueStyle btn" id='picButton'>Change Profile Picture</button>
+                        </div>
+                </div> 
+            
+            </div>
+    
+        </div>
+    
     </div>
-    <div id = "password">
-        Password: <?= htmlspecialchars($user['password']);?>
-    </div>
-    <div id = "dob">
-        Date of Birth: <?= htmlspecialchars($user['dob']);?>
-    </div>
-    <div id = "email">
-        Email Address: <?= htmlspecialchars($user['email']);?>
-    </div>
-    <div id = "address">
-        Address: <?= htmlspecialchars($user['address']);?>
-    </div>
-    <div id = "phone">
-        Phone Number: <?= htmlspecialchars($user['phoneNumber']);?>
-    </div>
-    <div id = "emergency">
-        Emergency Contact: <?= htmlspecialchars($user['emergency']);?>
-    </div>
-    <div id = "courses">
-        Courses:
-    </div>
-</div>
+<script src="./public/js/userProfile.js"></script>
 <?php $content = ob_get_clean();?>
 <?php require("template.php");?>
+

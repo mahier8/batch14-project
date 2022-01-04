@@ -1,7 +1,7 @@
 <?php
 class Manager {    
     protected $_connexion;
-    public $_user_id;
+    public $userid;
 
     const DBNAME = "school";
     const HOST = "localhost";
@@ -21,5 +21,3 @@ class Manager {
     //     $this->_user_id = $user_id;
     // }   
 }
-
-

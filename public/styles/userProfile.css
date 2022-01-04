@@ -1,17 +1,131 @@
 #wrapper {
-    width: 100%;
-    margin: 50px;
-}
-
+    display:flex;
+    justify-content: center;
+    flex-direction:row;
+    width: 80%;
+    margin-bottom:7%;
+    margin-top: 3%;
+    padding-bottom:0;
+    
+}  
 h1 {
     text-align: center;
 }
 
-#profilePic img{
-    width:200px;
-    height:200px;
+#profileImg {
+    margin-top: 5%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    text-align:justify;
+    border: 1px black solid;
+    padding-bottom:5%;
+    margin-bottom:7%;
+}
+
+#profileTitle {
+    width:100%;
+}
+#profileImg img{
+    height:100px;
+    width:100px;
     border-radius: 50%;
     border-color: black;
     border: 1px solid;
-
 }
+
+#uploadForm{
+    width:30%;
+    margin-top: 10%;
+    font-family: 'Mulish', Arial, sans-serif;
+}
+
+#form{
+    font-family: 'Mulish', Arial, sans-serif;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#uploadDiv {
+    display:none;
+}
+
+#upload {
+    font-family: 'Mulish', Arial, sans-serif;
+}
+
+input[type=file] {
+    margin-left:90px;
+    margin-right: 60px;
+    box-shadow: 3px 3px 3px lightslategray;
+    border-radius: 10px;
+    padding: 10px;
+}
+#error{
+    color: tomato;
+}
+
+
+.success{
+    color: chartreuse;
+}
+button{
+    justify-content: center;
+}
+#submitButton{
+    text-align:center;
+}
+
+input{
+    font-family: 'Mulish', Arial, sans-serif;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px black solid;
+}
+
+input:hover{
+    outline:1px solid dodgerblue;
+}
+input[type=file]::file-selector-button {
+    background-color: #0C51A1;
+    color: ivory;
+    padding:5px;
+    cursor: pointer;
+    border-radius: 8px;
+    border-style: none;
+    font-family: 'Mulish', Arial, sans-serif;
+}
+
+td {
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.strong {
+    font-weight:bold;
+}
+
+#changeButton {
+    display:flex;
+}
+
+#inputNone {
+    display:none;
+}
+
+.columnDiv {
+    display:flex;
+    flex-direction:column;
+}
+
+#upload input[type='submit'], #upload button {
+    width:22%;
+    align-self:center;
+}
+
+#form button {
+    align-self:center;
+}
+

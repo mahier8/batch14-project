@@ -1,26 +1,24 @@
 <?php ob_start();?>
-<link rel="stylesheet" href="./public/styles/user.css">
+<link rel="stylesheet" href="./public/styles/userView.css">
 <?php $style = ob_get_clean();?>
 
 <?php ob_start(); ?>
 <div id="mainContent">
-    <div class="section">
+    <h1>User List</h1>
+    
+      
         <div class="contentHead">
-            <form method="POST" action="index.php" class="filter">
+            <form method="POST" action="index.php" class="filter" onsubmit="return false">
                 <input type="hidden" name="action" value='filterUsers'>
-                <input type="text" name="filter" placeholder="filter" size="30px" >
+                <input type="search" name="filter" placeholder="Search by username" size="60px" id="check" >
             </form>
-
-            <form  action="index.php" method="POST" class="newuser">
-                <input type="hidden" name="action" value='addUser'>
-                <button type="submit" name="addNewUser" ><i class="fas fa-user-plus"></i>Add New User</button>
-            </form>
+            <a href="index.php?action=addEditUserForm" class="newuser greenStyle btn"><i class="fas fa-user-plus"></i>Add New User</a>
         </div>
-    </div>
+    
 
-    <div class="contentBody">
+    <div>
         <table>
-            <thead>
+            <thead class="blueStyle"> 
                 <tr>
                     <th>User ID</th>
                     <th>First Name</th>
@@ -32,17 +30,25 @@
                  
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tableb">
                 <?php foreach($users as $user):?>
                     <tr>
                         <td><?= htmlspecialchars($user['id']) ; ?></td>
                         <td><?= htmlspecialchars($user['firstName']) ;?></td>
                         <td><?= htmlspecialchars($user['lastName']); ?></td>
                         <td><?= htmlspecialchars($user['userName']); ?></td>
-                        <td><?= htmlspecialchars($user['role']); ?></td>
+                        <td><?php 
+                        if (htmlspecialchars($user['role']) == 0) {
+                            echo 'admin';
+                        } elseif (htmlspecialchars($user['role']) == 1){
+                            echo 'teacher';
+                        } else {
+                            echo 'student';
+                        };
+                        ; ?></td>
                         <td><?= htmlspecialchars($user['phoneNumber']); ?></td>
-                        <td><a href="index.php?action=userEdit&edit=<?= $user['id'];?>"><i class="fas fa-edit"></i>Edit</a></td>   
-                        <td><a href="index.php?action=userDel&delete=<?= $user['id'];?>"><i class="fas fa-trash-alt"></i>Delete</a> </td>
+                        <td class="greenLink"><a href="index.php?action=addEditUserForm&edit=<?= $user['id'];?>" ><i class="fas fa-edit"></i>Edit</a></td>   
+                        <td class="greenLink"><a href="index.php?action=userDel&delete=<?= $user['id'];?>" class="delete"><i class="fas fa-trash-alt"></i>Delete</a> </td>
                     
                     </tr>
                 <?php endforeach;?>
@@ -50,5 +56,7 @@
         </table>
     </div>
 </div>
+<script src="./public/js/userView.js"></script>
+<script src="./public/js/comfirmUserDel.js"></script>
 <?php $content = ob_get_clean(); ?>
 <?php require("template.php");?>
