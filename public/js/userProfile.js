@@ -30,7 +30,6 @@ uploadHide.addEventListener('click', function(e){
     uploadDiv.style.display='none';
     e.target.style.display='none';
     showUpload.style.display='flex';
-    
 })
 
 hide.addEventListener('click', function(e){
