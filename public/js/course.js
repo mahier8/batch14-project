@@ -90,10 +90,6 @@ for (let i = 0; i < editPost.length; i++) {
             let postFileType3 = editPostParent.lastElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.lastElementChild.firstChild;
             let postDueDateRaw = editPostParent.lastElementChild.lastElementChild.previousElementSibling.previousElementSibling.lastChild;
             let postDueDate;
-            console.log(postDueDateRaw.textContent);
-
-            let postDueDate;
-            // console.log(postDueDateRaw.textContent);
 
             if (postDueDateRaw.textContent != 0) {
                 postDueDate = new Date(postDueDateRaw.textContent +'Z').toISOString().substring(0, 10);
