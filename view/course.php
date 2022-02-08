@@ -130,9 +130,9 @@
                 <div id="pfTypeDiv">
                     <label for="pfType">Post Type: </label>
                         <select name="pfType" id="pformType">
-                            <option value="General" name="General">General</option>
-                            <option value="Announcement" name="Announcement">Announcement</option>
-                            <option value="Assignment" name="Assignment">Assignment</option>
+                            <option value="General" name="General" id="pfGeneral" selected="selected">General</option>
+                            <option value="Announcement" name="Announcement" id="pfAnnouncement">Announcement</option>
+                            <option value="Assignment" name="Assignment" id="pfAssignment">Assignment</option>
                         </select>
                 </div>
 
@@ -157,9 +157,9 @@
 
                     <label for="pfLink1Type">File Type: </label>
                     <select name="pfLink1Type" id="pFormLink1Type">
-                        <option value="File" name="File">File</option>
-                        <option value="Video" name="Video">Video</option>
-                        <option value="Document" name="Document">Document</option>
+                        <option value="File" name="File" id="select1File" selected="selected">File</option>
+                        <option value="Video" name="Video" id="select1Video">Video</option>
+                        <option value="Document" name="Document" id="select1Document">Document</option>
                     </select>
 
                     <label for="pfLink1URL">File URL: </label>
@@ -173,9 +173,9 @@
 
                     <label for="pfLink2Type">File Type:</label>
                     <select name="pfLink2Type" id="pFormLink2Type">
-                        <option value="File" name="File">File</option>
-                        <option value="Video" name="Video">Video</option>
-                        <option value="Document" name="Document">Document</option>
+                        <option value="File" name="File" id="select2File" selected="selected">File</option>
+                        <option value="Video" name="Video" id="select2Video">Video</option>
+                        <option value="Document" name="Document"  id="select2Document">Document</option>
                     </select>
 
                     <label for="pfLink2URL">File URL:</label>
@@ -188,9 +188,9 @@
 
                     <label for="pfLink3Type">File Type:</label>
                     <select name="pfLink3Type" id="pfLink3Type">
-                        <option value="File" name="File">File</option>
-                        <option value="Video" name="Video">Video</option>
-                        <option value="Document" name="Document">Document</option>
+                        <option value="File" name="File" id="select3File" selected="selected">File</option>
+                        <option value="Video" name="Video" id="select3Video">Video</option>
+                        <option value="Document" name="Document" id="select3Document">Document</option>
                     </select>
 
                     <label for="pfLink3URL">File URL:</label>
@@ -232,14 +232,14 @@
         <div class="postContent">
 
             
-            <h4>Posted: <?= $post['post_date'] ?></h4>
-            <p><?= $post['content'] ?></p>
+            <h4 class="postContentDate">Posted: <?= $post['post_date'] ?></h4>
+            <p class="postContentText"><?= $post['content'] ?></p>
 
             <div>
                 <ul class="postFiles">
                     
                     <?php if ($post['file1_link']) {
-                        echo '<li>' . $post['file1_type'] . ': <a href="' . $post['file1_link'] . '">' . $post['file1_name'] . '</a></li>'; 
+                        echo '<li >' . $post['file1_type'] . ': <a class="postFile1Link" href="' . $post['file1_link'] . '">' . $post['file1_name'] . '</a></li>'; 
                         } else {
                             echo '<li class="elementHidden">  <a> </a> </li>';
                         } ?> 

@@ -28,6 +28,7 @@ expand.addEventListener('click', function() {
 
 cancelPost.addEventListener('click', function() {
     //If the user clicks cancel, the form closes and reverts to 'create post'
+    postForm.reset();
     update.setAttribute('class', "elementHidden");
     create.removeAttribute('class', "elementHidden");
     create.classList.add('postHeader', 'pinkStyle');
@@ -35,31 +36,30 @@ cancelPost.addEventListener('click', function() {
     postForm.setAttribute('id', 'pfHide');
     expand.textContent = "Start";
     hide = true;
-    postForm.reset();
-
     //Reset button Elements
-    let pfHeaderInput1 = postForm.firstElementChild.firstElementChild.nextElementSibling.firstElementChild; 
-    let pfHeaderInput2 = postForm.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling; 
-    let pfHeaderInput3 = postForm.firstElementChild.firstElementChild.nextElementSibling.lastElementChild; 
+    let pfHeaderInput1 = document.querySelector("#pfGeneral");   
+    let pfHeaderInput2 = document.querySelector("#pfAnnouncement");
+    let pfHeaderInput3 = document.querySelector("#pfAssignment");
+    let pfFormLinkType1 = document.querySelector("#pFormLink1Type")
+    let pfFileType1Option1 = document.querySelector("#select1File"); 
+    let pfFileType1Option2 = document.querySelector("#select1Video");
+    let pfFileType1Option3 = document.querySelector("#select1Document");
+    let pfFileType2Option1 = document.querySelector("#select2File"); 
+    let pfFileType2Option2 = document.querySelector("#select2Video");
+    let pfFileType2Option3 = document.querySelector("#select2Document");
+    let pfFileType3Option1 = document.querySelector("#select3File"); 
+    let pfFileType3Option2 = document.querySelector("#select3Video");
+    let pfFileType3Option3 = document.querySelector("#select3Document");
     pfHeaderInput1.setAttribute('selected', "selected");
     pfHeaderInput2.removeAttribute('selected');
     pfHeaderInput3.removeAttribute('selected');
-    let pfFileType1Option1 = postForm.lastElementChild.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild;
-    let pfFileType1Option2 = postForm.lastElementChild.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling; 
-    let pfFileType1Option3 = postForm.lastElementChild.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.nextElementSibling; 
     pfFileType1Option1.setAttribute('selected', "selected");
     pfFileType1Option2.removeAttribute('selected');
     pfFileType1Option3.removeAttribute('selected');
-    let pfFileType2Option1 = postForm.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.nextElementSibling.lastElementChild.previousElementSibling.previousElementSibling.firstElementChild; 
-    let pfFileType2Option2 = postForm.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.nextElementSibling.lastElementChild.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling;
-    let pfFileType2Option3 = postForm.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.nextElementSibling.lastElementChild.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling.nextElementSibling;
-    pfFileType2Option1.setAttribute('selected', "selected");
+    pfFileType2Option1.removeAttribute('selected');
     pfFileType2Option2.removeAttribute('selected');
     pfFileType2Option3.removeAttribute('selected');
-    let pfFileType3Option1 = postForm.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.lastElementChild.lastElementChild.previousElementSibling.previousElementSibling.firstElementChild;
-    let pfFileType3Option2 = postForm.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.lastElementChild.lastElementChild.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling;
-    let pfFileType3Option3 = postForm.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.lastElementChild.lastElementChild.previousElementSibling.previousElementSibling.lastElementChild;
-    pfFileType3Option1.setAttribute('selected', "selected");
+    pfFileType3Option1.removeAttribute('selected');
     pfFileType3Option2.removeAttribute('selected');
     pfFileType3Option3.removeAttribute('selected');
 })
@@ -73,10 +73,7 @@ for (let i = 0; i < editPost.length; i++) {
             updateh2.removeAttribute('class', "elementHidden");
             updateh2.classList.add('postHeader', 'redStyle');
             create.setAttribute('class', "elementHidden");
-            
-            //Scrolling to the form
-            
-            
+
             //Isolating the Post Elements
             let editPostParent = editPost[i].parentElement.parentElement.parentElement; 
             let postHeader = editPostParent.firstElementChild.firstElementChild; 
@@ -95,47 +92,41 @@ for (let i = 0; i < editPost.length; i++) {
             let postDueDate;
             console.log(postDueDateRaw.textContent);
 
+            let postDueDate;
+            // console.log(postDueDateRaw.textContent);
+
             if (postDueDateRaw.textContent != 0) {
                 postDueDate = new Date(postDueDateRaw.textContent +'Z').toISOString().substring(0, 10);
             } else {
                 postDueDate = null;
             }
-             
-            // let postDueDate = new Date(postDueDateRaw.textContent +'Z').toISOString().substring(0, 10);
-
-            //1. Take raw string, convert to ISO standard date
-            //2. Take only the first 10 characters of the ISO string
-            //3. Set value (see later)
-            // http://www.java2s.com/example/javascript/dom-html-element/prepopulating-date-input-field.html
-
+            
             let postHiddenId = editPostParent.lastElementChild.lastElementChild.textContent;
 
             //Isolating the Form Input Fields
-            let pfHeaderInput1 = postForm.firstElementChild.firstElementChild.nextElementSibling.firstElementChild; 
-            let pfHeaderInput2 = postForm.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling; 
-            let pfHeaderInput3 = postForm.firstElementChild.firstElementChild.nextElementSibling.lastElementChild; 
-            let pfTitleInput = postForm.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling; 
-            let pfContentInput = postForm.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling;
-            let pfFileName1 = postForm.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling;
-            let pfFileURL1 = postForm.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.lastElementChild;  
-            let pfFileType1Option1 = postForm.lastElementChild.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild;
-            let pfFileType1Option2 = postForm.lastElementChild.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling; 
-            let pfFileType1Option3 = postForm.lastElementChild.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.nextElementSibling; 
-            let pfFileName2 = postForm.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling;;
-            let pfFileURL2 = postForm.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.nextElementSibling.lastElementChild; 
-            let pfFileType2Option1 = postForm.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.nextElementSibling.lastElementChild.previousElementSibling.previousElementSibling.firstElementChild; 
-            let pfFileType2Option2 = postForm.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.nextElementSibling.lastElementChild.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling;
-            let pfFileType2Option3 = postForm.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.nextElementSibling.lastElementChild.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling.nextElementSibling;
-            let pfFileName3 = postForm.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.lastElementChild.firstElementChild.nextElementSibling;
-            let pfFileURL3 = postForm.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.lastElementChild.lastElementChild;
-            let pfFileType3Option1 = postForm.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.lastElementChild.lastElementChild.previousElementSibling.previousElementSibling.firstElementChild;
-            let pfFileType3Option2 = postForm.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.lastElementChild.lastElementChild.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling;
-            let pfFileType3Option3 = postForm.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.lastElementChild.lastElementChild.previousElementSibling.previousElementSibling.lastElementChild;
-            let pfDueDate = postForm.lastElementChild.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling;
+            let pfHeaderInput1 = document.querySelector("#pfGeneral");   
+            let pfHeaderInput2 = document.querySelector("#pfAnnouncement");
+            let pfHeaderInput3 = document.querySelector("#pfAssignment");
+            let pfTitleInput = document.querySelector("#pfTitleInput");    
+            let pfContentInput = document.querySelector("#pfContentInput");   
+            let pfFileName1 = document.querySelector("#pFormLink1Name");  
+            let pfFileURL1 = document.querySelector("#pFormLink1"); 
+            let pfFileType1Option1 = document.querySelector("#select1File"); 
+            let pfFileType1Option2 = document.querySelector("#select1Video");
+            let pfFileType1Option3 = document.querySelector("#select1Document");
+            let pfFileName2 = document.querySelector("#pFormLink2Name"); 
+            let pfFileURL2 = document.querySelector("#pFormLink2");
+            let pfFileType2Option1 = document.querySelector("#select2File"); 
+            let pfFileType2Option2 = document.querySelector("#select2Video");
+            let pfFileType2Option3 = document.querySelector("#select2Document");
+            let pfFileName3 = document.querySelector("#pFormLink3Name"); 
+            let pfFileURL3 = document.querySelector("#pFormLink3");
+            let pfFileType3Option1 = document.querySelector("#select3File"); 
+            let pfFileType3Option2 = document.querySelector("#select3Video");
+            let pfFileType3Option3 = document.querySelector("#select3Document");
+            let pfDueDate =document.querySelector("#pFormDueDate");
             let pfHiddenId = postForm.lastElementChild.previousElementSibling.previousElementSibling;
             
-
-
             //Populating the Fields
             pfTitleInput.value = postTitle.textContent
             pfContentInput.value = postContent.textContent
@@ -147,11 +138,6 @@ for (let i = 0; i < editPost.length; i++) {
             pfFileURL3.value = postFileURL3;
             pfHiddenId.value = postHiddenId;
             pfDueDate.value = postDueDate;
-
-            
-            
-            
-            
 
             if (postHeader.textContent.includes(pfHeaderInput1.value)) {
                 pfHeaderInput1.setAttribute('selected', "selected");
@@ -206,13 +192,11 @@ for (let i = 0; i < editPost.length; i++) {
                 pfFileType3Option2.removeAttribute('selected');
             } 
             
-            //Showing the form
+            //Show and scroll to form
             postForm.setAttribute('id', 'postForm');
             expand.textContent = "Hide";
             hide = false;
             courseWrapper.scrollTo(550, 730);
-            alert('Post Updated.');
-            // console.log(hiddenid);
         });
 }
 

@@ -13,8 +13,6 @@ let studentsArr = [];
 for(let i = 0; i < iconDisplayStudent.length; i++) {
   let iconAttribute = iconDisplayStudent[i].getAttribute("studentid");
   studentsArr.push(iconAttribute);
-  console.log(iconAttribute);
-
 }
 
 // data from the form needed for formData object
@@ -120,7 +118,6 @@ function displayResults(response, role) {
             );
             studentNameIcon.innerHTML =
               '<i class="fa fa-trash-o" aria-hidden="true"></i>';
-              console.log(studentNameIcon);
             // to delete div in displayStudent div
             studentNameIcon.addEventListener("click", function (e) {
               e.preventDefault();
@@ -193,7 +190,6 @@ searchTeacher.addEventListener("keyup", function (e) {
       teacherDivs[selectedResult].className = ""; // we empty the class
     }
     teacherDivs[++selectedResult].className = "result_focus"; //we move down and empty the class
-    console.log(teacherDivs[selectedResult]);
   } else if (e.code == 13 && selectedResult > -1) {
     // if the key pressed is Enter
     chooseResult(teacherDivs[selectedResult]);
@@ -228,7 +224,6 @@ searchStudent.addEventListener("keyup", function (e) {
       studentDivs[selectedResult].className = ""; // we empty the class
     }
     studentDivs[++selectedResult].className = "result_focus"; //we move down and empty the class
-    console.log(studentDivs[selectedResult]);
   } else if (e.code == 13 && selectedResult > -1) {
     // if the key pressed is Enter
     chooseResult(studentDivs[selectedResult]);
