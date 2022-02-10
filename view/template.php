@@ -14,8 +14,8 @@
     <!-- navbar, the blue banner on every page with 100% width-->
     <nav>
         <div id="bannerBackground">
-            <img id="duckLogo" src="./public/images/duckLogo.jpg" alt="duckLogo" title="hamburger, the portal logo">
-            <div>Hamburger's Portal</div>
+            <img id="duckLogo" src="./public/images/schoolportal.png" alt="portal" >
+            <div>School Portal</div>
         </div>
     </nav>
 
